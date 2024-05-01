@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="49bc353c81c945358194ff4530ea6a3f" Name="Diagram1">
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.Kullanicilar" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.sysdiagrams" Width="1.5" PointX="8.125" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.Yazilar" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.Yorumlar" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_Yazilar_Kullanicilar" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_Yorumlar_Kullanicilar" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_Yorumlar_Yazilar" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.Admin" Width="1.5" PointX="0.75" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
