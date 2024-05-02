@@ -19,6 +19,7 @@ namespace adminTabani_01_05_24
         {
             this.Yazilar = new HashSet<Yazilar>();
             this.Yorumlar = new HashSet<Yorumlar>();
+            this.KullaniciGirisler = new HashSet<KullaniciGirisler>();
         }
     
         public int kullanici_id { get; set; }
@@ -28,5 +29,7 @@ namespace adminTabani_01_05_24
         public virtual ICollection<Yazilar> Yazilar { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Yorumlar> Yorumlar { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KullaniciGirisler> KullaniciGirisler { get; set; }
     }
 }
