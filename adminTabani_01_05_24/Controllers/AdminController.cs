@@ -25,20 +25,27 @@ namespace adminTabani_01_05_24.Controllers
             var veri = model.Admin.Where(p => p.id == 1).FirstOrDefault();
             if (veri.Email == email && veri.Sifre == sifre)
             {
-                
+                AdminDogrulamaKodu();
                 return View("AdminHome");
             }
             else
             {
+                var eklenecekler = model.AdminGirisler.Add(new AdminGirisler
+                {
+                    girisBasarisi1 = false,
+                    girisBasarisi2 = false,
+                    girisKod = null,
+                    girisTarih = DateTime.Now,
+                });
                 return RedirectToAction("Login");
             }
         }
-        public void DogrulamaKodu()
+        public void AdminDogrulamaKodu()
         {
             Random rnd = new Random();
-            int random = rnd.Next(9999, 1000 + 1);
+            int random = rnd.Next(1000, 9999 + 1);
             blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
-            var admin=model.Admin.Where(p=>p.id==1).FirstOrDefault();
+            var admin = model.Admin.Where(p => p.id == 1).FirstOrDefault();
             var cred = new NetworkCredential("canncizmeci@gmail.com", "jben gmyx obrj vhtj");
             var client = new SmtpClient("smtp.gmail.com", 587);
             var msg = new System.Net.Mail.MailMessage();
@@ -51,7 +58,13 @@ namespace adminTabani_01_05_24.Controllers
             client.EnableSsl = true;
             ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
             client.Send(msg);
-          
+            var eklenecekler = model.AdminGirisler.Add(new AdminGirisler
+            {
+                girisBasarisi1 = true,
+                girisBasarisi2 = false,
+                girisTarih = DateTime.Now,
+                girisKod = random
+            });
         }
     }
 }
