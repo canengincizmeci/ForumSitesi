@@ -1,1 +1,1 @@
-# adminTabani_01_05_24
+# Admin tabanlı bir basit blog sitesi
