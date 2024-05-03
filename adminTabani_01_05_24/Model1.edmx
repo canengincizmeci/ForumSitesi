@@ -20,6 +20,8 @@
           <Property Name="giris_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="girisTarih" Type="date" />
           <Property Name="girisKod" Type="int" />
+          <Property Name="girisBasarisi1" Type="bit" />
+          <Property Name="girisBasarisi2" Type="bit" />
         </EntityType>
         <EntityType Name="KullaniciGirisler">
           <Key>
@@ -29,6 +31,8 @@
           <Property Name="girisTarih" Type="date" />
           <Property Name="kullanici_id" Type="int" />
           <Property Name="girisKod" Type="int" />
+          <Property Name="GirisBasarisi1" Type="bit" />
+          <Property Name="GirisBasarisi2" Type="bit" />
         </EntityType>
         <EntityType Name="Kullanicilar">
           <Key>
@@ -264,6 +268,8 @@
           <Property Name="giris_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="girisTarih" Type="DateTime" Precision="0" />
           <Property Name="girisKod" Type="Int32" />
+          <Property Name="girisBasarisi1" Type="Boolean" />
+          <Property Name="girisBasarisi2" Type="Boolean" />
         </EntityType>
         <EntityType Name="KullaniciGirisler">
           <Key>
@@ -274,6 +280,8 @@
           <Property Name="kullanici_id" Type="Int32" />
           <Property Name="girisKod" Type="Int32" />
           <NavigationProperty Name="Kullanicilar" Relationship="blogAdminli_01_05_24Model.FK__Kullanici__kulla__5070F446" FromRole="KullaniciGirisler" ToRole="Kullanicilar" />
+          <Property Name="GirisBasarisi1" Type="Boolean" />
+          <Property Name="GirisBasarisi2" Type="Boolean" />
         </EntityType>
         <Association Name="FK__Kullanici__kulla__5070F446">
           <End Type="blogAdminli_01_05_24Model.Kullanicilar" Role="Kullanicilar" Multiplicity="0..1" />
@@ -346,6 +354,8 @@
           <EntitySetMapping Name="AdminGirisler">
             <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.AdminGirisler">
               <MappingFragment StoreEntitySet="AdminGirisler">
+                <ScalarProperty Name="girisBasarisi2" ColumnName="girisBasarisi2" />
+                <ScalarProperty Name="girisBasarisi1" ColumnName="girisBasarisi1" />
                 <ScalarProperty Name="girisKod" ColumnName="girisKod" />
                 <ScalarProperty Name="girisTarih" ColumnName="girisTarih" />
                 <ScalarProperty Name="giris_id" ColumnName="giris_id" />
@@ -355,6 +365,8 @@
           <EntitySetMapping Name="KullaniciGirisler">
             <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.KullaniciGirisler">
               <MappingFragment StoreEntitySet="KullaniciGirisler">
+                <ScalarProperty Name="GirisBasarisi2" ColumnName="GirisBasarisi2" />
+                <ScalarProperty Name="GirisBasarisi1" ColumnName="GirisBasarisi1" />
                 <ScalarProperty Name="girisKod" ColumnName="girisKod" />
                 <ScalarProperty Name="kullanici_id" ColumnName="kullanici_id" />
                 <ScalarProperty Name="girisTarih" ColumnName="girisTarih" />

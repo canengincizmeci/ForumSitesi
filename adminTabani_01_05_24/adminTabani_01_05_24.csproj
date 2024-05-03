@@ -163,7 +163,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminGiris.cs" />
     <Compile Include="Models\Kullanici.cs" />
+    <Compile Include="Models\KullaniciGiris.cs" />
     <Compile Include="Models\Yazi.cs" />
     <Compile Include="Models\Yorum.cs" />
     <Compile Include="Models\_Admin.cs" />

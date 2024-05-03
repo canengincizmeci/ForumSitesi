@@ -51,7 +51,7 @@ namespace adminTabani_01_05_24.Controllers
             client.EnableSsl = true;
             ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
             client.Send(msg);
-            return random;
+          
         }
     }
 }
