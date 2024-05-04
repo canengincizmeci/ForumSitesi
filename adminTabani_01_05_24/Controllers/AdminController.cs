@@ -26,7 +26,7 @@ namespace adminTabani_01_05_24.Controllers
             if (veri.Email == email && veri.Sifre == sifre)
             {
                 AdminDogrulamaKodu();
-                return View("AdminHome");
+                return View("KodDogrulama");
             }
             else
             {
@@ -37,6 +37,7 @@ namespace adminTabani_01_05_24.Controllers
                     girisKod = null,
                     girisTarih = DateTime.Now,
                 });
+                model.SaveChanges();
                 return RedirectToAction("Login");
             }
         }
@@ -65,6 +66,23 @@ namespace adminTabani_01_05_24.Controllers
                 girisTarih = DateTime.Now,
                 girisKod = random
             });
+            model.SaveChanges();
+        }
+        public ActionResult KodKontrol(int kod)
+        {
+            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            var sonVeri = model.AdminGirisler.OrderByDescending(p => p.giris_id).FirstOrDefault();
+            var koddegeri = sonVeri.girisKod;
+            if (kod==koddegeri)
+            {
+                sonVeri.girisBasarisi2 = true;
+                model.SaveChanges();
+                return View("AdminHome");
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
     }
 }
