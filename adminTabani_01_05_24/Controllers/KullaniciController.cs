@@ -96,6 +96,7 @@ namespace adminTabani_01_05_24.Controllers
             model.SaveChanges();
             return View("Login");
         }
+   
         public ActionResult Login()
         {
             return View();
