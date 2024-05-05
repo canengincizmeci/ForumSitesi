@@ -13,5 +13,6 @@ namespace adminTabani_01_05_24.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int kullanici_id { get; set; }
         public string Ad { get; set; }
+        public string KullaniciMaili { get; set; }
     }
 }

@@ -40,6 +40,7 @@
           </Key>
           <Property Name="kullanici_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="kullaniciMail" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -157,6 +158,7 @@
           <NavigationProperty Name="Yazilar" Relationship="Self.FK_Yazilar_Kullanicilar" FromRole="Kullanicilar" ToRole="Yazilar" />
           <NavigationProperty Name="Yorumlar" Relationship="Self.FK_Yorumlar_Kullanicilar" FromRole="Kullanicilar" ToRole="Yorumlar" />
           <NavigationProperty Name="KullaniciGirisler" Relationship="blogAdminli_01_05_24Model.FK__Kullanici__kulla__5070F446" FromRole="Kullanicilar" ToRole="KullaniciGirisler" />
+          <Property Name="kullaniciMail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -304,6 +306,7 @@
           <EntitySetMapping Name="Kullanicilar">
             <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.Kullanicilar">
               <MappingFragment StoreEntitySet="Kullanicilar">
+                <ScalarProperty Name="kullaniciMail" ColumnName="kullaniciMail" />
                 <ScalarProperty Name="kullanici_id" ColumnName="kullanici_id" />
                 <ScalarProperty Name="Ad" ColumnName="Ad" />
               </MappingFragment>
