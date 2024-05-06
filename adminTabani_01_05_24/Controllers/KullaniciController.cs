@@ -45,6 +45,7 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult KayitHatasi(string mesaj)
         {
             ViewBag.Mesaj = mesaj;
+
             return View();
         }
 
