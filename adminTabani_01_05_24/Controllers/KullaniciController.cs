@@ -40,7 +40,7 @@ namespace adminTabani_01_05_24.Controllers
                 return RedirectToAction("KayitHata", new { mesaj = "Bu mail başka hesaba ait" });
             }
             int sayi = MailGonder(mail);
-            return RedirectToAction("KodGirisi", new { kod = sayi });
+            return RedirectToAction("KodGirisi", new { kod = sayi, ad = ad, mail = mail });
         }
         public ActionResult KayitHata(string mesaj)
         {
@@ -85,18 +85,38 @@ namespace adminTabani_01_05_24.Controllers
                 return RedirectToAction("KayitHata", new { mesaj = "Girilen kod yanlış" });
             }
         }
-        public ActionResult KayitTamamla(Kullanici kullanici)
+        public void SifreMaili(string mail,string kod)
         {
+           
+            var cred = new NetworkCredential("canncizmeci@gmail.com", "jben gmyx obrj vhtj");
+            var client = new SmtpClient("smtp.gmail.com", 587);
+            var msg = new System.Net.Mail.MailMessage();
+            msg.To.Add(mail);
+            msg.Subject = "Tek Kullanımlık Şifreniz";
+            msg.Body = $"Tek Kullanımlık şifreniz {kod}";
+            msg.IsBodyHtml = false;
+            msg.From = new MailAddress("canncizmeci@gmail.com", "Doğrulama Kodu", Encoding.UTF8);
+            client.Credentials = cred;
+            client.EnableSsl = true;
+            ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
+            client.Send(msg);
+        }
+        public ActionResult KayitTamamla(string adi, string maili)
+        {
+            Random rnd = new Random();
+            int random = rnd.Next(1000, 9999 + 1);
             blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
             model.Kullanicilar.Add(new Kullanicilar
             {
-                Ad = kullanici.Ad,
-                kullaniciMail = kullanici.KullaniciMaili
+                Ad = adi,
+                kullaniciMail = maili,
+                kullanici_sifre = random.ToString()
             });
             model.SaveChanges();
+            SifreMaili(maili,random.ToString());
             return View("Login");
         }
-   
+
         public ActionResult Login()
         {
             return View();
