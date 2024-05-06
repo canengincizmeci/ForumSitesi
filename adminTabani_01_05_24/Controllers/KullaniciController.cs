@@ -33,19 +33,19 @@ namespace adminTabani_01_05_24.Controllers
             var mail_kontrol = model.Kullanicilar.FirstOrDefault(p => p.kullaniciMail == mail);
             if (ad_kontrol != null)
             {
-                return RedirectToAction("Kayithata", new { mesaj = "Bu kullanıcı adı alınmış" });
+                return RedirectToAction("KayitHatasi", new { mesaj = "Bu kullanıcı adı alınmış" });
             }
             if (mail_kontrol != null)
             {
-                return RedirectToAction("KayitHata", new { mesaj = "Bu mail başka hesaba ait" });
+                return RedirectToAction("KayitHatasi", new { mesaj = "Bu mail başka hesaba ait" });
             }
             int sayi = MailGonder(mail);
             return RedirectToAction("KodGirisi", new { kod = sayi, ad = ad, mail = mail });
         }
-        public ActionResult KayitHata(string mesaj)
+        public ActionResult KayitHatasi(string mesaj)
         {
-
-            return View(mesaj);
+            ViewBag.Mesaj = mesaj;
+            return View();
         }
 
         public int MailGonder(string mail)
@@ -82,7 +82,7 @@ namespace adminTabani_01_05_24.Controllers
             }
             else
             {
-                return RedirectToAction("KayitHata", new { mesaj = "Girilen kod yanlış" });
+                return RedirectToAction("KayitHatasi", new { mesaj = "Girilen kod yanlış" });
             }
         }
         public void SifreMaili(string mail,string kod)

@@ -251,9 +251,9 @@
     <Content Include="Views\Admin\KodDogrulama.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Kullanici\Ekle.cshtml" />
-    <Content Include="Views\Kullanici\KayitHata.cshtml" />
     <Content Include="Views\Kullanici\KodGirisi.cshtml" />
     <Content Include="Views\Kullanici\Login.cshtml" />
+    <Content Include="Views\Kullanici\KayitHatasi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
