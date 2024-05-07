@@ -86,9 +86,9 @@ namespace adminTabani_01_05_24.Controllers
                 return RedirectToAction("KayitHatasi", new { mesaj = "Girilen kod yanlış" });
             }
         }
-        public void SifreMaili(string mail,string kod)
+        public void SifreMaili(string mail, string kod)
         {
-           
+
             var cred = new NetworkCredential("canncizmeci@gmail.com", "jben gmyx obrj vhtj");
             var client = new SmtpClient("smtp.gmail.com", 587);
             var msg = new System.Net.Mail.MailMessage();
@@ -111,13 +111,38 @@ namespace adminTabani_01_05_24.Controllers
             {
                 Ad = adi,
                 kullaniciMail = maili,
-                kullanici_sifre = random.ToString()
+                kullanici_sifre =random.ToString()
             });
             model.SaveChanges();
-            SifreMaili(maili,random.ToString());
-            return View("Login");
+            SifreMaili(maili, random.ToString());
+            int id = model.Kullanicilar.FirstOrDefault(p => p.Ad == adi).kullanici_id;
+            return RedirectToAction("IlkSifreBelirleme", new { _id = id });
         }
+        [HttpGet]
+        public ActionResult IlkSifreBelirleme(int _id)
+        {
+            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            int id = model.Kullanicilar.FirstOrDefault(p=>p.kullanici_id==_id).kullanici_id;
+            ViewBag.id = id;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult IlkSifreBelirleme(int id,string sifre1,string sifre2)
+        {
+            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            var kisi = model.Kullanicilar.FirstOrDefault(p => p.kullanici_id == id);
+            if (sifre1==sifre2)
+            {
 
+            }
+            else
+            {
+
+            }
+            kisi.kullanici_sifre = sifre1;
+            model.SaveChanges();
+            return RedirectToAction("Login");
+        }
         public ActionResult Login()
         {
             return View();
