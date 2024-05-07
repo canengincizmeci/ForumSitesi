@@ -13,23 +13,38 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h2 class="mb-4">Kayıt Formu</h2>
-        <form method="post" action="/Kullanici/KayitTamamla">
+        <h2 class="mb-4">Sifrenizi Belirleyin</h2>
+        <form method="post" action="/Kullanici/IlkSifreBelirleme">
             <div class="mb-3">
                 <input type="hidden" class="form-control" value="@ViewBag.id" name="id">
             </div>
             <div class="mb-3">
-                <label for="ad" class="form-label">Sifrenizi Girin:</label>
-                <input type="text" class="form-control" id="ad" name="ad">
+                <label for="sifre1" class="form-label">Sifrenizi Girin:</label>
+                <input type="text" class="form-control" id="sifre1" name="sifre1">
             </div>
             <div class="mb-3">
-                <label for="mail" class="form-label">Mail Adresi</label>
-                <input type="text" class="form-control" id="mail" name="mail">
+                <label for="sifre2" class="form-label">Tekrar Girin:</label>
+                <input type="text" class="form-control" id="sifre2" name="sifre2">
             </div>
 
-            <button type="submit" class="btn btn-primary">Üye Ekle</button>
+            <button type="submit" id="button" class="btn btn-primary" disabled>Üye Ekle</button>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        var deger1 = document.getElementById('sifre1')
+        var deger2 = document.getElementById('sifre2')
+        var button = document.getElementById('button')
+        function sifreKontrol() {
+            if (deger1.value != deger2.value) {
+                button.disabled = true
+            }
+            else {
+                button.disabled=false
+            }
+        }
+        deger1.addEventListener('input', sifreKontrol)
+        deger2.addEventListener('input', sifreKontrol)
+    </script>
 </body>
 </html>

@@ -252,9 +252,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Kullanici\Ekle.cshtml" />
     <Content Include="Views\Kullanici\KodGirisi.cshtml" />
-    <Content Include="Views\Kullanici\Login.cshtml" />
     <Content Include="Views\Kullanici\KayitHatasi.cshtml" />
     <Content Include="Views\Kullanici\IlkSifreBelirleme.cshtml" />
+    <Content Include="Views\Kullanici\KullaniciHome.cshtml" />
+    <Content Include="Views\Kullanici\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

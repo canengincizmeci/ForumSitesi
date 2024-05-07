@@ -13,14 +13,14 @@
 </head>
 <body>
     <div style="margin-left:400px;margin-top:200px; margin-right:500px;">
-        <form action="/Kullanici/Login">
+        <form action="/Kullanici/Login" method="post">
             <div class="form-group">
                 <label for="adi">Kullanıcı Adı:</label>
-                <input type="text" name="Ad" class="form-control" id="adi" placeholder="Kullanıcı Adınızı girin">
+                <input type="text" name="adi" class="form-control"  placeholder="Kullanıcı Adınızı girin">
             </div>
             <div class="form-group">
                 <label for="sifre">Şifre</label>
-                <input type="password" class="form-control" id="sifre" placeholder="Şifrenizi Girin">
+                <input type="password" class="form-control"  placeholder="Şifrenizi Girin" name="sifre">
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>

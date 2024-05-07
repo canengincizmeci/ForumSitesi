@@ -111,7 +111,7 @@ namespace adminTabani_01_05_24.Controllers
             {
                 Ad = adi,
                 kullaniciMail = maili,
-                kullanici_sifre =random.ToString()
+                kullanici_sifre = random.ToString()
             });
             model.SaveChanges();
             SifreMaili(maili, random.ToString());
@@ -122,29 +122,52 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult IlkSifreBelirleme(int _id)
         {
             blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
-            int id = model.Kullanicilar.FirstOrDefault(p=>p.kullanici_id==_id).kullanici_id;
+            int id = model.Kullanicilar.FirstOrDefault(p => p.kullanici_id == _id).kullanici_id;
             ViewBag.id = id;
             return View();
         }
         [HttpPost]
-        public ActionResult IlkSifreBelirleme(int id,string sifre1,string sifre2)
+        public ActionResult IlkSifreBelirleme(int id, string sifre1, string sifre2)
         {
             blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
             var kisi = model.Kullanicilar.FirstOrDefault(p => p.kullanici_id == id);
-            if (sifre1==sifre2)
-            {
 
-            }
-            else
-            {
-
-            }
             kisi.kullanici_sifre = sifre1;
             model.SaveChanges();
             return RedirectToAction("Login");
         }
+        [HttpGet]
         public ActionResult Login()
         {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(string adi, string sifre)
+        {
+            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            var kisi = model.Kullanicilar.FirstOrDefault(p => p.Ad == adi);
+            if (kisi != null)
+            {
+                if (kisi.kullanici_sifre == sifre)
+                {
+                    return RedirectToAction("KullaniciHome", new { id = kisi.kullanici_id });
+                }
+                else
+                {
+                    return RedirectToAction("Login");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
+
+        public ActionResult KullaniciHome(int id)
+        {
+            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            var kisi = model.Kullanicilar.FirstOrDefault(p => p.kullanici_id == id);
+            ViewBag.Ad = kisi.Ad;
             return View();
         }
     }
