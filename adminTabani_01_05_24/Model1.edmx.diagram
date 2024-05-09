@@ -16,6 +16,16 @@
         <EntityTypeShape EntityType="blogAdminli_01_05_24Model.AdminGirisler" Width="1.5" PointX="5.375" PointY="4.75" />
         <EntityTypeShape EntityType="blogAdminli_01_05_24Model.KullaniciGirisler" Width="1.5" PointX="3" PointY="4.25" />
         <AssociationConnector Association="blogAdminli_01_05_24Model.FK__Kullanici__kulla__5070F446" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.Haberler" Width="1.5" PointX="3.375" PointY="11" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.Resimler" Width="1.5" PointX="7.75" PointY="5.75" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.Tartismalar" Width="1.5" PointX="3.375" PointY="7.75" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.YorumTurleri" Width="1.5" PointX="0.75" PointY="7.875" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_Haberler_Kullanicilar" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_Tartismalar_Kullanicilar" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_Yorumlar_YorumTurleri" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.Siirler" Width="1.5" PointX="3" PointY="14.75" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_Resimler_Kullanicilar" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_Siirler_Kullanicilar" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

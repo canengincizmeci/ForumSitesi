@@ -32,5 +32,10 @@ namespace adminTabani_01_05_24
         public virtual DbSet<Admin> Admin { get; set; }
         public virtual DbSet<AdminGirisler> AdminGirisler { get; set; }
         public virtual DbSet<KullaniciGirisler> KullaniciGirisler { get; set; }
+        public virtual DbSet<Haberler> Haberler { get; set; }
+        public virtual DbSet<Resimler> Resimler { get; set; }
+        public virtual DbSet<Tartismalar> Tartismalar { get; set; }
+        public virtual DbSet<YorumTurleri> YorumTurleri { get; set; }
+        public virtual DbSet<Siirler> Siirler { get; set; }
     }
 }

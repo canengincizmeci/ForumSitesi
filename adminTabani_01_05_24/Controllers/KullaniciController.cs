@@ -168,7 +168,53 @@ namespace adminTabani_01_05_24.Controllers
             blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
             var kisi = model.Kullanicilar.FirstOrDefault(p => p.kullanici_id == id);
             ViewBag.Ad = kisi.Ad;
-            return View();
+            KullaniciHomeViewModel Gidenmodel = new KullaniciHomeViewModel();
+            Gidenmodel.resimler = model.Resimler.Select(p => new Resim
+            {
+                resimID = p.resimID,
+                aciklama = p.aciklama,
+                baslik = p.baslik,
+                dosyaYolu = p.dosyaYolu,
+                paylasan = p.paylasan
+            }).ToList();
+            Gidenmodel.haberler = model.Haberler.Select(p => new Haber
+            {
+                HaberID = p.HaberID,
+                Baslik = p.Baslik,
+                icerik = p.icerik,
+                paylasan = p.paylasan,
+                tarih = p.tarih
+            }).ToList();
+
+            Gidenmodel.yazilar = model.Yazilar.Select(p => new Yazi
+            {
+                yazi_id = p.yazi_id,
+                yazar_id = p.yazar_id,
+                Baslik = p.Baslik,
+                onay = p.onay,
+                İcerik = p.İcerik
+            }).ToList();
+            Gidenmodel.tartismalar = model.Tartismalar.Select(p => new Tartisma
+            {
+                TartismaID = p.TartismaID,
+                aktiflik = p.aktiflik,
+                kullanici_id = p.kullanici_id,
+                Baslik = p.Baslik,
+                icerik = p.icerik,
+                onay = p.onay,
+                tarih = p.tarih
+            }).ToList();
+            Gidenmodel.siirler=model.Siirler.Select(p=> new Siir
+            {
+                siirID=p.siirID,
+                icerik=p.icerik,
+                siirBaslik=p.siirBaslik,
+                tarih=p.tarih,
+                yazar=p.yazar
+            }).ToList();
+            var tartismaYazar = (from k in model.Kullanicilar join m in model.Tartismalar on k.kullanici_id equals m.kullanici_id select  k.Ad ).ToList();
+            ViewBag.tartısmaKullaniciAd = tartismaYazar;
+            return View(Gidenmodel);
         }
     }
 }

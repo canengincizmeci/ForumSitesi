@@ -7,16 +7,14 @@ using System.Web;
 
 namespace adminTabani_01_05_24.Models
 {
-    public class Yazi
+    public class Resim
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int yazi_id { get; set; }
-        public string Baslik { get; set; }
-        public string İcerik { get; set; }
-        public int? yazar_id { get; set; }
-        public bool? onay { get; set; }
-        public DateTime? tarih { get; set; }
-
+        public int resimID { get; set; }
+        public string dosyaYolu { get; set; }
+        public string baslik { get; set; }
+        public string aciklama { get; set; }
+        public int? paylasan { get; set; }
     }
 }

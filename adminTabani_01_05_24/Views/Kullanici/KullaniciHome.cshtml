@@ -1,4 +1,4 @@
-﻿
+﻿@model adminTabani_01_05_24.Models.KullaniciHomeViewModel
 @{
     ViewBag.Title = "KullaniciHome";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
@@ -8,29 +8,49 @@
 </div>
 <div class="text-center">
 
-    <div >
+    <div>
         <h5>Son Tartışmalar</h5>
         <table>
             <thead>
                 <tr>
-                    <td>Tartişma Başlık</td>
+                    <td>Başlık</td>
+                    <td>İçerik</td>
+                    <td>Başlatan</td>
+                    <td>Başlama Tarihi</td>
                 </tr>
             </thead>
-            <tr>
-                <td></td>
-            </tr>
+            <tbody>
+                @foreach (var item in Model.tartismalar.Take(5))
+                {
+                    if (item.onay == true && item.aktiflik == true)
+                    {
+
+                        <tr>
+                            <td>@item.Baslik</td>
+                            <td>@item.icerik.Substring(0,20)</td>
+                            <td>@ViewBag.tartısmaKullaniciAd</td>
+                            <td>@item.tarih</td>
+                        </tr>
+                    }
+                }
+            </tbody>
         </table>
     </div>
-    <div >
+    <div>
         <h5>Son Yazılar</h5>
+        <table>
+            <thead>
+
+            </thead>
+        </table>
     </div>
     <div>
         <h5>Son Haberler</h5>
     </div>
-    <div >
+    <div>
         <h5>Son Şiirler</h5>
     </div>
-    <div >
+    <div>
         <h5>Son Resimler</h5>
     </div>
 

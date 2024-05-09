@@ -12,23 +12,14 @@ namespace adminTabani_01_05_24
     using System;
     using System.Collections.Generic;
     
-    public partial class Yazilar
+    public partial class Haberler
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Yazilar()
-        {
-            this.Yorumlar = new HashSet<Yorumlar>();
-        }
-    
-        public int yazi_id { get; set; }
+        public int HaberID { get; set; }
         public string Baslik { get; set; }
-        public string İcerik { get; set; }
-        public Nullable<int> yazar_id { get; set; }
-        public Nullable<bool> onay { get; set; }
+        public string icerik { get; set; }
+        public Nullable<int> paylasan { get; set; }
         public Nullable<System.DateTime> tarih { get; set; }
     
         public virtual Kullanicilar Kullanicilar { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Yorumlar> Yorumlar { get; set; }
     }
 }
