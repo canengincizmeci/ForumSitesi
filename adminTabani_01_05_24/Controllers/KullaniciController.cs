@@ -86,22 +86,22 @@ namespace adminTabani_01_05_24.Controllers
                 return RedirectToAction("KayitHatasi", new { mesaj = "Girilen kod yanlış" });
             }
         }
-        public void SifreMaili(string mail, string kod)
-        {
+        //public void SifreMaili(string mail, string kod)
+        //{
 
-            var cred = new NetworkCredential("canncizmeci@gmail.com", "jben gmyx obrj vhtj");
-            var client = new SmtpClient("smtp.gmail.com", 587);
-            var msg = new System.Net.Mail.MailMessage();
-            msg.To.Add(mail);
-            msg.Subject = "Tek Kullanımlık Şifreniz";
-            msg.Body = $"Tek Kullanımlık şifreniz {kod}";
-            msg.IsBodyHtml = false;
-            msg.From = new MailAddress("canncizmeci@gmail.com", "Doğrulama Kodu", Encoding.UTF8);
-            client.Credentials = cred;
-            client.EnableSsl = true;
-            ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
-            client.Send(msg);
-        }
+        //    var cred = new NetworkCredential("canncizmeci@gmail.com", "jben gmyx obrj vhtj");
+        //    var client = new SmtpClient("smtp.gmail.com", 587);
+        //    var msg = new System.Net.Mail.MailMessage();
+        //    msg.To.Add(mail);
+        //    msg.Subject = "Tek Kullanımlık Şifreniz";
+        //    msg.Body = $"Tek Kullanımlık şifreniz {kod}";
+        //    msg.IsBodyHtml = false;
+        //    msg.From = new MailAddress("canncizmeci@gmail.com", "Doğrulama Kodu", Encoding.UTF8);
+        //    client.Credentials = cred;
+        //    client.EnableSsl = true;
+        //    ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
+        //    client.Send(msg);
+        //}
         public ActionResult KayitTamamla(string adi, string maili)
         {
             Random rnd = new Random();
@@ -114,7 +114,7 @@ namespace adminTabani_01_05_24.Controllers
                 kullanici_sifre = random.ToString()
             });
             model.SaveChanges();
-            SifreMaili(maili, random.ToString());
+            //SifreMaili(maili, random.ToString());
             int id = model.Kullanicilar.FirstOrDefault(p => p.Ad == adi).kullanici_id;
             return RedirectToAction("IlkSifreBelirleme", new { _id = id });
         }
