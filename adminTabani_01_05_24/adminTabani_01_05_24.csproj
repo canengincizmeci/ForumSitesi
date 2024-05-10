@@ -139,6 +139,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KullaniciController.cs" />
     <Compile Include="Controllers\YazilarController.cs" />
+    <Compile Include="Controllers\ZiyaretciController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -277,9 +278,11 @@
     <Content Include="Views\Kullanici\IlkSifreBelirleme.cshtml" />
     <Content Include="Views\Kullanici\KullaniciHome.cshtml" />
     <Content Include="Views\Kullanici\Login.cshtml" />
+    <Content Include="Views\Shared\_ZiyaretciLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Ziyaretci\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

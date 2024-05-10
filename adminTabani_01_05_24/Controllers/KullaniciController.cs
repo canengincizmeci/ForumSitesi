@@ -185,7 +185,9 @@ namespace adminTabani_01_05_24.Controllers
                 paylasan = p.paylasan,
                 tarih = p.tarih
             }).ToList();
-
+            var ad = (from k in model.Haberler join m in model.Kullanicilar on k.paylasan equals m.kullanici_id select m.Ad);
+            ViewBag.HaberPaylasanAd = ad;
+            string tartismaYazar = (from k in model.Kullanicilar join m in model.Tartismalar on k.kullanici_id equals m.kullanici_id select k.Ad).ToString();
             Gidenmodel.yazilar = model.Yazilar.Select(p => new Yazi
             {
                 yazi_id = p.yazi_id,
@@ -212,7 +214,6 @@ namespace adminTabani_01_05_24.Controllers
                 tarih=p.tarih,
                 yazar=p.yazar
             }).ToList();
-            var tartismaYazar = (from k in model.Kullanicilar join m in model.Tartismalar on k.kullanici_id equals m.kullanici_id select  k.Ad ).ToList();
             ViewBag.tartısmaKullaniciAd = tartismaYazar;
             return View(Gidenmodel);
         }
