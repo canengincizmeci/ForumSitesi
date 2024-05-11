@@ -271,7 +271,6 @@
     <Content Include="Views\Shared\_AdminPage.cshtml" />
     <Content Include="Views\Admin\AdminHome.cshtml" />
     <Content Include="Views\Admin\KodDogrulama.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Kullanici\Ekle.cshtml" />
     <Content Include="Views\Kullanici\KodGirisi.cshtml" />
     <Content Include="Views\Kullanici\KayitHatasi.cshtml" />
@@ -279,6 +278,7 @@
     <Content Include="Views\Kullanici\KullaniciHome.cshtml" />
     <Content Include="Views\Kullanici\Login.cshtml" />
     <Content Include="Views\Shared\_ZiyaretciLayout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
