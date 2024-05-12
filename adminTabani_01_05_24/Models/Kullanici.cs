@@ -15,5 +15,6 @@ namespace adminTabani_01_05_24.Models
         public string Ad { get; set; }
         public string KullaniciMaili { get; set; }
         public string kullanici_sifresi { get; set; }
+        
     }
 }

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Profile;
 
 namespace adminTabani_01_05_24.Models
 {
@@ -17,6 +18,7 @@ namespace adminTabani_01_05_24.Models
         public int? yazar_id { get; set; }
         public bool? onay { get; set; }
         public DateTime? tarih { get; set; }
+        public string yazar_ad { get; set; }
 
     }
 }

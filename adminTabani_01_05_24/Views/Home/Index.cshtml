@@ -1,4 +1,4 @@
-﻿
+﻿@model adminTabani_01_05_24.Models.KullaniciHomeViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_ZiyaretciLayout.cshtml";
@@ -17,7 +17,58 @@
     <div style="margin-left:512px;">
         <h2>Sayfanıza Hoşgeldiniz</h2>
     </div>
-    
+
+    <div class="container">
+        <div class="text-center">
+            <h4>Habeler</h4>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td colspan="4"></td>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var haber in Model.haberler)
+                {
+                    <tr>
+                        <td>@haber.Baslik</td>
+                        <td>@haber.icerik</td>
+                        <td>@haber.PaylasanAd</td>
+                        <td>@haber.tarih</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
+        <div class="text-center">
+            <h4>Yazılar</h4>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td colspan="4"></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var yazi in Model.yazilar)
+                {
+                    <tr>
+                        <td>@yazi.Baslik</td>
+                        <td>@yazi.İcerik</td>
+                        <td>@yazi.yazar_ad</td>
+                        <td>@yazi.tarih</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
