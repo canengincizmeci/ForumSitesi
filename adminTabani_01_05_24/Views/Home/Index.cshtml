@@ -36,9 +36,12 @@
                         <td>@haber.Baslik</td>
                         <td>@haber.icerik</td>
                         <td>@haber.PaylasanAd</td>
-                        <td>@haber.tarih</td>
+                        <td>@haber.tarih.ToString().Substring(0, 10)</td>
                     </tr>
                 }
+                <tr>
+                    <td colspan="4"><a href="/Haber/Index" class="btn btn-success">Tümünü Görüntüle</a></td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -59,7 +62,7 @@
                         <td>@yazi.Baslik</td>
                         <td>@yazi.İcerik</td>
                         <td>@yazi.yazar_ad</td>
-                        <td>@yazi.tarih</td>
+                        <td>@yazi.tarih.ToString().Substring(0, 10)</td>
                     </tr>
                 }
             </tbody>
@@ -80,17 +83,61 @@
                 {
                     <tr>
                         <td>@resim.baslik</td>
-                        <td><img src="@resim.dosyaYolu" alt="resim" /></td>
+                        <td><img src="@Url.Content(resim.dosyaYolu)" alt="resim" /></td>
                         <td>@resim.aciklama</td>
                         <td>@resim.PaylasanAd</td>
-                        <td>@resim.tarih</td>
+                        <td>@resim.tarih.ToString().Substring(0, 10)</td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
-
-
+    <div class="container">
+        <div class="text-center">
+            <h4>Tartışmalar</h4>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td colspan="4"></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var tartisma in Model.tartismalar)
+                {
+                    <tr>
+                        <td>@tartisma.Baslik</td>
+                        <td>@tartisma.icerik.ToString().Substring(0, 20)</td>
+                        <td>@tartisma.KullaniciAd</td>
+                        <td>@tartisma.tarih.ToString().Substring(0, 10)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
+        <div class="text-center">
+            <h4>Şiirler</h4>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td colspan="4"></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var siir in Model.siirler)
+                {
+                    <tr>
+                        <td>@siir.siirBaslik</td>
+                        <td>@siir.icerik.ToString().Substring(0, 20)</td>
+                        <td>@siir.YazarAd</td>
+                        <td>@siir.tarih.ToString().Substring(0, 10)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

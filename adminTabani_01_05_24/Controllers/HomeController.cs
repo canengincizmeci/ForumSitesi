@@ -12,42 +12,60 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult Index()
         {
             blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
-            KullaniciHomeViewModel veriler = new KullaniciHomeViewModel();           
-            veriler.haberler = model.Haberler.OrderByDescending(p=>p.tarih).Take(5).Select(p => new Haber
+            KullaniciHomeViewModel veriler = new KullaniciHomeViewModel();
+            veriler.haberler = model.Haberler.OrderByDescending(p => p.tarih).Take(5).Select(p => new Haber
             {
-                HaberID=p.HaberID,
-                Baslik=p.Baslik,
-                icerik=p.icerik,
-                tarih=p.tarih,
+                HaberID = p.HaberID,
+                Baslik = p.Baslik,
+                icerik = p.icerik.Substring(0, 20),
+                tarih = p.tarih,
                 paylasan = p.paylasan,
-                PaylasanAd=p.Kullanicilar.Ad
+                PaylasanAd = p.Kullanicilar.Ad
             }).ToList();
             veriler.yazilar = model.Yazilar.OrderByDescending(p => p.tarih).Take(5).Select(p => new Yazi
             {
-                yazi_id=p.yazi_id,
-                yazar_id=p.yazar_id,
-                Baslik=p.Baslik,
-                İcerik=p.İcerik,
-                tarih=p.tarih,
-                onay=p.onay,
-                yazar_ad=p.Kullanicilar.Ad
+                yazi_id = p.yazi_id,
+                yazar_id = p.yazar_id,
+                Baslik = p.Baslik,
+                İcerik = p.İcerik.Substring(0, 20),
+                tarih = p.tarih,
+                onay = p.onay,
+                yazar_ad = p.Kullanicilar.Ad
             }).ToList();
             veriler.resimler = model.Resimler.OrderByDescending(p => p.resimID).Take(5).Select(p => new Resim
             {
-                resimID=p.resimID,
-                baslik=p.baslik,
-                aciklama=p.aciklama,
-                dosyaYolu=p.dosyaYolu,
-                paylasan=p.paylasan,
-                PaylasanAd=p.Kullanicilar.Ad,
-                tarih=p.tarih
+                resimID = p.resimID,
+                baslik = p.baslik,
+                aciklama = p.aciklama,
+                dosyaYolu = p.dosyaYolu,
+                paylasan = p.paylasan,
+                PaylasanAd = p.Kullanicilar.Ad,
+                tarih = p.tarih
             }).ToList();
-
-
+            veriler.siirler = model.Siirler.OrderByDescending(p => p.tarih).Take(5).Select(p => new Siir
+            {
+                siirID = p.siirID,
+                icerik = p.icerik.Substring(0, 20),
+                siirBaslik = p.siirBaslik,
+                tarih = p.tarih,
+                yazar = p.yazar,
+                YazarAd = p.Kullanicilar.Ad
+            }).ToList();
+            veriler.tartismalar = model.Tartismalar.OrderByDescending(p => p.tarih).Take(5).Select(p => new Tartisma
+            {
+                TartismaID = p.TartismaID,
+                tarih = p.tarih,
+                aktiflik = p.aktiflik,
+                Baslik = p.Baslik,
+                icerik = p.icerik.Substring(0, 20),
+                kullanici_id = p.kullanici_id,
+                onay = p.onay,
+                KullaniciAd = p.Kullanicilar.Ad
+            }).ToList();
 
             return View(veriler);
         }
 
-        
+
     }
 }

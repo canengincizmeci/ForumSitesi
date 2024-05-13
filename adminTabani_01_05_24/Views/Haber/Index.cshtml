@@ -1,0 +1,31 @@
+﻿@model List<adminTabani_01_05_24.Models.Haber>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_ZiyaretciLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Başlık</th>
+                <th>İçerik</th>
+                <th>Paylaşan</th>
+                <th>Tarih</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var haber in Model)
+            {
+                <tr>
+                    <td>@haber.Baslik</td>
+                    <td>@haber.icerik</td>
+                    <td>@haber.PaylasanAd</td>
+                    <td>@haber.tarih</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

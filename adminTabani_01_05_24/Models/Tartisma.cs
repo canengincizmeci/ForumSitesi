@@ -18,5 +18,6 @@ namespace adminTabani_01_05_24.Models
         public bool? onay { get; set; }
         public bool? aktiflik { get; set; }
         public int? kullanici_id { get; set; }
+        public string KullaniciAd { get; set; }
     }
 }

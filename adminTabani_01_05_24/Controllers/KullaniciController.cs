@@ -204,15 +204,16 @@ namespace adminTabani_01_05_24.Controllers
                 Baslik = p.Baslik,
                 icerik = p.icerik,
                 onay = p.onay,
-                tarih = p.tarih
+                tarih = p.tarih,
+                KullaniciAd = p.Kullanicilar.Ad
             }).ToList();
-            Gidenmodel.siirler=model.Siirler.Select(p=> new Siir
+            Gidenmodel.siirler = model.Siirler.Select(p => new Siir
             {
-                siirID=p.siirID,
-                icerik=p.icerik,
-                siirBaslik=p.siirBaslik,
-                tarih=p.tarih,
-                yazar=p.yazar
+                siirID = p.siirID,
+                icerik = p.icerik,
+                siirBaslik = p.siirBaslik,
+                tarih = p.tarih,
+                yazar = p.yazar
             }).ToList();
             ViewBag.tartısmaKullaniciAd = tartismaYazar;
             return View(Gidenmodel);
