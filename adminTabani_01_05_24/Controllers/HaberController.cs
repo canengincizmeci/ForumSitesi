@@ -24,5 +24,15 @@ namespace adminTabani_01_05_24.Controllers
             }).ToList();
             return View(veriler);
         }
+        public ActionResult HaberDetay(int id)
+        {
+            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            var haber = model.Haberler.FirstOrDefault(p => p.HaberID == id);
+            ViewBag.Baslik = haber.Baslik;
+            ViewBag.Icerik = haber.icerik;
+            ViewBag.Yazar = haber.Kullanicilar.Ad;
+            ViewBag.Tarih = haber.tarih;
+            return View();
+        }
     }
 }

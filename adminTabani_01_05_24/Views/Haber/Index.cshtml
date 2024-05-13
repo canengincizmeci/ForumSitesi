@@ -21,11 +21,13 @@
             {
                 <tr>
                     <td>@haber.Baslik</td>
-                    <td>@haber.icerik</td>
+                    <td>@haber.icerik.Substring(0, 20)</td>
                     <td>@haber.PaylasanAd</td>
-                    <td>@haber.tarih</td>
+                    <td>@haber.tarih.ToString().Substring(0, 10)</td>
+                    <td><a href="/Haber/HaberDetay/@haber.HaberID" class="btn btn-success">Oku</a></td>
                 </tr>
             }
+
         </tbody>
     </table>
 </div>
