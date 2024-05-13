@@ -62,6 +62,7 @@
           <Property Name="baslik" Type="nvarchar" MaxLength="20" />
           <Property Name="aciklama" Type="nvarchar" MaxLength="100" />
           <Property Name="paylasan" Type="int" />
+          <Property Name="tarih" Type="date" />
         </EntityType>
         <EntityType Name="Siirler">
           <Key>
@@ -488,6 +489,7 @@
           <Property Name="aciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="paylasan" Type="Int32" />
           <NavigationProperty Name="Kullanicilar" Relationship="blogAdminli_01_05_24Model.FK_Resimler_Kullanicilar" FromRole="Resimler" ToRole="Kullanicilar" />
+          <Property Name="tarih" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Tartismalar">
           <Key>
@@ -678,6 +680,7 @@
           <EntitySetMapping Name="Resimler">
             <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.Resimler">
               <MappingFragment StoreEntitySet="Resimler">
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
                 <ScalarProperty Name="paylasan" ColumnName="paylasan" />
                 <ScalarProperty Name="aciklama" ColumnName="aciklama" />
                 <ScalarProperty Name="baslik" ColumnName="baslik" />

@@ -31,8 +31,17 @@ namespace adminTabani_01_05_24.Controllers
                 tarih=p.tarih,
                 onay=p.onay,
                 yazar_ad=p.Kullanicilar.Ad
-            }).ToList();         
-            
+            }).ToList();
+            veriler.resimler = model.Resimler.OrderByDescending(p => p.resimID).Take(5).Select(p => new Resim
+            {
+                resimID=p.resimID,
+                baslik=p.baslik,
+                aciklama=p.aciklama,
+                dosyaYolu=p.dosyaYolu,
+                paylasan=p.paylasan,
+                PaylasanAd=p.Kullanicilar.Ad,
+                tarih=p.tarih
+            }).ToList();
 
 
 

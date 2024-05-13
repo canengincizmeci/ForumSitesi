@@ -65,7 +65,30 @@
             </tbody>
         </table>
     </div>
-
+    <div class="container">
+        <div class="text-center">
+            <h4>Resimler</h4>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td colspan="4"></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var resim in Model.resimler)
+                {
+                    <tr>
+                        <td>@resim.baslik</td>
+                        <td><img src="@resim.dosyaYolu" alt="resim" /></td>
+                        <td>@resim.aciklama</td>
+                        <td>@resim.PaylasanAd</td>
+                        <td>@resim.tarih</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 
 
 
