@@ -152,7 +152,9 @@ namespace adminTabani_01_05_24.Controllers
             {
                 if (kisi.kullanici_sifre == sifre)
                 {
-                    return RedirectToAction("KullaniciHome", new { id = kisi.kullanici_id });
+                    int sonuc = girisEmailKod(kisi.kullaniciMail);
+                    return RedirectToAction("girisKodDogrulama", new { id = kisi.kullanici_id, kod = sonuc });
+                    //return RedirectToAction("KullaniciHome", new { id = kisi.kullanici_id });
                 }
                 else
                 {
@@ -164,7 +166,47 @@ namespace adminTabani_01_05_24.Controllers
                 return RedirectToAction("Login");
             }
         }
-
+        [HttpGet]
+        public ActionResult girisKodDogrulama(int id, int kod)
+        {
+            ViewBag.k_id = id;
+            ViewBag.deger = kod;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult girisKodDogrulama(int k_id, int kod1, int kod2)
+        {
+            if (kod1 == kod2)
+            {
+                return RedirectToAction("KullaniciHome", new { id = k_id });
+            }
+            else
+            {
+                return RedirectToAction("HataliKod");
+            }
+        }
+        public ActionResult HataliKod()
+        {
+            return View();
+        }
+        public int girisEmailKod(string mail)
+        {
+            Random rnd = new Random();
+            int random = rnd.Next(1000, 9999 + 1);
+            var cred = new NetworkCredential("canncizmeci@gmail.com", "jben gmyx obrj vhtj");
+            var client = new SmtpClient("smtp.gmail.com", 587);
+            var msg = new System.Net.Mail.MailMessage();
+            msg.To.Add(mail);
+            msg.Subject = "Kayıt Onay Kodu";
+            msg.Body = $"Kayıt için mailinizi şu kodu girerek doğrulayınız {random}";
+            msg.IsBodyHtml = false;
+            msg.From = new MailAddress("canncizmeci@gmail.com", "Doğrulama Kodu", Encoding.UTF8);
+            client.Credentials = cred;
+            client.EnableSsl = true;
+            ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
+            client.Send(msg);
+            return random;
+        }
         public ActionResult KullaniciHome(int id)
         {
             blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();

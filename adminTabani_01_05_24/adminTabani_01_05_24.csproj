@@ -286,6 +286,7 @@
     <Content Include="Views\Kullanici\MailKodDogrulama.cshtml" />
     <Content Include="Views\Kullanici\HataliKod.cshtml" />
     <Content Include="Views\Kullanici\HataliMail.cshtml" />
+    <Content Include="Views\Kullanici\girisKodDogrulama.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
