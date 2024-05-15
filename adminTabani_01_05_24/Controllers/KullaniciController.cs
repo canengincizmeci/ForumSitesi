@@ -10,6 +10,8 @@ using System.Text;
 using System.Web;
 using System.Web.Mail;
 using System.Web.Mvc;
+using System.Xml.Serialization;
+using System.Security.Cryptography;
 
 namespace adminTabani_01_05_24.Controllers
 {
@@ -217,6 +219,70 @@ namespace adminTabani_01_05_24.Controllers
             }).ToList();
             ViewBag.tartısmaKullaniciAd = tartismaYazar;
             return View(Gidenmodel);
+        }
+        [HttpGet]
+        public ActionResult SifremiUnuttum()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult SifremiUnuttum(string mail)
+        {
+            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            if (model.Kullanicilar.Where(p => p.kullaniciMail == mail) != null)
+            {
+                int sonuc = SifreUnutmaDogrulamaMaili(mail);
+                return RedirectToAction("MailKodDogrulama", new { maili = mail, kod = sonuc });
+            }
+            else
+            {
+                return View("HataliMail");
+            }
+        }
+        public ActionResult HataliMail()
+        {
+            return View();
+        }
+        public int SifreUnutmaDogrulamaMaili(string mail)
+        {
+            Random rnd = new Random();
+            int random = rnd.Next(1000, 9999 + 1);
+            var cred = new NetworkCredential("canncizmeci@gmail.com", "jben gmyx obrj vhtj");
+            var client = new SmtpClient("smtp.gmail.com", 587);
+            var msg = new System.Net.Mail.MailMessage();
+            msg.To.Add(mail);
+            msg.Subject = "Şifre unutma kodu";
+            msg.Body = $"Şifrenizi değiştirmek için bu kodu girin {random}";
+            msg.IsBodyHtml = false;
+            msg.From = new MailAddress("canncizmeci@gmail.com", "Email Doğrulama Kodu", Encoding.UTF8);
+            client.Credentials = cred;
+            client.EnableSsl = true;
+            ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
+            client.Send(msg);
+            return random;
+        }
+        [HttpGet]
+        public ActionResult MailKodDogrulama(string maili, int kod)
+        {
+            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            int id = (model.Kullanicilar.FirstOrDefault(p => p.kullaniciMail == maili)).kullanici_id;
+            ViewBag.ID = id;
+            ViewBag.Kod = kod;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult MailKodDogrulama(int id, int kod1, int kod2)
+        {
+            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            var kisi = model.Kullanicilar.Find(id);
+            if (kod1 == kod2)
+            {
+                return RedirectToAction("IlkSifreBelirleme", new { _id = kisi.kullanici_id });
+            }
+            else
+            {
+                return View("HataliKod");
+            }
         }
     }
 }
