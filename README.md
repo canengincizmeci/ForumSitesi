@@ -1,1 +1,1 @@
-# Admin tabanlı bir basit blog sitesi
+# Admin tabanlı bir forum sitesi
