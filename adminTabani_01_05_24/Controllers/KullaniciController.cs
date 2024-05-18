@@ -118,19 +118,22 @@ namespace adminTabani_01_05_24.Controllers
             model.SaveChanges();
             //SifreMaili(maili, random.ToString());
             int id = model.Kullanicilar.FirstOrDefault(p => p.Ad == adi).kullanici_id;
-            return RedirectToAction("IlkSifreBelirleme", new { _id = id });
+            Session["kullanici_id"] = id;
+            return RedirectToAction("IlkSifreBelirleme");
         }
         [HttpGet]
-        public ActionResult IlkSifreBelirleme(int _id)
+        public ActionResult IlkSifreBelirleme()
         {
+            int _id = (int)Session["kullanici_id"];
             blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
             int id = model.Kullanicilar.FirstOrDefault(p => p.kullanici_id == _id).kullanici_id;
             ViewBag.id = id;
             return View();
         }
         [HttpPost]
-        public ActionResult IlkSifreBelirleme(int id, string sifre1, string sifre2)
+        public ActionResult IlkSifreBelirleme(string sifre1, string sifre2)
         {
+            int id = (int)Session["kullanici_id"];
             blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
             var kisi = model.Kullanicilar.FirstOrDefault(p => p.kullanici_id == id);
 
@@ -180,11 +183,12 @@ namespace adminTabani_01_05_24.Controllers
             ViewBag.deger = kod;
             return View();
         }
-        [HttpPost]
         // public ActionResult girisKodDogrulama(int k_id, int kod1, int kod2)
+        [HttpPost]
         public ActionResult girisKodDogrulama(FormCollection form)
         {
-            int deger = Convert.ToInt32(form["k_id"]);
+            //int deger = Convert.ToInt32(form["k_id"]);
+            
             string kod1 = form["kod1"].ToString();
             string kod2 = form["kod2"].ToString();
             if (kod1 == kod2)
@@ -328,6 +332,7 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult MailKodDogrulama(int id, int kod1, int kod2)
         {
             blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+
             var kisi = model.Kullanicilar.Find(id);
             if (kod1 == kod2)
             {
@@ -338,5 +343,6 @@ namespace adminTabani_01_05_24.Controllers
                 return View("HataliKod");
             }
         }
+        
     }
 }

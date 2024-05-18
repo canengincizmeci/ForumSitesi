@@ -37,5 +37,6 @@ namespace adminTabani_01_05_24
         public virtual DbSet<Tartismalar> Tartismalar { get; set; }
         public virtual DbSet<YorumTurleri> YorumTurleri { get; set; }
         public virtual DbSet<Siirler> Siirler { get; set; }
+        public virtual DbSet<AdminMesajlar> AdminMesajlar { get; set; }
     }
 }

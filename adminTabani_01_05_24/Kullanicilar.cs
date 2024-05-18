@@ -24,6 +24,7 @@ namespace adminTabani_01_05_24
             this.Tartismalar = new HashSet<Tartismalar>();
             this.Resimler = new HashSet<Resimler>();
             this.Siirler = new HashSet<Siirler>();
+            this.AdminMesajlar = new HashSet<AdminMesajlar>();
         }
     
         public int kullanici_id { get; set; }
@@ -45,5 +46,7 @@ namespace adminTabani_01_05_24
         public virtual ICollection<Resimler> Resimler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Siirler> Siirler { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AdminMesajlar> AdminMesajlar { get; set; }
     }
 }
