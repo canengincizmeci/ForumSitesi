@@ -12,7 +12,7 @@
         <AssociationConnector Association="blogAdminli_01_05_24Model.FK_Yazilar_Kullanicilar" ManuallyRouted="false" />
         <AssociationConnector Association="blogAdminli_01_05_24Model.FK_Yorumlar_Kullanicilar" ManuallyRouted="false" />
         <AssociationConnector Association="blogAdminli_01_05_24Model.FK_Yorumlar_Yazilar" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.Admin" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.Admin" Width="1.5" PointX="0.625" PointY="5.875" />
         <EntityTypeShape EntityType="blogAdminli_01_05_24Model.AdminGirisler" Width="1.5" PointX="5.375" PointY="4.75" />
         <EntityTypeShape EntityType="blogAdminli_01_05_24Model.KullaniciGirisler" Width="1.5" PointX="3" PointY="4.25" />
         <AssociationConnector Association="blogAdminli_01_05_24Model.FK__Kullanici__kulla__5070F446" />

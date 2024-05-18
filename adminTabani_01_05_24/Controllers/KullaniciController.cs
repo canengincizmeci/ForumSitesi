@@ -154,6 +154,11 @@ namespace adminTabani_01_05_24.Controllers
             string sifre = form["sifre"].ToString();
             blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
             var kisi = model.Kullanicilar.FirstOrDefault(p => p.Ad == adi);
+
+
+
+
+
             if (kisi != null)
             {
                 if (kisi.kullanici_sifre == sifre)
@@ -162,6 +167,16 @@ namespace adminTabani_01_05_24.Controllers
                     //Session.Add("Kullanici", kisi.kullanici_id);
                     //Response.Redirect("girisKodDogrulama");
                     Session["kullanici_id"] = kisi.kullanici_id;
+                    model.KullaniciGirisler.Add(new KullaniciGirisler
+                    {
+                        kullanici_id = kisi.kullanici_id,
+                        GirisBasarisi1 = true,
+                        GirisBasarisi2 = false,
+                        girisKod = sonuc,
+                        girisTarih = DateTime.Now,
+                        kodgirisTarih = null
+                    });
+                    model.SaveChanges();
                     return RedirectToAction("girisKodDogrulama", new { kod = sonuc });
                     //return RedirectToAction("KullaniciHome", new { id = kisi.kullanici_id });
                 }
@@ -179,7 +194,7 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult girisKodDogrulama(int kod)
         {
             int id = (int)Session["kullanici_id"];
-            ViewBag.k_id = id;
+            //ViewBag.k_id = id;
             ViewBag.deger = kod;
             return View();
         }
@@ -188,15 +203,25 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult girisKodDogrulama(FormCollection form)
         {
             //int deger = Convert.ToInt32(form["k_id"]);
-            
+            int id = (int)Session["kullanici_id"];
             string kod1 = form["kod1"].ToString();
             string kod2 = form["kod2"].ToString();
+            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            //var kisi = model.KullaniciGirisler.FirstOrDefault(p => p.kullanici_id == id);
+            //var kisi = model.KullaniciGirisler
+            var kisi = model.KullaniciGirisler.Where(p => p.kullanici_id == id).OrderByDescending(p => p.girisTarih).FirstOrDefault();
             if (kod1 == kod2)
             {
+                kisi.GirisBasarisi2 = true;
+                kisi.kodgirisTarih = DateTime.Now;
+                model.SaveChanges();
                 return RedirectToAction("KullaniciHome");
             }
             else
             {
+                Session.Remove("kullanici_id");
+                kisi.GirisBasarisi2 = false;
+                kisi.kodgirisTarih = null;
                 return RedirectToAction("HataliKod");
             }
         }
@@ -343,6 +368,6 @@ namespace adminTabani_01_05_24.Controllers
                 return View("HataliKod");
             }
         }
-        
+
     }
 }

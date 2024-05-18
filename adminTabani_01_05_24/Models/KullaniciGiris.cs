@@ -17,5 +17,7 @@ namespace adminTabani_01_05_24.Models
         public int? girisKod { get; set; }
         public bool? GirisBasarisi1 { get; set; }
         public bool? GirisBasarisi2 { get; set; }
+        public DateTime? _kodgirisTarih { get; set; }
+
     }
 }

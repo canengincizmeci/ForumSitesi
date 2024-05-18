@@ -20,6 +20,7 @@ namespace adminTabani_01_05_24
         public Nullable<int> girisKod { get; set; }
         public Nullable<bool> GirisBasarisi1 { get; set; }
         public Nullable<bool> GirisBasarisi2 { get; set; }
+        public Nullable<System.DateTime> kodgirisTarih { get; set; }
     
         public virtual Kullanicilar Kullanicilar { get; set; }
     }
