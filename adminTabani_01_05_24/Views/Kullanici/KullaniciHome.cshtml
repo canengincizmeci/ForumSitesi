@@ -106,11 +106,11 @@
             <tbody>
                 @foreach (var siir in Model.siirler.Take(5))
                 {
-                    if (siir._onay==true)
+                    if (siir._onay == true)
                     {
                         <tr>
                             <td>@siir.siirBaslik</td>
-                            <td>@siir.icerik.Substring(0,20)</td>
+                            <td>@siir.icerik.Substring(0, 20)</td>
                             <td>@siir.yazar</td>
                             <td>@siir.tarih</td>
                         </tr>
@@ -119,8 +119,30 @@
             </tbody>
         </table>
     </div>
-    <div>
+    <div class="container">
         <h5>Son Resimler</h5>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Başlık</th>
+                    <th>Resim</th>
+                    <th>Açıklama</th>
+                    <th>Paylaşan</th>
+                    <th>Tarih</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var resim in Model.resimler)
+                {
+                    <tr>
+                        <td>@resim.baslik</td>
+                        <td><img src="@resim.dosyaYolu" /></td>
+                        <td>@resim.aciklama.Substring(0, 20)</td>
+                        <td>@resim.PaylasanAd</td>
+                        <td>@resim.tarih</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
-
 </div>
