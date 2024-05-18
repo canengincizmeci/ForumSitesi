@@ -20,6 +20,7 @@ namespace adminTabani_01_05_24
         public string aciklama { get; set; }
         public Nullable<int> paylasan { get; set; }
         public Nullable<System.DateTime> tarih { get; set; }
+        public Nullable<bool> onay { get; set; }
     
         public virtual Kullanicilar Kullanicilar { get; set; }
     }

@@ -41,18 +41,19 @@
           <Property Name="icerik" Type="nvarchar(max)" />
           <Property Name="paylasan" Type="int" />
           <Property Name="tarih" Type="date" />
+          <Property Name="onay" Type="bit" />
         </EntityType>
         <EntityType Name="KullaniciGirisler">
           <Key>
             <PropertyRef Name="giris_id" />
           </Key>
           <Property Name="giris_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="girisTarih" Type="date" />
+          <Property Name="girisTarih" Type="datetime" />
           <Property Name="kullanici_id" Type="int" />
           <Property Name="girisKod" Type="int" />
           <Property Name="GirisBasarisi1" Type="bit" />
           <Property Name="GirisBasarisi2" Type="bit" />
-          <Property Name="kodgirisTarih" Type="date" />
+          <Property Name="kodgirisTarih" Type="datetime" />
         </EntityType>
         <EntityType Name="Kullanicilar">
           <Key>
@@ -83,6 +84,7 @@
           <Property Name="aciklama" Type="nvarchar" MaxLength="100" />
           <Property Name="paylasan" Type="int" />
           <Property Name="tarih" Type="date" />
+          <Property Name="onay" Type="bit" />
         </EntityType>
         <EntityType Name="Siirler">
           <Key>
@@ -93,6 +95,7 @@
           <Property Name="icerik" Type="nvarchar(max)" />
           <Property Name="yazar" Type="int" />
           <Property Name="tarih" Type="date" />
+          <Property Name="onay" Type="bit" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -536,13 +539,13 @@
             <PropertyRef Name="giris_id" />
           </Key>
           <Property Name="giris_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="girisTarih" Type="DateTime" Precision="0" />
+          <Property Name="girisTarih" Type="DateTime" Precision="3" />
           <Property Name="kullanici_id" Type="Int32" />
           <Property Name="girisKod" Type="Int32" />
           <NavigationProperty Name="Kullanicilar" Relationship="blogAdminli_01_05_24Model.FK__Kullanici__kulla__5070F446" FromRole="KullaniciGirisler" ToRole="Kullanicilar" />
           <Property Name="GirisBasarisi1" Type="Boolean" />
           <Property Name="GirisBasarisi2" Type="Boolean" />
-          <Property Name="kodgirisTarih" Type="DateTime" Precision="0" />
+          <Property Name="kodgirisTarih" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK__Kullanici__kulla__5070F446">
           <End Type="blogAdminli_01_05_24Model.Kullanicilar" Role="Kullanicilar" Multiplicity="0..1" />
@@ -566,6 +569,7 @@
           <Property Name="paylasan" Type="Int32" />
           <Property Name="tarih" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Kullanicilar" Relationship="blogAdminli_01_05_24Model.FK_Haberler_Kullanicilar" FromRole="Haberler" ToRole="Kullanicilar" />
+          <Property Name="onay" Type="Boolean" />
         </EntityType>
         <EntityType Name="Resimler">
           <Key>
@@ -578,6 +582,7 @@
           <Property Name="paylasan" Type="Int32" />
           <NavigationProperty Name="Kullanicilar" Relationship="blogAdminli_01_05_24Model.FK_Resimler_Kullanicilar" FromRole="Resimler" ToRole="Kullanicilar" />
           <Property Name="tarih" Type="DateTime" Precision="0" />
+          <Property Name="onay" Type="Boolean" />
         </EntityType>
         <EntityType Name="Tartismalar">
           <Key>
@@ -646,6 +651,7 @@
           <Property Name="yazar" Type="Int32" />
           <Property Name="tarih" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Kullanicilar" Relationship="blogAdminli_01_05_24Model.FK_Siirler_Kullanicilar" FromRole="Siirler" ToRole="Kullanicilar" />
+          <Property Name="onay" Type="Boolean" />
         </EntityType>
         <Association Name="FK_Resimler_Kullanicilar">
           <End Type="blogAdminli_01_05_24Model.Kullanicilar" Role="Kullanicilar" Multiplicity="0..1" />
@@ -816,6 +822,7 @@
           <EntitySetMapping Name="Haberler">
             <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.Haberler">
               <MappingFragment StoreEntitySet="Haberler">
+                <ScalarProperty Name="onay" ColumnName="onay" />
                 <ScalarProperty Name="tarih" ColumnName="tarih" />
                 <ScalarProperty Name="paylasan" ColumnName="paylasan" />
                 <ScalarProperty Name="icerik" ColumnName="icerik" />
@@ -827,6 +834,7 @@
           <EntitySetMapping Name="Resimler">
             <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.Resimler">
               <MappingFragment StoreEntitySet="Resimler">
+                <ScalarProperty Name="onay" ColumnName="onay" />
                 <ScalarProperty Name="tarih" ColumnName="tarih" />
                 <ScalarProperty Name="paylasan" ColumnName="paylasan" />
                 <ScalarProperty Name="aciklama" ColumnName="aciklama" />
@@ -860,6 +868,7 @@
           <EntitySetMapping Name="Siirler">
             <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.Siirler">
               <MappingFragment StoreEntitySet="Siirler">
+                <ScalarProperty Name="onay" ColumnName="onay" />
                 <ScalarProperty Name="tarih" ColumnName="tarih" />
                 <ScalarProperty Name="yazar" ColumnName="yazar" />
                 <ScalarProperty Name="icerik" ColumnName="icerik" />

@@ -260,26 +260,32 @@ namespace adminTabani_01_05_24.Controllers
                 aciklama = p.aciklama,
                 baslik = p.baslik,
                 dosyaYolu = p.dosyaYolu,
-                paylasan = p.paylasan
+                paylasan = p.paylasan,
+                PaylasanAd = p.Kullanicilar.Ad,
+                tarih = p.tarih,
+                _onay = p.onay
             }).ToList();
-            Gidenmodel.haberler = model.Haberler.Select(p => new Haber
+            Gidenmodel.haberler = model.Haberler.Where(p => p.onay == true).Select(p => new Haber
             {
                 HaberID = p.HaberID,
                 Baslik = p.Baslik,
                 icerik = p.icerik,
                 paylasan = p.paylasan,
-                tarih = p.tarih
+                tarih = p.tarih,
+                _onay = p.onay,
+                PaylasanAd = p.Kullanicilar.Ad
             }).ToList();
-            var ad = (from k in model.Haberler join m in model.Kullanicilar on k.paylasan equals m.kullanici_id select m.Ad);
-            ViewBag.HaberPaylasanAd = ad;
-            string tartismaYazar = (from k in model.Kullanicilar join m in model.Tartismalar on k.kullanici_id equals m.kullanici_id select k.Ad).ToString();
-            Gidenmodel.yazilar = model.Yazilar.Select(p => new Yazi
+
+
+            Gidenmodel.yazilar = model.Yazilar.Where(p => p.onay == true).Select(p => new Yazi
             {
                 yazi_id = p.yazi_id,
                 yazar_id = p.yazar_id,
                 Baslik = p.Baslik,
                 onay = p.onay,
-                İcerik = p.İcerik
+                İcerik = p.İcerik,
+                yazar_ad = p.Kullanicilar.Ad,
+                tarih = p.tarih
             }).ToList();
             Gidenmodel.tartismalar = model.Tartismalar.Select(p => new Tartisma
             {
@@ -298,9 +304,11 @@ namespace adminTabani_01_05_24.Controllers
                 icerik = p.icerik,
                 siirBaslik = p.siirBaslik,
                 tarih = p.tarih,
-                yazar = p.yazar
+                yazar = p.yazar,
+                YazarAd = p.Kullanicilar.Ad,
+                _onay = p.onay
             }).ToList();
-            ViewBag.tartısmaKullaniciAd = tartismaYazar;
+
             return View(Gidenmodel);
         }
         [HttpGet]

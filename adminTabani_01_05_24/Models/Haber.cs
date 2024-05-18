@@ -17,6 +17,7 @@ namespace adminTabani_01_05_24.Models
         public int? paylasan { get; set; }
         public DateTime? tarih { get; set; }
         public string PaylasanAd { get; set; }
+        public bool? _onay { get; set; }
 
     }
 }

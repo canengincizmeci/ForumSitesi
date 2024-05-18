@@ -8,9 +8,9 @@
 </div>
 <div class="text-center">
 
-    <div>
+    <div class="container">
         <h5>Son Tartışmalar</h5>
-        <table>
+        <table class="table">
             <thead>
                 <tr>
                     <td>Başlık</td>
@@ -27,8 +27,8 @@
 
                         <tr>
                             <td>@item.Baslik</td>
-                            <td>@item.icerik.Substring(0,20)</td>
-                            <td>@ViewBag.tartısmaKullaniciAd</td>
+                            <td>@item.icerik.Substring(0, 20)</td>
+                            <td>@item.KullaniciAd</td>
                             <td>@item.tarih</td>
                         </tr>
                     }
@@ -36,19 +36,88 @@
             </tbody>
         </table>
     </div>
-    <div>
-        <h5>Son Yazılar</h5>
-        <table>
-            <thead>
+    <div class="container">
 
+        <h5>Son Yazılar</h5>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Başlık</th>
+                    <th>İçerik</th>
+                    <th>Yazar</th>
+                    <th>Tarih</th>
+                </tr>
             </thead>
+            <tbody>
+                @foreach (var yazi in Model.yazilar.Take(5))
+                {
+                    if (yazi.onay == true)
+                    {
+                        <tr>
+                            <td>@yazi.Baslik</td>
+                            <td>@yazi.İcerik.Substring(0, 20)</td>
+                            <td>@yazi.yazar_ad</td>
+                            <td>@yazi.tarih</td>
+                        </tr>
+                    }
+                }
+            </tbody>
         </table>
     </div>
-    <div>
+    <div class="container">
         <h5>Son Haberler</h5>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Başlık</th>
+                    <th>İçerik</th>
+                    <th>Paylaşan</th>
+                    <th>Tarih</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var haber in Model.haberler.Take(5))
+                {
+                    if (haber._onay == true)
+                    {
+                        <tr>
+                            <td>@haber.Baslik</td>
+                            <td>@haber.icerik.Substring(0, 20)</td>
+                            <td>@haber.PaylasanAd</td>
+                            <td>@haber.tarih</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
     </div>
-    <div>
+    <div class="container">
         <h5>Son Şiirler</h5>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Başlık</th>
+                    <th>İçerik</th>
+                    <th>Yazar</th>
+                    <th>Tarih</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var siir in Model.siirler.Take(5))
+                {
+                    if (siir._onay==true)
+                    {
+                        <tr>
+                            <td>@siir.siirBaslik</td>
+                            <td>@siir.icerik.Substring(0,20)</td>
+                            <td>@siir.yazar</td>
+                            <td>@siir.tarih</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
     </div>
     <div>
         <h5>Son Resimler</h5>
