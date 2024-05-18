@@ -28,6 +28,9 @@
         <AssociationConnector Association="blogAdminli_01_05_24Model.FK_Siirler_Kullanicilar" />
         <EntityTypeShape EntityType="blogAdminli_01_05_24Model.AdminMesajlar" Width="1.5" PointX="3" PointY="17.875" />
         <AssociationConnector Association="blogAdminli_01_05_24Model.FK__AdminMesa__gonde__17036CC0" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.KullaniciMesajlar" Width="1.5" PointX="3" PointY="20.875" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK__Kullanici__alici__1BC821DD" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK__Kullanici__gonde__1AD3FDA4" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
