@@ -144,8 +144,11 @@ namespace adminTabani_01_05_24.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Login(string adi, string sifre)
+        //public ActionResult Login(string adi, string sifre)
+        public ActionResult Login(FormCollection form)
         {
+            string adi = form["adi"].ToString();
+            string sifre = form["sifre"].ToString();
             blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
             var kisi = model.Kullanicilar.FirstOrDefault(p => p.Ad == adi);
             if (kisi != null)
@@ -153,7 +156,10 @@ namespace adminTabani_01_05_24.Controllers
                 if (kisi.kullanici_sifre == sifre)
                 {
                     int sonuc = girisEmailKod(kisi.kullaniciMail);
-                    return RedirectToAction("girisKodDogrulama", new { id = kisi.kullanici_id, kod = sonuc });
+                    //Session.Add("Kullanici", kisi.kullanici_id);
+                    //Response.Redirect("girisKodDogrulama");
+                    Session["kullanici_id"] = kisi.kullanici_id;
+                    return RedirectToAction("girisKodDogrulama", new { kod = sonuc });
                     //return RedirectToAction("KullaniciHome", new { id = kisi.kullanici_id });
                 }
                 else
@@ -167,18 +173,23 @@ namespace adminTabani_01_05_24.Controllers
             }
         }
         [HttpGet]
-        public ActionResult girisKodDogrulama(int id, int kod)
+        public ActionResult girisKodDogrulama(int kod)
         {
+            int id = (int)Session["kullanici_id"];
             ViewBag.k_id = id;
             ViewBag.deger = kod;
             return View();
         }
         [HttpPost]
-        public ActionResult girisKodDogrulama(int k_id, int kod1, int kod2)
+        // public ActionResult girisKodDogrulama(int k_id, int kod1, int kod2)
+        public ActionResult girisKodDogrulama(FormCollection form)
         {
+            int deger = Convert.ToInt32(form["k_id"]);
+            string kod1 = form["kod1"].ToString();
+            string kod2 = form["kod2"].ToString();
             if (kod1 == kod2)
             {
-                return RedirectToAction("KullaniciHome", new { id = k_id });
+                return RedirectToAction("KullaniciHome");
             }
             else
             {
@@ -207,8 +218,9 @@ namespace adminTabani_01_05_24.Controllers
             client.Send(msg);
             return random;
         }
-        public ActionResult KullaniciHome(int id)
+        public ActionResult KullaniciHome()
         {
+            int id = (int)Session["kullanici_id"];
             blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
             var kisi = model.Kullanicilar.FirstOrDefault(p => p.kullanici_id == id);
             ViewBag.Ad = kisi.Ad;
