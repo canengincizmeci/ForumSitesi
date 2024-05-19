@@ -3,10 +3,21 @@
     ViewBag.Title = "TartismaDetay";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
+<div class="text-center">
+    <h2>@Model.Baslik</h2>
+    <p>@Model.icerik</p>
+    <p>@Model.KullaniciAd</p>
+    <p>@Model.tarih</p>
+</div>
 
-<h2>TartismaDetay</h2>
-<p>@Model.Baslik</p>
-<p>@Model.icerik</p>
-<p>@Model.KullaniciAd</p>
-<p>@Model.tarih</p>
-
+<div class="container">
+    <form action="/Tartisma/TartismaDetay" method="post">
+        @Html.AntiForgeryToken()
+        <div class="mb-3">
+            <label class="form-label" for="yorum">Yorum Yap</label>
+            <textarea class="form-control" id="yorum" name="yorum" rows="5"></textarea>
+        </div>
+        <input type="hidden" name="tartisma_id" value="@Model.TartismaID" />
+        <button type="submit" class="btn btn-primary">Gönder</button>
+    </form>
+</div>

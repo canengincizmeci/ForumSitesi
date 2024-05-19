@@ -26,6 +26,7 @@ namespace adminTabani_01_05_24.Controllers
             }).ToList();
             return View(veriler);
         }
+        [HttpGet]
         public ActionResult TartismaDetay(int? tartisma_id)
         {
             blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
@@ -43,6 +44,13 @@ namespace adminTabani_01_05_24.Controllers
 
             return View(tartisma);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult TartismaDetay(string yorum)
+        {
 
+
+
+        }
     }
 }
