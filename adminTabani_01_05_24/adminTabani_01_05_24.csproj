@@ -143,6 +143,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KullaniciController.cs" />
     <Compile Include="Controllers\MesajController.cs" />
+    <Compile Include="Controllers\TartismaController.cs" />
     <Compile Include="Controllers\YazilarController.cs" />
     <Compile Include="Controllers\ZiyaretciController.cs" />
     <Compile Include="Global.asax.cs">
@@ -297,6 +298,8 @@
     <Content Include="Views\Kullanici\HataliMail.cshtml" />
     <Content Include="Views\Kullanici\girisKodDogrulama.cshtml" />
     <Content Include="Views\Mesaj\AdminMesaj.cshtml" />
+    <Content Include="Views\Tartisma\Index.cshtml" />
+    <Content Include="Views\Tartisma\TartismaDetay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
