@@ -21,15 +21,20 @@
         <button type="submit" class="btn btn-primary">Gönder</button>
     </form>
 </div>
-
-
+<br />
+<div style="margin-bottom:5px;"> </div>
+<div class="text-center" >
+    <h3 >Yorumlar</h3>
+</div>
+<hr />
 <div class="container">
     @foreach (var yorum in Model.tartisma_yorumlari)
     {
-        <div class="text-center">
-            <p><strong><i>@yorum.yorumcu_ad : @yorum._yorum</i></strong></p>
-            <p>@yorum._tarih</p>
+        <div class="container">
+            <p><strong><i>@yorum.yorumcu_ad :</i></strong> @yorum._yorum</p>
+            <p class="text-center">@yorum._tarih</p>
         </div>
+        <hr />
     }
 
 </div>

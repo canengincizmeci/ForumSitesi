@@ -17,5 +17,6 @@ namespace adminTabani_01_05_24.Models
         public int? _yaziID { get; set; }
         public bool? _onay { get; set; }
         public DateTime? _tarih { get; set; }
+        public string yorumcuAd { get; set; }
     }
 }

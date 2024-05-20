@@ -180,6 +180,7 @@
     <Compile Include="Models\TartismaDetayPage.cs" />
     <Compile Include="Models\TartismaYorumlari.cs" />
     <Compile Include="Models\Yazi.cs" />
+    <Compile Include="Models\YaziDetayPage.cs" />
     <Compile Include="Models\YaziYorumlari.cs" />
     <Compile Include="Models\_Admin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

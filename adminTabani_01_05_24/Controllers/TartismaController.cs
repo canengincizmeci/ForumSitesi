@@ -43,7 +43,7 @@ namespace adminTabani_01_05_24.Controllers
                 onay = p.onay,
                 tarih = p.tarih
             }).FirstOrDefault();
-            tartismaDetay.tartisma_yorumlari = model.TartismaYorumlar.Where(p => p.tartismaID == tartisma_id & p.onay == true).Select(p => new TartismaYorumlari
+            tartismaDetay.tartisma_yorumlari = model.TartismaYorumlar.Where(p => p.tartismaID == tartisma_id & p.onay == true).OrderByDescending(p => p.tartismaYorumID).Select(p => new TartismaYorumlari
             {
                 _onay = p.onay,
                 _tarih = p.tarih,
