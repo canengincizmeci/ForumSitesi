@@ -46,19 +46,20 @@ namespace adminTabani_01_05_24.Controllers
         }
         //[HttpPost]
         //[ValidateAntiForgeryToken]
-        //public ActionResult YorumYap(string yorum,int tartisma_id)
+        //public ActionResult YorumYap(string _yorum, int tartisma_id)
         //{
         //    int id = (int)Session["kullanici_id"];
         //    dbContext model = new dbContext();
-        //    model.Yorumlar.Add(new Yorumlar
+        //    model.TartismaYorumlar.Add(new TartismaYorumlar
         //    {
-        //        icerik = yorum,
-        //        kullanıci_id =id,
-        //        onay=false,
-        //        yazi_id=tartisma_id,
-        //        yorumTur=1,
-                
+        //        onay = false,
+        //        tarih = DateTime.Now,
+        //        yorum = _yorum,
+        //        tartismaID = tartisma_id,
+        //        yorumcuID = id
         //    });
+
+
 
         //}
     }

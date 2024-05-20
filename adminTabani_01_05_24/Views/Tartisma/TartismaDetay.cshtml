@@ -15,7 +15,7 @@
         @Html.AntiForgeryToken()
         <div class="mb-3">
             <label class="form-label" for="yorum">Yorum Yap</label>
-            <textarea class="form-control" id="yorum" name="yorum" rows="5"></textarea>
+            <textarea class="form-control" id="yorum" name="_yorum" rows="5"></textarea>
         </div>
         <input type="hidden" name="tartisma_id" value="@Model.TartismaID" />
         <button type="submit" class="btn btn-primary">Gönder</button>
