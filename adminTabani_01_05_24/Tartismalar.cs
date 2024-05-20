@@ -14,6 +14,12 @@ namespace adminTabani_01_05_24
     
     public partial class Tartismalar
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Tartismalar()
+        {
+            this.TartismaYorumlar = new HashSet<TartismaYorumlar>();
+        }
+    
         public int TartismaID { get; set; }
         public string Baslik { get; set; }
         public string icerik { get; set; }
@@ -23,5 +29,7 @@ namespace adminTabani_01_05_24
         public Nullable<int> kullanici_id { get; set; }
     
         public virtual Kullanicilar Kullanicilar { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TartismaYorumlar> TartismaYorumlar { get; set; }
     }
 }

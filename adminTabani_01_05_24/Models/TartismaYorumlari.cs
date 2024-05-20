@@ -13,9 +13,10 @@ namespace adminTabani_01_05_24.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int _tartismaYorumID { get; set; }
         public string _yorum { get; set; }
-        public string _yorumcuID { get; set; }
+        public int? _yorumcuID { get; set; }
         public int? _tartismaID { get; set; }
         public DateTime? _tarih { get; set; }
         public bool? _onay { get; set; }
+        public string yorumcu_ad { get; set; }
     }
 }

@@ -1,13 +1,13 @@
-﻿@model adminTabani_01_05_24.Models.Tartisma
+﻿@model adminTabani_01_05_24.Models.TartismaDetayPage
 @{
     ViewBag.Title = "TartismaDetay";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 <div class="text-center">
-    <h2>@Model.Baslik</h2>
-    <p>@Model.icerik</p>
-    <p>@Model.KullaniciAd</p>
-    <p>@Model.tarih</p>
+    <h2>@Model.tartisma.Baslik</h2>
+    <p>@Model.tartisma.icerik</p>
+    <p>@Model.tartisma.KullaniciAd</p>
+    <p>@Model.tartisma.tarih</p>
 </div>
 
 <div class="container">
@@ -17,7 +17,19 @@
             <label class="form-label" for="yorum">Yorum Yap</label>
             <textarea class="form-control" id="yorum" name="_yorum" rows="5"></textarea>
         </div>
-        <input type="hidden" name="tartisma_id" value="@Model.TartismaID" />
+        <input type="hidden" name="_tartisma_id" value="@Model.tartisma.TartismaID" />
         <button type="submit" class="btn btn-primary">Gönder</button>
     </form>
+</div>
+
+
+<div class="container">
+    @foreach (var yorum in Model.tartisma_yorumlari)
+    {
+        <div class="text-center">
+            <p><strong><i>@yorum.yorumcu_ad : @yorum._yorum</i></strong></p>
+            <p>@yorum._tarih</p>
+        </div>
+    }
+
 </div>

@@ -14,6 +14,12 @@ namespace adminTabani_01_05_24
     
     public partial class Resimler
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Resimler()
+        {
+            this.ResimYorumlar = new HashSet<ResimYorumlar>();
+        }
+    
         public int resimID { get; set; }
         public string dosyaYolu { get; set; }
         public string baslik { get; set; }
@@ -23,5 +29,7 @@ namespace adminTabani_01_05_24
         public Nullable<bool> onay { get; set; }
     
         public virtual Kullanicilar Kullanicilar { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ResimYorumlar> ResimYorumlar { get; set; }
     }
 }

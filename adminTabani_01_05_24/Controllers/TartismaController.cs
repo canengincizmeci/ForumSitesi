@@ -13,6 +13,7 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult Index()
         {
             dbContext model = new dbContext();
+
             var veriler = model.Tartismalar.Where(p => p.onay == true).Select(p => new Tartisma
             {
                 TartismaID = p.TartismaID,
@@ -30,7 +31,8 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult TartismaDetay(int? tartisma_id)
         {
             dbContext model = new dbContext();
-            var tartisma = model.Tartismalar.Where(p => p.TartismaID == tartisma_id).Select(p => new Tartisma
+            TartismaDetayPage tartismaDetay = new TartismaDetayPage();
+            tartismaDetay.tartisma = model.Tartismalar.Where(p => p.TartismaID == tartisma_id).Select(p => new Tartisma
             {
                 TartismaID = p.TartismaID,
                 Baslik = p.Baslik,
@@ -41,26 +43,34 @@ namespace adminTabani_01_05_24.Controllers
                 onay = p.onay,
                 tarih = p.tarih
             }).FirstOrDefault();
-
-            return View(tartisma);
+            tartismaDetay.tartisma_yorumlari = model.TartismaYorumlar.Where(p => p.tartismaID == tartisma_id & p.onay == true).Select(p => new TartismaYorumlari
+            {
+                _onay = p.onay,
+                _tarih = p.tarih,
+                _tartismaID = p.tartismaID,
+                _tartismaYorumID = p.tartismaYorumID,
+                _yorum = p.yorum,
+                _yorumcuID = p.yorumcuID,
+                yorumcu_ad = p.Kullanicilar.Ad
+            }).ToList();
+            return View(tartismaDetay);
         }
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult YorumYap(string _yorum, int tartisma_id)
-        //{
-        //    int id = (int)Session["kullanici_id"];
-        //    dbContext model = new dbContext();
-        //    model.TartismaYorumlar.Add(new TartismaYorumlar
-        //    {
-        //        onay = false,
-        //        tarih = DateTime.Now,
-        //        yorum = _yorum,
-        //        tartismaID = tartisma_id,
-        //        yorumcuID = id
-        //    });
-
-
-
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult YorumYap(string _yorum, int _tartisma_id)
+        {
+            int id = (int)Session["kullanici_id"];
+            dbContext model = new dbContext();
+            model.TartismaYorumlar.Add(new TartismaYorumlar
+            {
+                onay = false,
+                tarih = DateTime.Now,
+                yorum = _yorum,
+                tartismaID = _tartisma_id,
+                yorumcuID = id
+            });
+            model.SaveChanges();
+            return RedirectToAction("TartismaDetay", new { tartisma_id = _tartisma_id });
+        }
     }
 }

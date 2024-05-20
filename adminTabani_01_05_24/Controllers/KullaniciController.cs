@@ -12,11 +12,13 @@ using System.Web.Mail;
 using System.Web.Mvc;
 using System.Xml.Serialization;
 using System.Security.Cryptography;
+using System.Data.Entity;
 
 namespace adminTabani_01_05_24.Controllers
 {
     public class KullaniciController : Controller
     {
+        
         // GET: Kullanici
         public ActionResult Kayit()
         {
@@ -31,6 +33,7 @@ namespace adminTabani_01_05_24.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Ekle(string ad, string mail)
         {
+            
             dbContext model = new dbContext();
             var ad_kontrol = model.Kullanicilar.FirstOrDefault(p => p.Ad == ad);
             var mail_kontrol = model.Kullanicilar.FirstOrDefault(p => p.kullaniciMail == mail);
@@ -201,15 +204,15 @@ namespace adminTabani_01_05_24.Controllers
             ViewBag.deger = kod;
             return View();
         }
-        // public ActionResult girisKodDogrulama(int k_id, int kod1, int kod2)
+        //public ActionResult girisKodDogrulama(FormCollection form)
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult girisKodDogrulama(FormCollection form)
+        public ActionResult girisKodDogrulama(int kod1, int kod2)
         {
             //int deger = Convert.ToInt32(form["k_id"]);
             int id = (int)Session["kullanici_id"];
-            string kod1 = form["kod1"].ToString();
-            string kod2 = form["kod2"].ToString();
+            //string kod1 = form["kod1"].ToString();
+            //string kod2 = form["kod2"].ToString();
             dbContext model = new dbContext();
             //var kisi = model.KullaniciGirisler.FirstOrDefault(p => p.kullanici_id == id);
             //var kisi = model.KullaniciGirisler

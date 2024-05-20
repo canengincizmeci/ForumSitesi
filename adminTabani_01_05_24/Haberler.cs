@@ -14,6 +14,12 @@ namespace adminTabani_01_05_24
     
     public partial class Haberler
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Haberler()
+        {
+            this.HaberYorumlar = new HashSet<HaberYorumlar>();
+        }
+    
         public int HaberID { get; set; }
         public string Baslik { get; set; }
         public string icerik { get; set; }
@@ -22,5 +28,7 @@ namespace adminTabani_01_05_24
         public Nullable<bool> onay { get; set; }
     
         public virtual Kullanicilar Kullanicilar { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HaberYorumlar> HaberYorumlar { get; set; }
     }
 }

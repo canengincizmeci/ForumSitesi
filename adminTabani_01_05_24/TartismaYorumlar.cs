@@ -16,9 +16,12 @@ namespace adminTabani_01_05_24
     {
         public int tartismaYorumID { get; set; }
         public string yorum { get; set; }
-        public string yorumcuID { get; set; }
+        public Nullable<int> yorumcuID { get; set; }
         public Nullable<int> tartismaID { get; set; }
         public Nullable<System.DateTime> tarih { get; set; }
         public Nullable<bool> onay { get; set; }
+    
+        public virtual Kullanicilar Kullanicilar { get; set; }
+        public virtual Tartismalar Tartismalar { get; set; }
     }
 }

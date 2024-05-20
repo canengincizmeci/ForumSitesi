@@ -14,6 +14,12 @@ namespace adminTabani_01_05_24
     
     public partial class Yazilar
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Yazilar()
+        {
+            this.YaziYorumlar = new HashSet<YaziYorumlar>();
+        }
+    
         public int yazi_id { get; set; }
         public string Baslik { get; set; }
         public string İcerik { get; set; }
@@ -22,5 +28,7 @@ namespace adminTabani_01_05_24
         public Nullable<System.DateTime> tarih { get; set; }
     
         public virtual Kullanicilar Kullanicilar { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<YaziYorumlar> YaziYorumlar { get; set; }
     }
 }

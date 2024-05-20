@@ -148,7 +148,7 @@
           </Key>
           <Property Name="tartismaYorumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="yorum" Type="nvarchar" MaxLength="50" />
-          <Property Name="yorumcuID" Type="nchar" MaxLength="10" />
+          <Property Name="yorumcuID" Type="int" />
           <Property Name="tartismaID" Type="int" />
           <Property Name="tarih" Type="datetime" />
           <Property Name="onay" Type="bit" />
@@ -235,6 +235,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_HaberYorumlar_Haberler">
+          <End Role="Haberler" Type="Self.Haberler" Multiplicity="0..1" />
+          <End Role="HaberYorumlar" Type="Self.HaberYorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Haberler">
+              <PropertyRef Name="HaberID" />
+            </Principal>
+            <Dependent Role="HaberYorumlar">
+              <PropertyRef Name="haberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HaberYorumlar_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="HaberYorumlar" Type="Self.HaberYorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="HaberYorumlar">
+              <PropertyRef Name="yorumcuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Resimler_Kullanicilar">
           <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
           <End Role="Resimler" Type="Self.Resimler" Multiplicity="*" />
@@ -244,6 +268,30 @@
             </Principal>
             <Dependent Role="Resimler">
               <PropertyRef Name="paylasan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResimYorumlar_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="ResimYorumlar" Type="Self.ResimYorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="ResimYorumlar">
+              <PropertyRef Name="yorumcuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResimYorumlar_Resimler">
+          <End Role="Resimler" Type="Self.Resimler" Multiplicity="0..1" />
+          <End Role="ResimYorumlar" Type="Self.ResimYorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resimler">
+              <PropertyRef Name="resimID" />
+            </Principal>
+            <Dependent Role="ResimYorumlar">
+              <PropertyRef Name="resimID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -259,6 +307,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SiirYorumlar_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="SiirYorumlar" Type="Self.SiirYorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="SiirYorumlar">
+              <PropertyRef Name="yorumcuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiirYorumlar_Siirler">
+          <End Role="Siirler" Type="Self.Siirler" Multiplicity="0..1" />
+          <End Role="SiirYorumlar" Type="Self.SiirYorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Siirler">
+              <PropertyRef Name="siirID" />
+            </Principal>
+            <Dependent Role="SiirYorumlar">
+              <PropertyRef Name="siirID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Tartismalar_Kullanicilar">
           <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
           <End Role="Tartismalar" Type="Self.Tartismalar" Multiplicity="*" />
@@ -271,6 +343,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TartismaYorumlar_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="TartismaYorumlar" Type="Self.TartismaYorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="TartismaYorumlar">
+              <PropertyRef Name="yorumcuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TartismaYorumlar_Tartismalar">
+          <End Role="Tartismalar" Type="Self.Tartismalar" Multiplicity="0..1" />
+          <End Role="TartismaYorumlar" Type="Self.TartismaYorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tartismalar">
+              <PropertyRef Name="TartismaID" />
+            </Principal>
+            <Dependent Role="TartismaYorumlar">
+              <PropertyRef Name="tartismaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Yazilar_Kullanicilar">
           <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
           <End Role="Yazilar" Type="Self.Yazilar" Multiplicity="*" />
@@ -280,6 +376,30 @@
             </Principal>
             <Dependent Role="Yazilar">
               <PropertyRef Name="yazar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YaziYorumlar_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="YaziYorumlar" Type="Self.YaziYorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="YaziYorumlar">
+              <PropertyRef Name="yorumcuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YaziYorumlar_Yazilar">
+          <End Role="Yazilar" Type="Self.Yazilar" Multiplicity="0..1" />
+          <End Role="YaziYorumlar" Type="Self.YaziYorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yazilar">
+              <PropertyRef Name="yazi_id" />
+            </Principal>
+            <Dependent Role="YaziYorumlar">
+              <PropertyRef Name="yaziID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -320,21 +440,61 @@
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
             <End Role="Haberler" EntitySet="Haberler" />
           </AssociationSet>
+          <AssociationSet Name="FK_HaberYorumlar_Haberler" Association="Self.FK_HaberYorumlar_Haberler">
+            <End Role="Haberler" EntitySet="Haberler" />
+            <End Role="HaberYorumlar" EntitySet="HaberYorumlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HaberYorumlar_Kullanicilar" Association="Self.FK_HaberYorumlar_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="HaberYorumlar" EntitySet="HaberYorumlar" />
+          </AssociationSet>
           <AssociationSet Name="FK_Resimler_Kullanicilar" Association="Self.FK_Resimler_Kullanicilar">
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
             <End Role="Resimler" EntitySet="Resimler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResimYorumlar_Kullanicilar" Association="Self.FK_ResimYorumlar_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="ResimYorumlar" EntitySet="ResimYorumlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResimYorumlar_Resimler" Association="Self.FK_ResimYorumlar_Resimler">
+            <End Role="Resimler" EntitySet="Resimler" />
+            <End Role="ResimYorumlar" EntitySet="ResimYorumlar" />
           </AssociationSet>
           <AssociationSet Name="FK_Siirler_Kullanicilar" Association="Self.FK_Siirler_Kullanicilar">
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
             <End Role="Siirler" EntitySet="Siirler" />
           </AssociationSet>
+          <AssociationSet Name="FK_SiirYorumlar_Kullanicilar" Association="Self.FK_SiirYorumlar_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="SiirYorumlar" EntitySet="SiirYorumlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiirYorumlar_Siirler" Association="Self.FK_SiirYorumlar_Siirler">
+            <End Role="Siirler" EntitySet="Siirler" />
+            <End Role="SiirYorumlar" EntitySet="SiirYorumlar" />
+          </AssociationSet>
           <AssociationSet Name="FK_Tartismalar_Kullanicilar" Association="Self.FK_Tartismalar_Kullanicilar">
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
             <End Role="Tartismalar" EntitySet="Tartismalar" />
           </AssociationSet>
+          <AssociationSet Name="FK_TartismaYorumlar_Kullanicilar" Association="Self.FK_TartismaYorumlar_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="TartismaYorumlar" EntitySet="TartismaYorumlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TartismaYorumlar_Tartismalar" Association="Self.FK_TartismaYorumlar_Tartismalar">
+            <End Role="Tartismalar" EntitySet="Tartismalar" />
+            <End Role="TartismaYorumlar" EntitySet="TartismaYorumlar" />
+          </AssociationSet>
           <AssociationSet Name="FK_Yazilar_Kullanicilar" Association="Self.FK_Yazilar_Kullanicilar">
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
             <End Role="Yazilar" EntitySet="Yazilar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YaziYorumlar_Kullanicilar" Association="Self.FK_YaziYorumlar_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="YaziYorumlar" EntitySet="YaziYorumlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YaziYorumlar_Yazilar" Association="Self.FK_YaziYorumlar_Yazilar">
+            <End Role="Yazilar" EntitySet="Yazilar" />
+            <End Role="YaziYorumlar" EntitySet="YaziYorumlar" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -381,6 +541,7 @@
           <Property Name="tarih" Type="DateTime" Precision="0" />
           <Property Name="onay" Type="Boolean" />
           <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_Haberler_Kullanicilar" FromRole="Haberler" ToRole="Kullanicilar" />
+          <NavigationProperty Name="HaberYorumlar" Relationship="Self.FK_HaberYorumlar_Haberler" FromRole="Haberler" ToRole="HaberYorumlar" />
         </EntityType>
         <EntityType Name="HaberYorumlar">
           <Key>
@@ -392,6 +553,8 @@
           <Property Name="haberID" Type="Int32" />
           <Property Name="onay" Type="Boolean" />
           <Property Name="tarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Haberler" Relationship="Self.FK_HaberYorumlar_Haberler" FromRole="HaberYorumlar" ToRole="Haberler" />
+          <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_HaberYorumlar_Kullanicilar" FromRole="HaberYorumlar" ToRole="Kullanicilar" />
         </EntityType>
         <EntityType Name="KullaniciGirisler">
           <Key>
@@ -416,13 +579,18 @@
           <Property Name="kullanici_sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AdminMesajlar" Relationship="Self.FK__AdminMesa__gonde__17036CC0" FromRole="Kullanicilar" ToRole="AdminMesajlar" />
           <NavigationProperty Name="Haberler" Relationship="Self.FK_Haberler_Kullanicilar" FromRole="Kullanicilar" ToRole="Haberler" />
+          <NavigationProperty Name="HaberYorumlar" Relationship="Self.FK_HaberYorumlar_Kullanicilar" FromRole="Kullanicilar" ToRole="HaberYorumlar" />
           <NavigationProperty Name="KullaniciGirisler" Relationship="Self.FK__Kullanici__kulla__5070F446" FromRole="Kullanicilar" ToRole="KullaniciGirisler" />
           <NavigationProperty Name="KullaniciMesajlar" Relationship="Self.FK__Kullanici__alici__1BC821DD" FromRole="Kullanicilar" ToRole="KullaniciMesajlar" />
           <NavigationProperty Name="KullaniciMesajlar1" Relationship="Self.FK__Kullanici__gonde__1AD3FDA4" FromRole="Kullanicilar" ToRole="KullaniciMesajlar" />
           <NavigationProperty Name="Resimler" Relationship="Self.FK_Resimler_Kullanicilar" FromRole="Kullanicilar" ToRole="Resimler" />
+          <NavigationProperty Name="ResimYorumlar" Relationship="Self.FK_ResimYorumlar_Kullanicilar" FromRole="Kullanicilar" ToRole="ResimYorumlar" />
           <NavigationProperty Name="Siirler" Relationship="Self.FK_Siirler_Kullanicilar" FromRole="Kullanicilar" ToRole="Siirler" />
+          <NavigationProperty Name="SiirYorumlar" Relationship="Self.FK_SiirYorumlar_Kullanicilar" FromRole="Kullanicilar" ToRole="SiirYorumlar" />
           <NavigationProperty Name="Tartismalar" Relationship="Self.FK_Tartismalar_Kullanicilar" FromRole="Kullanicilar" ToRole="Tartismalar" />
+          <NavigationProperty Name="TartismaYorumlar" Relationship="Self.FK_TartismaYorumlar_Kullanicilar" FromRole="Kullanicilar" ToRole="TartismaYorumlar" />
           <NavigationProperty Name="Yazilar" Relationship="Self.FK_Yazilar_Kullanicilar" FromRole="Kullanicilar" ToRole="Yazilar" />
+          <NavigationProperty Name="YaziYorumlar" Relationship="Self.FK_YaziYorumlar_Kullanicilar" FromRole="Kullanicilar" ToRole="YaziYorumlar" />
         </EntityType>
         <EntityType Name="KullaniciMesajlar">
           <Key>
@@ -448,6 +616,7 @@
           <Property Name="tarih" Type="DateTime" Precision="0" />
           <Property Name="onay" Type="Boolean" />
           <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_Resimler_Kullanicilar" FromRole="Resimler" ToRole="Kullanicilar" />
+          <NavigationProperty Name="ResimYorumlar" Relationship="Self.FK_ResimYorumlar_Resimler" FromRole="Resimler" ToRole="ResimYorumlar" />
         </EntityType>
         <EntityType Name="ResimYorumlar">
           <Key>
@@ -459,6 +628,8 @@
           <Property Name="resimID" Type="Int32" />
           <Property Name="onay" Type="Boolean" />
           <Property Name="tarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_ResimYorumlar_Kullanicilar" FromRole="ResimYorumlar" ToRole="Kullanicilar" />
+          <NavigationProperty Name="Resimler" Relationship="Self.FK_ResimYorumlar_Resimler" FromRole="ResimYorumlar" ToRole="Resimler" />
         </EntityType>
         <EntityType Name="Siirler">
           <Key>
@@ -471,6 +642,7 @@
           <Property Name="tarih" Type="DateTime" Precision="0" />
           <Property Name="onay" Type="Boolean" />
           <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_Siirler_Kullanicilar" FromRole="Siirler" ToRole="Kullanicilar" />
+          <NavigationProperty Name="SiirYorumlar" Relationship="Self.FK_SiirYorumlar_Siirler" FromRole="Siirler" ToRole="SiirYorumlar" />
         </EntityType>
         <EntityType Name="SiirYorumlar">
           <Key>
@@ -482,6 +654,8 @@
           <Property Name="siirID" Type="Int32" />
           <Property Name="onay" Type="Boolean" />
           <Property Name="tarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_SiirYorumlar_Kullanicilar" FromRole="SiirYorumlar" ToRole="Kullanicilar" />
+          <NavigationProperty Name="Siirler" Relationship="Self.FK_SiirYorumlar_Siirler" FromRole="SiirYorumlar" ToRole="Siirler" />
         </EntityType>
         <EntityType Name="Tartismalar">
           <Key>
@@ -495,6 +669,7 @@
           <Property Name="aktiflik" Type="Boolean" />
           <Property Name="kullanici_id" Type="Int32" />
           <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_Tartismalar_Kullanicilar" FromRole="Tartismalar" ToRole="Kullanicilar" />
+          <NavigationProperty Name="TartismaYorumlar" Relationship="Self.FK_TartismaYorumlar_Tartismalar" FromRole="Tartismalar" ToRole="TartismaYorumlar" />
         </EntityType>
         <EntityType Name="TartismaYorumlar">
           <Key>
@@ -502,10 +677,12 @@
           </Key>
           <Property Name="tartismaYorumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="yorum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="yorumcuID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="yorumcuID" Type="Int32" />
           <Property Name="tartismaID" Type="Int32" />
           <Property Name="tarih" Type="DateTime" Precision="3" />
           <Property Name="onay" Type="Boolean" />
+          <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_TartismaYorumlar_Kullanicilar" FromRole="TartismaYorumlar" ToRole="Kullanicilar" />
+          <NavigationProperty Name="Tartismalar" Relationship="Self.FK_TartismaYorumlar_Tartismalar" FromRole="TartismaYorumlar" ToRole="Tartismalar" />
         </EntityType>
         <EntityType Name="Yazilar">
           <Key>
@@ -518,6 +695,7 @@
           <Property Name="onay" Type="Boolean" />
           <Property Name="tarih" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_Yazilar_Kullanicilar" FromRole="Yazilar" ToRole="Kullanicilar" />
+          <NavigationProperty Name="YaziYorumlar" Relationship="Self.FK_YaziYorumlar_Yazilar" FromRole="Yazilar" ToRole="YaziYorumlar" />
         </EntityType>
         <EntityType Name="YaziYorumlar">
           <Key>
@@ -529,6 +707,8 @@
           <Property Name="yaziID" Type="Int32" />
           <Property Name="onay" Type="Boolean" />
           <Property Name="tarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_YaziYorumlar_Kullanicilar" FromRole="YaziYorumlar" ToRole="Kullanicilar" />
+          <NavigationProperty Name="Yazilar" Relationship="Self.FK_YaziYorumlar_Yazilar" FromRole="YaziYorumlar" ToRole="Yazilar" />
         </EntityType>
         <Association Name="FK__AdminMesa__gonde__17036CC0">
           <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
@@ -551,6 +731,30 @@
             </Principal>
             <Dependent Role="Haberler">
               <PropertyRef Name="paylasan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HaberYorumlar_Haberler">
+          <End Role="Haberler" Type="Self.Haberler" Multiplicity="0..1" />
+          <End Role="HaberYorumlar" Type="Self.HaberYorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Haberler">
+              <PropertyRef Name="HaberID" />
+            </Principal>
+            <Dependent Role="HaberYorumlar">
+              <PropertyRef Name="haberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HaberYorumlar_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="HaberYorumlar" Type="Self.HaberYorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="HaberYorumlar">
+              <PropertyRef Name="yorumcuID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -602,6 +806,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ResimYorumlar_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="ResimYorumlar" Type="Self.ResimYorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="ResimYorumlar">
+              <PropertyRef Name="yorumcuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Siirler_Kullanicilar">
           <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
           <End Role="Siirler" Type="Self.Siirler" Multiplicity="*" />
@@ -611,6 +827,18 @@
             </Principal>
             <Dependent Role="Siirler">
               <PropertyRef Name="yazar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiirYorumlar_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="SiirYorumlar" Type="Self.SiirYorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="SiirYorumlar">
+              <PropertyRef Name="yorumcuID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -626,6 +854,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TartismaYorumlar_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="TartismaYorumlar" Type="Self.TartismaYorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="TartismaYorumlar">
+              <PropertyRef Name="yorumcuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Yazilar_Kullanicilar">
           <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
           <End Role="Yazilar" Type="Self.Yazilar" Multiplicity="*" />
@@ -635,6 +875,66 @@
             </Principal>
             <Dependent Role="Yazilar">
               <PropertyRef Name="yazar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YaziYorumlar_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="YaziYorumlar" Type="Self.YaziYorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="YaziYorumlar">
+              <PropertyRef Name="yorumcuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResimYorumlar_Resimler">
+          <End Role="Resimler" Type="Self.Resimler" Multiplicity="0..1" />
+          <End Role="ResimYorumlar" Type="Self.ResimYorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resimler">
+              <PropertyRef Name="resimID" />
+            </Principal>
+            <Dependent Role="ResimYorumlar">
+              <PropertyRef Name="resimID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiirYorumlar_Siirler">
+          <End Role="Siirler" Type="Self.Siirler" Multiplicity="0..1" />
+          <End Role="SiirYorumlar" Type="Self.SiirYorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Siirler">
+              <PropertyRef Name="siirID" />
+            </Principal>
+            <Dependent Role="SiirYorumlar">
+              <PropertyRef Name="siirID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TartismaYorumlar_Tartismalar">
+          <End Role="Tartismalar" Type="Self.Tartismalar" Multiplicity="0..1" />
+          <End Role="TartismaYorumlar" Type="Self.TartismaYorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tartismalar">
+              <PropertyRef Name="TartismaID" />
+            </Principal>
+            <Dependent Role="TartismaYorumlar">
+              <PropertyRef Name="tartismaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YaziYorumlar_Yazilar">
+          <End Role="Yazilar" Type="Self.Yazilar" Multiplicity="0..1" />
+          <End Role="YaziYorumlar" Type="Self.YaziYorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yazilar">
+              <PropertyRef Name="yazi_id" />
+            </Principal>
+            <Dependent Role="YaziYorumlar">
+              <PropertyRef Name="yaziID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -663,6 +963,14 @@
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
             <End Role="Haberler" EntitySet="Haberler" />
           </AssociationSet>
+          <AssociationSet Name="FK_HaberYorumlar_Haberler" Association="Self.FK_HaberYorumlar_Haberler">
+            <End Role="Haberler" EntitySet="Haberler" />
+            <End Role="HaberYorumlar" EntitySet="HaberYorumlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HaberYorumlar_Kullanicilar" Association="Self.FK_HaberYorumlar_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="HaberYorumlar" EntitySet="HaberYorumlar" />
+          </AssociationSet>
           <AssociationSet Name="FK__Kullanici__kulla__5070F446" Association="Self.FK__Kullanici__kulla__5070F446">
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
             <End Role="KullaniciGirisler" EntitySet="KullaniciGirisler" />
@@ -679,17 +987,49 @@
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
             <End Role="Resimler" EntitySet="Resimler" />
           </AssociationSet>
+          <AssociationSet Name="FK_ResimYorumlar_Kullanicilar" Association="Self.FK_ResimYorumlar_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="ResimYorumlar" EntitySet="ResimYorumlar" />
+          </AssociationSet>
           <AssociationSet Name="FK_Siirler_Kullanicilar" Association="Self.FK_Siirler_Kullanicilar">
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
             <End Role="Siirler" EntitySet="Siirler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiirYorumlar_Kullanicilar" Association="Self.FK_SiirYorumlar_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="SiirYorumlar" EntitySet="SiirYorumlar" />
           </AssociationSet>
           <AssociationSet Name="FK_Tartismalar_Kullanicilar" Association="Self.FK_Tartismalar_Kullanicilar">
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
             <End Role="Tartismalar" EntitySet="Tartismalar" />
           </AssociationSet>
+          <AssociationSet Name="FK_TartismaYorumlar_Kullanicilar" Association="Self.FK_TartismaYorumlar_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="TartismaYorumlar" EntitySet="TartismaYorumlar" />
+          </AssociationSet>
           <AssociationSet Name="FK_Yazilar_Kullanicilar" Association="Self.FK_Yazilar_Kullanicilar">
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
             <End Role="Yazilar" EntitySet="Yazilar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YaziYorumlar_Kullanicilar" Association="Self.FK_YaziYorumlar_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="YaziYorumlar" EntitySet="YaziYorumlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResimYorumlar_Resimler" Association="Self.FK_ResimYorumlar_Resimler">
+            <End Role="Resimler" EntitySet="Resimler" />
+            <End Role="ResimYorumlar" EntitySet="ResimYorumlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiirYorumlar_Siirler" Association="Self.FK_SiirYorumlar_Siirler">
+            <End Role="Siirler" EntitySet="Siirler" />
+            <End Role="SiirYorumlar" EntitySet="SiirYorumlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TartismaYorumlar_Tartismalar" Association="Self.FK_TartismaYorumlar_Tartismalar">
+            <End Role="Tartismalar" EntitySet="Tartismalar" />
+            <End Role="TartismaYorumlar" EntitySet="TartismaYorumlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YaziYorumlar_Yazilar" Association="Self.FK_YaziYorumlar_Yazilar">
+            <End Role="Yazilar" EntitySet="Yazilar" />
+            <End Role="YaziYorumlar" EntitySet="YaziYorumlar" />
           </AssociationSet>
         </EntityContainer>
       </Schema>

@@ -20,5 +20,8 @@ namespace adminTabani_01_05_24
         public Nullable<int> siirID { get; set; }
         public Nullable<bool> onay { get; set; }
         public Nullable<System.DateTime> tarih { get; set; }
+    
+        public virtual Kullanicilar Kullanicilar { get; set; }
+        public virtual Siirler Siirler { get; set; }
     }
 }

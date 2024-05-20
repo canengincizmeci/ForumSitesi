@@ -19,13 +19,18 @@ namespace adminTabani_01_05_24
         {
             this.AdminMesajlar = new HashSet<AdminMesajlar>();
             this.Haberler = new HashSet<Haberler>();
+            this.HaberYorumlar = new HashSet<HaberYorumlar>();
             this.KullaniciGirisler = new HashSet<KullaniciGirisler>();
             this.KullaniciMesajlar = new HashSet<KullaniciMesajlar>();
             this.KullaniciMesajlar1 = new HashSet<KullaniciMesajlar>();
             this.Resimler = new HashSet<Resimler>();
+            this.ResimYorumlar = new HashSet<ResimYorumlar>();
             this.Siirler = new HashSet<Siirler>();
+            this.SiirYorumlar = new HashSet<SiirYorumlar>();
             this.Tartismalar = new HashSet<Tartismalar>();
+            this.TartismaYorumlar = new HashSet<TartismaYorumlar>();
             this.Yazilar = new HashSet<Yazilar>();
+            this.YaziYorumlar = new HashSet<YaziYorumlar>();
         }
     
         public int kullanici_id { get; set; }
@@ -38,6 +43,8 @@ namespace adminTabani_01_05_24
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Haberler> Haberler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HaberYorumlar> HaberYorumlar { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KullaniciGirisler> KullaniciGirisler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KullaniciMesajlar> KullaniciMesajlar { get; set; }
@@ -46,10 +53,18 @@ namespace adminTabani_01_05_24
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Resimler> Resimler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ResimYorumlar> ResimYorumlar { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Siirler> Siirler { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SiirYorumlar> SiirYorumlar { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tartismalar> Tartismalar { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TartismaYorumlar> TartismaYorumlar { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Yazilar> Yazilar { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<YaziYorumlar> YaziYorumlar { get; set; }
     }
 }

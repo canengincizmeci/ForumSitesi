@@ -127,13 +127,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="AdminGirisler.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="AdminMesajlar.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -150,34 +150,19 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Haberler.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="HaberYorumlar.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="KullaniciGirisler.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Kullanicilar.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="KullaniciMesajlar.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model2.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model2.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model2.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model2.edmx</DependentUpon>
+      <DependentUpon>_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AdminGiris.cs" />
     <Compile Include="Models\AdminMesaj.cs" />
@@ -192,34 +177,50 @@
     <Compile Include="Models\Siir.cs" />
     <Compile Include="Models\SiirYorumlari.cs" />
     <Compile Include="Models\Tartisma.cs" />
+    <Compile Include="Models\TartismaDetayPage.cs" />
     <Compile Include="Models\TartismaYorumlari.cs" />
     <Compile Include="Models\Yazi.cs" />
     <Compile Include="Models\YaziYorumlari.cs" />
     <Compile Include="Models\_Admin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resimler.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ResimYorumlar.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Siirler.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="SiirYorumlar.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Tartismalar.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="TartismaYorumlar.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Yazilar.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="YaziYorumlar.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="_Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="_Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="_Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Model.edmx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -242,28 +243,21 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Model2.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model2.edmx</DependentUpon>
-      <LastGenOutput>Model2.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model2.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model2.edmx</DependentUpon>
-      <LastGenOutput>Model2.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Model2.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model2.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Model2.edmx.diagram">
-      <DependentUpon>Model2.edmx</DependentUpon>
+    <Content Include="_Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>_Model.edmx</DependentUpon>
+      <LastGenOutput>_Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="_Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>_Model.edmx</DependentUpon>
+      <LastGenOutput>_Model.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -309,6 +303,13 @@
     <Content Include="Views\Mesaj\AdminMesaj.cshtml" />
     <Content Include="Views\Tartisma\Index.cshtml" />
     <Content Include="Views\Tartisma\TartismaDetay.cshtml" />
+    <EntityDeploy Include="_Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>_Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="_Model.edmx.diagram">
+      <DependentUpon>_Model.edmx</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
