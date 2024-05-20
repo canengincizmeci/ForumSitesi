@@ -12,7 +12,7 @@ namespace adminTabani_01_05_24.Controllers
         // GET: Tartisma
         public ActionResult Index()
         {
-            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            dbContext model = new dbContext();
             var veriler = model.Tartismalar.Where(p => p.onay == true).Select(p => new Tartisma
             {
                 TartismaID = p.TartismaID,
@@ -29,7 +29,7 @@ namespace adminTabani_01_05_24.Controllers
         [HttpGet]
         public ActionResult TartismaDetay(int? tartisma_id)
         {
-            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            dbContext model = new dbContext();
             var tartisma = model.Tartismalar.Where(p => p.TartismaID == tartisma_id).Select(p => new Tartisma
             {
                 TartismaID = p.TartismaID,
@@ -49,7 +49,7 @@ namespace adminTabani_01_05_24.Controllers
         //public ActionResult YorumYap(string yorum,int tartisma_id)
         //{
         //    int id = (int)Session["kullanici_id"];
-        //    blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+        //    dbContext model = new dbContext();
         //    model.Yorumlar.Add(new Yorumlar
         //    {
         //        icerik = yorum,

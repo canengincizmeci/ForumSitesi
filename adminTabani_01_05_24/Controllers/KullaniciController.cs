@@ -31,7 +31,7 @@ namespace adminTabani_01_05_24.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Ekle(string ad, string mail)
         {
-            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            dbContext model = new dbContext();
             var ad_kontrol = model.Kullanicilar.FirstOrDefault(p => p.Ad == ad);
             var mail_kontrol = model.Kullanicilar.FirstOrDefault(p => p.kullaniciMail == mail);
             if (ad_kontrol != null)
@@ -109,7 +109,7 @@ namespace adminTabani_01_05_24.Controllers
         {
             Random rnd = new Random();
             int random = rnd.Next(1000, 9999 + 1);
-            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            dbContext model = new dbContext();
             model.Kullanicilar.Add(new Kullanicilar
             {
                 Ad = adi,
@@ -126,7 +126,7 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult IlkSifreBelirleme()
         {
             int _id = (int)Session["kullanici_id"];
-            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            dbContext model = new dbContext();
             int id = model.Kullanicilar.FirstOrDefault(p => p.kullanici_id == _id).kullanici_id;
             ViewBag.id = id;
             return View();
@@ -136,7 +136,7 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult IlkSifreBelirleme(string sifre1, string sifre2)
         {
             int id = (int)Session["kullanici_id"];
-            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            dbContext model = new dbContext();
             var kisi = model.Kullanicilar.FirstOrDefault(p => p.kullanici_id == id);
 
             kisi.kullanici_sifre = sifre1;
@@ -155,7 +155,7 @@ namespace adminTabani_01_05_24.Controllers
         {
             string adi = form["adi"].ToString();
             string sifre = form["sifre"].ToString();
-            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            dbContext model = new dbContext();
             var kisi = model.Kullanicilar.FirstOrDefault(p => p.Ad == adi);
 
 
@@ -210,7 +210,7 @@ namespace adminTabani_01_05_24.Controllers
             int id = (int)Session["kullanici_id"];
             string kod1 = form["kod1"].ToString();
             string kod2 = form["kod2"].ToString();
-            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            dbContext model = new dbContext();
             //var kisi = model.KullaniciGirisler.FirstOrDefault(p => p.kullanici_id == id);
             //var kisi = model.KullaniciGirisler
             var kisi = model.KullaniciGirisler.Where(p => p.kullanici_id == id).OrderByDescending(p => p.girisTarih).FirstOrDefault();
@@ -254,7 +254,7 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult KullaniciHome()
         {
             int id = (int)Session["kullanici_id"];
-            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            dbContext model = new dbContext();
             var kisi = model.Kullanicilar.FirstOrDefault(p => p.kullanici_id == id);
             ViewBag.Ad = kisi.Ad;
             KullaniciHomeViewModel Gidenmodel = new KullaniciHomeViewModel();
@@ -322,7 +322,7 @@ namespace adminTabani_01_05_24.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SifremiUnuttum(string mail)
         {
-            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            dbContext model = new dbContext();
             if (model.Kullanicilar.Where(p => p.kullaniciMail == mail) != null)
             {
                 int sonuc = SifreUnutmaDogrulamaMaili(mail);
@@ -358,7 +358,7 @@ namespace adminTabani_01_05_24.Controllers
         [HttpGet]
         public ActionResult MailKodDogrulama(string maili, int kod)
         {
-            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            dbContext model = new dbContext();
             int id = (model.Kullanicilar.FirstOrDefault(p => p.kullaniciMail == maili)).kullanici_id;
             ViewBag.ID = id;
             ViewBag.Kod = kod;
@@ -368,7 +368,7 @@ namespace adminTabani_01_05_24.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult MailKodDogrulama(int id, int kod1, int kod2)
         {
-            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            dbContext model = new dbContext();
 
             var kisi = model.Kullanicilar.Find(id);
             if (kod1 == kod2)

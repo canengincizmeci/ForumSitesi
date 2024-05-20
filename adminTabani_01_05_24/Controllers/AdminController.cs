@@ -21,7 +21,7 @@ namespace adminTabani_01_05_24.Controllers
         }
         public ActionResult Kontrol(string email, string sifre)
         {
-            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            dbContext model = new dbContext();
             var veri = model.Admin.Where(p => p.id == 1).FirstOrDefault();
             if (veri.Email == email && veri.Sifre == sifre)
             {
@@ -45,7 +45,7 @@ namespace adminTabani_01_05_24.Controllers
         {
             Random rnd = new Random();
             int random = rnd.Next(1000, 9999 + 1);
-            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            dbContext model = new dbContext();
             var admin = model.Admin.Where(p => p.id == 1).FirstOrDefault();
             var cred = new NetworkCredential("canncizmeci@gmail.com", "jben gmyx obrj vhtj");
             var client = new SmtpClient("smtp.gmail.com", 587);
@@ -70,7 +70,7 @@ namespace adminTabani_01_05_24.Controllers
         }
         public ActionResult KodKontrol(int kod)
         {
-            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            dbContext model = new dbContext();
             var sonVeri = model.AdminGirisler.OrderByDescending(p => p.giris_id).FirstOrDefault();
             var koddegeri = sonVeri.girisKod;
             if (kod==koddegeri)

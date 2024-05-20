@@ -7,11 +7,15 @@ using System.Web;
 
 namespace adminTabani_01_05_24.Models
 {
-    public class YorumTur
+    public class HaberYorumlari
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int TurID { get; set; }
-        public string turAd { get; set; }
+        public int _HaberYorumID { get; set; }
+        public string _icerik { get; set; }
+        public int? _yorumcuID { get; set; }
+        public int? _haberID { get; set; }
+        public bool? _onay { get; set; }
+        public DateTime? _tarih { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace adminTabani_01_05_24.Controllers
     {
         public ActionResult Index()
         {
-            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            dbContext model = new dbContext();
             KullaniciHomeViewModel veriler = new KullaniciHomeViewModel();
             veriler.haberler = model.Haberler.OrderByDescending(p => p.tarih).Take(5).Select(p => new Haber
             {

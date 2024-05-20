@@ -12,7 +12,7 @@ namespace adminTabani_01_05_24.Controllers
         // GET: Haber
         public ActionResult Index()
         {
-            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            dbContext model = new dbContext();
             var veriler = model.Haberler.Select(p => new Haber
             {
                 HaberID = p.HaberID,
@@ -26,7 +26,7 @@ namespace adminTabani_01_05_24.Controllers
         }
         public ActionResult HaberDetay(int id)
         {
-            blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+            dbContext model = new dbContext();
             var haber = model.Haberler.FirstOrDefault(p => p.HaberID == id);
             ViewBag.Baslik = haber.Baslik;
             ViewBag.Icerik = haber.icerik;
