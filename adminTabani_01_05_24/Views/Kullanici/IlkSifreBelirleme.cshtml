@@ -15,6 +15,7 @@
     <div class="container mt-5">
         <h2 class="mb-4">Sifrenizi Belirleyin</h2>
         <form method="post" action="/Kullanici/IlkSifreBelirleme">
+            @Html.AntiForgeryToken()
             <div class="mb-3">
                 <input type="hidden" class="form-control" value="@ViewBag.id" name="id">
             </div>

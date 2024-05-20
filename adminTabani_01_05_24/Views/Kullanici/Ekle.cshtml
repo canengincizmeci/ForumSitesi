@@ -18,6 +18,7 @@
     <div class="container mt-5">
         <h2 class="mb-4">Kayıt Formu</h2>
         <form method="post" action="/Kullanici/Ekle">
+            @Html.AntiForgeryToken()
             <div class="mb-3">
                 <label for="ad" class="form-label">Ad Soyad</label>
                 <input type="text" class="form-control" id="ad" name="ad">
@@ -26,7 +27,7 @@
                 <label for="mail" class="form-label">Mail Adresi</label>
                 <input type="text" class="form-control" id="mail" name="mail">
             </div>
-            
+
             <button type="submit" class="btn btn-primary">Üye Ekle</button>
         </form>
     </div>

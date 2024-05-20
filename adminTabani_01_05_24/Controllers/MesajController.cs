@@ -21,6 +21,7 @@ namespace adminTabani_01_05_24.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AdminMesaj(string icerik)
         {
             blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();

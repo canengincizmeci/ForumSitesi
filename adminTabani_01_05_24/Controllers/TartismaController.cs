@@ -44,13 +44,22 @@ namespace adminTabani_01_05_24.Controllers
 
             return View(tartisma);
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult TartismaDetay(string yorum)
-        {
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult YorumYap(string yorum,int tartisma_id)
+        //{
+        //    int id = (int)Session["kullanici_id"];
+        //    blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
+        //    model.Yorumlar.Add(new Yorumlar
+        //    {
+        //        icerik = yorum,
+        //        kullanıci_id =id,
+        //        onay=false,
+        //        yazi_id=tartisma_id,
+        //        yorumTur=1,
+                
+        //    });
 
-
-
-        }
+        //}
     }
 }

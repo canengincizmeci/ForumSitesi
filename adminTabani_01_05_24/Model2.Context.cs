@@ -13,10 +13,10 @@ namespace adminTabani_01_05_24
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class blogAdminli_01_05_24Entities : DbContext
+    public partial class dbContext : DbContext
     {
-        public blogAdminli_01_05_24Entities()
-            : base("name=blogAdminli_01_05_24Entities")
+        public dbContext()
+            : base("name=dbContext")
         {
         }
     
@@ -25,19 +25,21 @@ namespace adminTabani_01_05_24
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Kullanicilar> Kullanicilar { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Yazilar> Yazilar { get; set; }
-        public virtual DbSet<Yorumlar> Yorumlar { get; set; }
         public virtual DbSet<Admin> Admin { get; set; }
         public virtual DbSet<AdminGirisler> AdminGirisler { get; set; }
-        public virtual DbSet<KullaniciGirisler> KullaniciGirisler { get; set; }
-        public virtual DbSet<Haberler> Haberler { get; set; }
-        public virtual DbSet<Resimler> Resimler { get; set; }
-        public virtual DbSet<Tartismalar> Tartismalar { get; set; }
-        public virtual DbSet<YorumTurleri> YorumTurleri { get; set; }
-        public virtual DbSet<Siirler> Siirler { get; set; }
         public virtual DbSet<AdminMesajlar> AdminMesajlar { get; set; }
+        public virtual DbSet<Haberler> Haberler { get; set; }
+        public virtual DbSet<HaberYorumlar> HaberYorumlar { get; set; }
+        public virtual DbSet<KullaniciGirisler> KullaniciGirisler { get; set; }
+        public virtual DbSet<Kullanicilar> Kullanicilar { get; set; }
         public virtual DbSet<KullaniciMesajlar> KullaniciMesajlar { get; set; }
+        public virtual DbSet<Resimler> Resimler { get; set; }
+        public virtual DbSet<ResimYorumlar> ResimYorumlar { get; set; }
+        public virtual DbSet<Siirler> Siirler { get; set; }
+        public virtual DbSet<SiirYorumlar> SiirYorumlar { get; set; }
+        public virtual DbSet<Tartismalar> Tartismalar { get; set; }
+        public virtual DbSet<TartismaYorumlar> TartismaYorumlar { get; set; }
+        public virtual DbSet<Yazilar> Yazilar { get; set; }
+        public virtual DbSet<YaziYorumlar> YaziYorumlar { get; set; }
     }
 }

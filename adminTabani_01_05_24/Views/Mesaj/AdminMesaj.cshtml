@@ -19,6 +19,7 @@
 <div container mt-5>
     <h2 class="mb-4">Mesajınızı Yazın</h2>
     <form action="/Mesaj/AdminMesaj" method="post">
+        @Html.AntiForgeryToken()
         <div class="mb-3">
             <input type="text" class="form-control" id="mesaj" name="icerik">
         </div>

@@ -1,0 +1,910 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="blogAdminli_01_05_24Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AdminGirisler">
+          <Key>
+            <PropertyRef Name="giris_id" />
+          </Key>
+          <Property Name="giris_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="girisTarih" Type="date" />
+          <Property Name="girisKod" Type="int" />
+          <Property Name="girisBasarisi1" Type="bit" />
+          <Property Name="girisBasarisi2" Type="bit" />
+        </EntityType>
+        <EntityType Name="AdminMesajlar">
+          <Key>
+            <PropertyRef Name="mesaj_id" />
+          </Key>
+          <Property Name="mesaj_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mesaj" Type="nvarchar" MaxLength="200" />
+          <Property Name="tarih" Type="date" />
+          <Property Name="gonderen_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Haberler">
+          <Key>
+            <PropertyRef Name="HaberID" />
+          </Key>
+          <Property Name="HaberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Baslik" Type="nvarchar" MaxLength="20" />
+          <Property Name="icerik" Type="nvarchar(max)" />
+          <Property Name="paylasan" Type="int" />
+          <Property Name="tarih" Type="date" />
+          <Property Name="onay" Type="bit" />
+        </EntityType>
+        <EntityType Name="HaberYorumlar">
+          <Key>
+            <PropertyRef Name="HaberYorumID" />
+          </Key>
+          <Property Name="HaberYorumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="icerik" Type="nvarchar" MaxLength="100" />
+          <Property Name="yorumcuID" Type="int" />
+          <Property Name="haberID" Type="int" />
+          <Property Name="onay" Type="bit" />
+          <Property Name="tarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="KullaniciGirisler">
+          <Key>
+            <PropertyRef Name="giris_id" />
+          </Key>
+          <Property Name="giris_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="girisTarih" Type="datetime" />
+          <Property Name="kullanici_id" Type="int" />
+          <Property Name="girisKod" Type="int" />
+          <Property Name="GirisBasarisi1" Type="bit" />
+          <Property Name="GirisBasarisi2" Type="bit" />
+          <Property Name="kodgirisTarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="kullanici_id" />
+          </Key>
+          <Property Name="kullanici_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="kullaniciMail" Type="nvarchar" MaxLength="100" />
+          <Property Name="kullanici_sifre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="KullaniciMesajlar">
+          <Key>
+            <PropertyRef Name="k_mesaj_id" />
+          </Key>
+          <Property Name="k_mesaj_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mesaj" Type="nvarchar" MaxLength="200" />
+          <Property Name="tarih" Type="date" />
+          <Property Name="gonderen_id" Type="int" />
+          <Property Name="alici_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Resimler">
+          <Key>
+            <PropertyRef Name="resimID" />
+          </Key>
+          <Property Name="resimID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dosyaYolu" Type="nvarchar" MaxLength="200" />
+          <Property Name="baslik" Type="nvarchar" MaxLength="20" />
+          <Property Name="aciklama" Type="nvarchar" MaxLength="100" />
+          <Property Name="paylasan" Type="int" />
+          <Property Name="tarih" Type="date" />
+          <Property Name="onay" Type="bit" />
+        </EntityType>
+        <EntityType Name="ResimYorumlar">
+          <Key>
+            <PropertyRef Name="ResimYorumID" />
+          </Key>
+          <Property Name="ResimYorumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="icerik" Type="nvarchar" MaxLength="100" />
+          <Property Name="yorumcuID" Type="int" />
+          <Property Name="resimID" Type="int" />
+          <Property Name="onay" Type="bit" />
+          <Property Name="tarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Siirler">
+          <Key>
+            <PropertyRef Name="siirID" />
+          </Key>
+          <Property Name="siirID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="siirBaslik" Type="nvarchar" MaxLength="20" />
+          <Property Name="icerik" Type="nvarchar(max)" />
+          <Property Name="yazar" Type="int" />
+          <Property Name="tarih" Type="date" />
+          <Property Name="onay" Type="bit" />
+        </EntityType>
+        <EntityType Name="SiirYorumlar">
+          <Key>
+            <PropertyRef Name="SiirYorumID" />
+          </Key>
+          <Property Name="SiirYorumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="icerik" Type="nvarchar" MaxLength="100" />
+          <Property Name="yorumcuID" Type="int" />
+          <Property Name="siirID" Type="int" />
+          <Property Name="onay" Type="bit" />
+          <Property Name="tarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Tartismalar">
+          <Key>
+            <PropertyRef Name="TartismaID" />
+          </Key>
+          <Property Name="TartismaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Baslik" Type="nvarchar" MaxLength="50" />
+          <Property Name="icerik" Type="nvarchar(max)" />
+          <Property Name="tarih" Type="date" />
+          <Property Name="onay" Type="bit" />
+          <Property Name="aktiflik" Type="bit" />
+          <Property Name="kullanici_id" Type="int" />
+        </EntityType>
+        <EntityType Name="TartismaYorumlar">
+          <Key>
+            <PropertyRef Name="tartismaYorumID" />
+          </Key>
+          <Property Name="tartismaYorumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="yorum" Type="nvarchar" MaxLength="50" />
+          <Property Name="yorumcuID" Type="nchar" MaxLength="10" />
+          <Property Name="tartismaID" Type="int" />
+          <Property Name="tarih" Type="datetime" />
+          <Property Name="onay" Type="bit" />
+        </EntityType>
+        <EntityType Name="Yazilar">
+          <Key>
+            <PropertyRef Name="yazi_id" />
+          </Key>
+          <Property Name="yazi_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Baslik" Type="nvarchar" MaxLength="50" />
+          <Property Name="İcerik" Type="nvarchar(max)" />
+          <Property Name="yazar_id" Type="int" />
+          <Property Name="onay" Type="bit" />
+          <Property Name="tarih" Type="date" />
+        </EntityType>
+        <EntityType Name="YaziYorumlar">
+          <Key>
+            <PropertyRef Name="YaziYorumID" />
+          </Key>
+          <Property Name="YaziYorumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="icerik" Type="nvarchar" MaxLength="50" />
+          <Property Name="yorumcuID" Type="int" />
+          <Property Name="yaziID" Type="int" />
+          <Property Name="onay" Type="bit" />
+          <Property Name="tarih" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__AdminMesa__gonde__17036CC0">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="AdminMesajlar" Type="Self.AdminMesajlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="AdminMesajlar">
+              <PropertyRef Name="gonderen_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kullanici__alici__1BC821DD">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="KullaniciMesajlar" Type="Self.KullaniciMesajlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="KullaniciMesajlar">
+              <PropertyRef Name="alici_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kullanici__gonde__1AD3FDA4">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="KullaniciMesajlar" Type="Self.KullaniciMesajlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="KullaniciMesajlar">
+              <PropertyRef Name="gonderen_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kullanici__kulla__5070F446">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="KullaniciGirisler" Type="Self.KullaniciGirisler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="KullaniciGirisler">
+              <PropertyRef Name="kullanici_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Haberler_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="Haberler" Type="Self.Haberler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="Haberler">
+              <PropertyRef Name="paylasan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resimler_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="Resimler" Type="Self.Resimler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="Resimler">
+              <PropertyRef Name="paylasan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Siirler_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="Siirler" Type="Self.Siirler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="Siirler">
+              <PropertyRef Name="yazar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tartismalar_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="Tartismalar" Type="Self.Tartismalar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="Tartismalar">
+              <PropertyRef Name="kullanici_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yazilar_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="Yazilar" Type="Self.Yazilar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="Yazilar">
+              <PropertyRef Name="yazar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="blogAdminli_01_05_24ModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdminGirisler" EntityType="Self.AdminGirisler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdminMesajlar" EntityType="Self.AdminMesajlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Haberler" EntityType="Self.Haberler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HaberYorumlar" EntityType="Self.HaberYorumlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KullaniciGirisler" EntityType="Self.KullaniciGirisler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KullaniciMesajlar" EntityType="Self.KullaniciMesajlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Resimler" EntityType="Self.Resimler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResimYorumlar" EntityType="Self.ResimYorumlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Siirler" EntityType="Self.Siirler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SiirYorumlar" EntityType="Self.SiirYorumlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tartismalar" EntityType="Self.Tartismalar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TartismaYorumlar" EntityType="Self.TartismaYorumlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yazilar" EntityType="Self.Yazilar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="YaziYorumlar" EntityType="Self.YaziYorumlar" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AdminMesa__gonde__17036CC0" Association="Self.FK__AdminMesa__gonde__17036CC0">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="AdminMesajlar" EntitySet="AdminMesajlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kullanici__alici__1BC821DD" Association="Self.FK__Kullanici__alici__1BC821DD">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="KullaniciMesajlar" EntitySet="KullaniciMesajlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kullanici__gonde__1AD3FDA4" Association="Self.FK__Kullanici__gonde__1AD3FDA4">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="KullaniciMesajlar" EntitySet="KullaniciMesajlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kullanici__kulla__5070F446" Association="Self.FK__Kullanici__kulla__5070F446">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="KullaniciGirisler" EntitySet="KullaniciGirisler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Haberler_Kullanicilar" Association="Self.FK_Haberler_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="Haberler" EntitySet="Haberler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resimler_Kullanicilar" Association="Self.FK_Resimler_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="Resimler" EntitySet="Resimler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Siirler_Kullanicilar" Association="Self.FK_Siirler_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="Siirler" EntitySet="Siirler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tartismalar_Kullanicilar" Association="Self.FK_Tartismalar_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="Tartismalar" EntitySet="Tartismalar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yazilar_Kullanicilar" Association="Self.FK_Yazilar_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="Yazilar" EntitySet="Yazilar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="blogAdminli_01_05_24Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AdminGirisler">
+          <Key>
+            <PropertyRef Name="giris_id" />
+          </Key>
+          <Property Name="giris_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="girisTarih" Type="DateTime" Precision="0" />
+          <Property Name="girisKod" Type="Int32" />
+          <Property Name="girisBasarisi1" Type="Boolean" />
+          <Property Name="girisBasarisi2" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="AdminMesajlar">
+          <Key>
+            <PropertyRef Name="mesaj_id" />
+          </Key>
+          <Property Name="mesaj_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mesaj" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="tarih" Type="DateTime" Precision="0" />
+          <Property Name="gonderen_id" Type="Int32" />
+          <NavigationProperty Name="Kullanicilar" Relationship="Self.FK__AdminMesa__gonde__17036CC0" FromRole="AdminMesajlar" ToRole="Kullanicilar" />
+        </EntityType>
+        <EntityType Name="Haberler">
+          <Key>
+            <PropertyRef Name="HaberID" />
+          </Key>
+          <Property Name="HaberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Baslik" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="icerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="paylasan" Type="Int32" />
+          <Property Name="tarih" Type="DateTime" Precision="0" />
+          <Property Name="onay" Type="Boolean" />
+          <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_Haberler_Kullanicilar" FromRole="Haberler" ToRole="Kullanicilar" />
+        </EntityType>
+        <EntityType Name="HaberYorumlar">
+          <Key>
+            <PropertyRef Name="HaberYorumID" />
+          </Key>
+          <Property Name="HaberYorumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="icerik" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="yorumcuID" Type="Int32" />
+          <Property Name="haberID" Type="Int32" />
+          <Property Name="onay" Type="Boolean" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="KullaniciGirisler">
+          <Key>
+            <PropertyRef Name="giris_id" />
+          </Key>
+          <Property Name="giris_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="girisTarih" Type="DateTime" Precision="3" />
+          <Property Name="kullanici_id" Type="Int32" />
+          <Property Name="girisKod" Type="Int32" />
+          <Property Name="GirisBasarisi1" Type="Boolean" />
+          <Property Name="GirisBasarisi2" Type="Boolean" />
+          <Property Name="kodgirisTarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Kullanicilar" Relationship="Self.FK__Kullanici__kulla__5070F446" FromRole="KullaniciGirisler" ToRole="Kullanicilar" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="kullanici_id" />
+          </Key>
+          <Property Name="kullanici_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kullaniciMail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="kullanici_sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AdminMesajlar" Relationship="Self.FK__AdminMesa__gonde__17036CC0" FromRole="Kullanicilar" ToRole="AdminMesajlar" />
+          <NavigationProperty Name="Haberler" Relationship="Self.FK_Haberler_Kullanicilar" FromRole="Kullanicilar" ToRole="Haberler" />
+          <NavigationProperty Name="KullaniciGirisler" Relationship="Self.FK__Kullanici__kulla__5070F446" FromRole="Kullanicilar" ToRole="KullaniciGirisler" />
+          <NavigationProperty Name="KullaniciMesajlar" Relationship="Self.FK__Kullanici__alici__1BC821DD" FromRole="Kullanicilar" ToRole="KullaniciMesajlar" />
+          <NavigationProperty Name="KullaniciMesajlar1" Relationship="Self.FK__Kullanici__gonde__1AD3FDA4" FromRole="Kullanicilar" ToRole="KullaniciMesajlar" />
+          <NavigationProperty Name="Resimler" Relationship="Self.FK_Resimler_Kullanicilar" FromRole="Kullanicilar" ToRole="Resimler" />
+          <NavigationProperty Name="Siirler" Relationship="Self.FK_Siirler_Kullanicilar" FromRole="Kullanicilar" ToRole="Siirler" />
+          <NavigationProperty Name="Tartismalar" Relationship="Self.FK_Tartismalar_Kullanicilar" FromRole="Kullanicilar" ToRole="Tartismalar" />
+          <NavigationProperty Name="Yazilar" Relationship="Self.FK_Yazilar_Kullanicilar" FromRole="Kullanicilar" ToRole="Yazilar" />
+        </EntityType>
+        <EntityType Name="KullaniciMesajlar">
+          <Key>
+            <PropertyRef Name="k_mesaj_id" />
+          </Key>
+          <Property Name="k_mesaj_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mesaj" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="tarih" Type="DateTime" Precision="0" />
+          <Property Name="gonderen_id" Type="Int32" />
+          <Property Name="alici_id" Type="Int32" />
+          <NavigationProperty Name="Kullanicilar" Relationship="Self.FK__Kullanici__alici__1BC821DD" FromRole="KullaniciMesajlar" ToRole="Kullanicilar" />
+          <NavigationProperty Name="Kullanicilar1" Relationship="Self.FK__Kullanici__gonde__1AD3FDA4" FromRole="KullaniciMesajlar" ToRole="Kullanicilar" />
+        </EntityType>
+        <EntityType Name="Resimler">
+          <Key>
+            <PropertyRef Name="resimID" />
+          </Key>
+          <Property Name="resimID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dosyaYolu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="baslik" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="aciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="paylasan" Type="Int32" />
+          <Property Name="tarih" Type="DateTime" Precision="0" />
+          <Property Name="onay" Type="Boolean" />
+          <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_Resimler_Kullanicilar" FromRole="Resimler" ToRole="Kullanicilar" />
+        </EntityType>
+        <EntityType Name="ResimYorumlar">
+          <Key>
+            <PropertyRef Name="ResimYorumID" />
+          </Key>
+          <Property Name="ResimYorumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="icerik" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="yorumcuID" Type="Int32" />
+          <Property Name="resimID" Type="Int32" />
+          <Property Name="onay" Type="Boolean" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Siirler">
+          <Key>
+            <PropertyRef Name="siirID" />
+          </Key>
+          <Property Name="siirID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="siirBaslik" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="icerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="yazar" Type="Int32" />
+          <Property Name="tarih" Type="DateTime" Precision="0" />
+          <Property Name="onay" Type="Boolean" />
+          <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_Siirler_Kullanicilar" FromRole="Siirler" ToRole="Kullanicilar" />
+        </EntityType>
+        <EntityType Name="SiirYorumlar">
+          <Key>
+            <PropertyRef Name="SiirYorumID" />
+          </Key>
+          <Property Name="SiirYorumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="icerik" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="yorumcuID" Type="Int32" />
+          <Property Name="siirID" Type="Int32" />
+          <Property Name="onay" Type="Boolean" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Tartismalar">
+          <Key>
+            <PropertyRef Name="TartismaID" />
+          </Key>
+          <Property Name="TartismaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Baslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="icerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tarih" Type="DateTime" Precision="0" />
+          <Property Name="onay" Type="Boolean" />
+          <Property Name="aktiflik" Type="Boolean" />
+          <Property Name="kullanici_id" Type="Int32" />
+          <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_Tartismalar_Kullanicilar" FromRole="Tartismalar" ToRole="Kullanicilar" />
+        </EntityType>
+        <EntityType Name="TartismaYorumlar">
+          <Key>
+            <PropertyRef Name="tartismaYorumID" />
+          </Key>
+          <Property Name="tartismaYorumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="yorum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="yorumcuID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="tartismaID" Type="Int32" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+          <Property Name="onay" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Yazilar">
+          <Key>
+            <PropertyRef Name="yazi_id" />
+          </Key>
+          <Property Name="yazi_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Baslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="İcerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="yazar_id" Type="Int32" />
+          <Property Name="onay" Type="Boolean" />
+          <Property Name="tarih" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_Yazilar_Kullanicilar" FromRole="Yazilar" ToRole="Kullanicilar" />
+        </EntityType>
+        <EntityType Name="YaziYorumlar">
+          <Key>
+            <PropertyRef Name="YaziYorumID" />
+          </Key>
+          <Property Name="YaziYorumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="icerik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="yorumcuID" Type="Int32" />
+          <Property Name="yaziID" Type="Int32" />
+          <Property Name="onay" Type="Boolean" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK__AdminMesa__gonde__17036CC0">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="AdminMesajlar" Type="Self.AdminMesajlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="AdminMesajlar">
+              <PropertyRef Name="gonderen_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Haberler_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="Haberler" Type="Self.Haberler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="Haberler">
+              <PropertyRef Name="paylasan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kullanici__kulla__5070F446">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="KullaniciGirisler" Type="Self.KullaniciGirisler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="KullaniciGirisler">
+              <PropertyRef Name="kullanici_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kullanici__alici__1BC821DD">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="KullaniciMesajlar" Type="Self.KullaniciMesajlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="KullaniciMesajlar">
+              <PropertyRef Name="alici_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kullanici__gonde__1AD3FDA4">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="KullaniciMesajlar" Type="Self.KullaniciMesajlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="KullaniciMesajlar">
+              <PropertyRef Name="gonderen_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resimler_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="Resimler" Type="Self.Resimler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="Resimler">
+              <PropertyRef Name="paylasan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Siirler_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="Siirler" Type="Self.Siirler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="Siirler">
+              <PropertyRef Name="yazar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tartismalar_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="Tartismalar" Type="Self.Tartismalar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="Tartismalar">
+              <PropertyRef Name="kullanici_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yazilar_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="Yazilar" Type="Self.Yazilar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="Yazilar">
+              <PropertyRef Name="yazar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admin" EntityType="Self.Admin" />
+          <EntitySet Name="AdminGirisler" EntityType="Self.AdminGirisler" />
+          <EntitySet Name="AdminMesajlar" EntityType="Self.AdminMesajlar" />
+          <EntitySet Name="Haberler" EntityType="Self.Haberler" />
+          <EntitySet Name="HaberYorumlar" EntityType="Self.HaberYorumlar" />
+          <EntitySet Name="KullaniciGirisler" EntityType="Self.KullaniciGirisler" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" />
+          <EntitySet Name="KullaniciMesajlar" EntityType="Self.KullaniciMesajlar" />
+          <EntitySet Name="Resimler" EntityType="Self.Resimler" />
+          <EntitySet Name="ResimYorumlar" EntityType="Self.ResimYorumlar" />
+          <EntitySet Name="Siirler" EntityType="Self.Siirler" />
+          <EntitySet Name="SiirYorumlar" EntityType="Self.SiirYorumlar" />
+          <EntitySet Name="Tartismalar" EntityType="Self.Tartismalar" />
+          <EntitySet Name="TartismaYorumlar" EntityType="Self.TartismaYorumlar" />
+          <EntitySet Name="Yazilar" EntityType="Self.Yazilar" />
+          <EntitySet Name="YaziYorumlar" EntityType="Self.YaziYorumlar" />
+          <AssociationSet Name="FK__AdminMesa__gonde__17036CC0" Association="Self.FK__AdminMesa__gonde__17036CC0">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="AdminMesajlar" EntitySet="AdminMesajlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Haberler_Kullanicilar" Association="Self.FK_Haberler_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="Haberler" EntitySet="Haberler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kullanici__kulla__5070F446" Association="Self.FK__Kullanici__kulla__5070F446">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="KullaniciGirisler" EntitySet="KullaniciGirisler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kullanici__alici__1BC821DD" Association="Self.FK__Kullanici__alici__1BC821DD">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="KullaniciMesajlar" EntitySet="KullaniciMesajlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kullanici__gonde__1AD3FDA4" Association="Self.FK__Kullanici__gonde__1AD3FDA4">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="KullaniciMesajlar" EntitySet="KullaniciMesajlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resimler_Kullanicilar" Association="Self.FK_Resimler_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="Resimler" EntitySet="Resimler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Siirler_Kullanicilar" Association="Self.FK_Siirler_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="Siirler" EntitySet="Siirler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tartismalar_Kullanicilar" Association="Self.FK_Tartismalar_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="Tartismalar" EntitySet="Tartismalar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yazilar_Kullanicilar" Association="Self.FK_Yazilar_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="Yazilar" EntitySet="Yazilar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="blogAdminli_01_05_24ModelStoreContainer" CdmEntityContainer="dbContext">
+          <EntitySetMapping Name="Admin">
+            <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdminGirisler">
+            <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.AdminGirisler">
+              <MappingFragment StoreEntitySet="AdminGirisler">
+                <ScalarProperty Name="giris_id" ColumnName="giris_id" />
+                <ScalarProperty Name="girisTarih" ColumnName="girisTarih" />
+                <ScalarProperty Name="girisKod" ColumnName="girisKod" />
+                <ScalarProperty Name="girisBasarisi1" ColumnName="girisBasarisi1" />
+                <ScalarProperty Name="girisBasarisi2" ColumnName="girisBasarisi2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdminMesajlar">
+            <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.AdminMesajlar">
+              <MappingFragment StoreEntitySet="AdminMesajlar">
+                <ScalarProperty Name="mesaj_id" ColumnName="mesaj_id" />
+                <ScalarProperty Name="mesaj" ColumnName="mesaj" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="gonderen_id" ColumnName="gonderen_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Haberler">
+            <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.Haberler">
+              <MappingFragment StoreEntitySet="Haberler">
+                <ScalarProperty Name="HaberID" ColumnName="HaberID" />
+                <ScalarProperty Name="Baslik" ColumnName="Baslik" />
+                <ScalarProperty Name="icerik" ColumnName="icerik" />
+                <ScalarProperty Name="paylasan" ColumnName="paylasan" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="onay" ColumnName="onay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HaberYorumlar">
+            <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.HaberYorumlar">
+              <MappingFragment StoreEntitySet="HaberYorumlar">
+                <ScalarProperty Name="HaberYorumID" ColumnName="HaberYorumID" />
+                <ScalarProperty Name="icerik" ColumnName="icerik" />
+                <ScalarProperty Name="yorumcuID" ColumnName="yorumcuID" />
+                <ScalarProperty Name="haberID" ColumnName="haberID" />
+                <ScalarProperty Name="onay" ColumnName="onay" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KullaniciGirisler">
+            <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.KullaniciGirisler">
+              <MappingFragment StoreEntitySet="KullaniciGirisler">
+                <ScalarProperty Name="giris_id" ColumnName="giris_id" />
+                <ScalarProperty Name="girisTarih" ColumnName="girisTarih" />
+                <ScalarProperty Name="kullanici_id" ColumnName="kullanici_id" />
+                <ScalarProperty Name="girisKod" ColumnName="girisKod" />
+                <ScalarProperty Name="GirisBasarisi1" ColumnName="GirisBasarisi1" />
+                <ScalarProperty Name="GirisBasarisi2" ColumnName="GirisBasarisi2" />
+                <ScalarProperty Name="kodgirisTarih" ColumnName="kodgirisTarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanicilar">
+            <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.Kullanicilar">
+              <MappingFragment StoreEntitySet="Kullanicilar">
+                <ScalarProperty Name="kullanici_id" ColumnName="kullanici_id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="kullaniciMail" ColumnName="kullaniciMail" />
+                <ScalarProperty Name="kullanici_sifre" ColumnName="kullanici_sifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KullaniciMesajlar">
+            <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.KullaniciMesajlar">
+              <MappingFragment StoreEntitySet="KullaniciMesajlar">
+                <ScalarProperty Name="k_mesaj_id" ColumnName="k_mesaj_id" />
+                <ScalarProperty Name="mesaj" ColumnName="mesaj" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="gonderen_id" ColumnName="gonderen_id" />
+                <ScalarProperty Name="alici_id" ColumnName="alici_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Resimler">
+            <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.Resimler">
+              <MappingFragment StoreEntitySet="Resimler">
+                <ScalarProperty Name="resimID" ColumnName="resimID" />
+                <ScalarProperty Name="dosyaYolu" ColumnName="dosyaYolu" />
+                <ScalarProperty Name="baslik" ColumnName="baslik" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+                <ScalarProperty Name="paylasan" ColumnName="paylasan" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="onay" ColumnName="onay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResimYorumlar">
+            <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.ResimYorumlar">
+              <MappingFragment StoreEntitySet="ResimYorumlar">
+                <ScalarProperty Name="ResimYorumID" ColumnName="ResimYorumID" />
+                <ScalarProperty Name="icerik" ColumnName="icerik" />
+                <ScalarProperty Name="yorumcuID" ColumnName="yorumcuID" />
+                <ScalarProperty Name="resimID" ColumnName="resimID" />
+                <ScalarProperty Name="onay" ColumnName="onay" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Siirler">
+            <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.Siirler">
+              <MappingFragment StoreEntitySet="Siirler">
+                <ScalarProperty Name="siirID" ColumnName="siirID" />
+                <ScalarProperty Name="siirBaslik" ColumnName="siirBaslik" />
+                <ScalarProperty Name="icerik" ColumnName="icerik" />
+                <ScalarProperty Name="yazar" ColumnName="yazar" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="onay" ColumnName="onay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiirYorumlar">
+            <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.SiirYorumlar">
+              <MappingFragment StoreEntitySet="SiirYorumlar">
+                <ScalarProperty Name="SiirYorumID" ColumnName="SiirYorumID" />
+                <ScalarProperty Name="icerik" ColumnName="icerik" />
+                <ScalarProperty Name="yorumcuID" ColumnName="yorumcuID" />
+                <ScalarProperty Name="siirID" ColumnName="siirID" />
+                <ScalarProperty Name="onay" ColumnName="onay" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tartismalar">
+            <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.Tartismalar">
+              <MappingFragment StoreEntitySet="Tartismalar">
+                <ScalarProperty Name="TartismaID" ColumnName="TartismaID" />
+                <ScalarProperty Name="Baslik" ColumnName="Baslik" />
+                <ScalarProperty Name="icerik" ColumnName="icerik" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="onay" ColumnName="onay" />
+                <ScalarProperty Name="aktiflik" ColumnName="aktiflik" />
+                <ScalarProperty Name="kullanici_id" ColumnName="kullanici_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TartismaYorumlar">
+            <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.TartismaYorumlar">
+              <MappingFragment StoreEntitySet="TartismaYorumlar">
+                <ScalarProperty Name="tartismaYorumID" ColumnName="tartismaYorumID" />
+                <ScalarProperty Name="yorum" ColumnName="yorum" />
+                <ScalarProperty Name="yorumcuID" ColumnName="yorumcuID" />
+                <ScalarProperty Name="tartismaID" ColumnName="tartismaID" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="onay" ColumnName="onay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yazilar">
+            <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.Yazilar">
+              <MappingFragment StoreEntitySet="Yazilar">
+                <ScalarProperty Name="yazi_id" ColumnName="yazi_id" />
+                <ScalarProperty Name="Baslik" ColumnName="Baslik" />
+                <ScalarProperty Name="İcerik" ColumnName="İcerik" />
+                <ScalarProperty Name="yazar_id" ColumnName="yazar_id" />
+                <ScalarProperty Name="onay" ColumnName="onay" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YaziYorumlar">
+            <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.YaziYorumlar">
+              <MappingFragment StoreEntitySet="YaziYorumlar">
+                <ScalarProperty Name="YaziYorumID" ColumnName="YaziYorumID" />
+                <ScalarProperty Name="icerik" ColumnName="icerik" />
+                <ScalarProperty Name="yorumcuID" ColumnName="yorumcuID" />
+                <ScalarProperty Name="yaziID" ColumnName="yaziID" />
+                <ScalarProperty Name="onay" ColumnName="onay" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

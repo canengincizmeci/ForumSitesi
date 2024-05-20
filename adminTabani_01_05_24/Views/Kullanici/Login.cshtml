@@ -14,6 +14,7 @@
     <body>
         <div style="margin-left:400px;margin-top:200px; margin-right:500px;">
             <form action="/Kullanici/Login" method="post">
+                @Html.AntiForgeryToken()
                 <div class="form-group">
                     <label for="adi">Kullanıcı Adı:</label>
                     <input type="text" name="adi" class="form-control" placeholder="Kullanıcı Adınızı girin">

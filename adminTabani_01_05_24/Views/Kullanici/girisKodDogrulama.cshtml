@@ -49,6 +49,7 @@
         };
     </script>
     <div style="margin-left:400px;margin-top:200px; margin-right:500px;">
+        @Html.AntiForgeryToken()
         <form action="/Kullanici/girisKodDogrulama" method="post">
             <div class="form-group">
                 <input type="hidden" name="kod1"  value="@ViewBag.deger">

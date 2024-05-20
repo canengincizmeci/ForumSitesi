@@ -12,12 +12,13 @@ namespace adminTabani_01_05_24
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class SiirYorumlar
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int SiirYorumID { get; set; }
+        public string icerik { get; set; }
+        public Nullable<int> yorumcuID { get; set; }
+        public Nullable<int> siirID { get; set; }
+        public Nullable<bool> onay { get; set; }
+        public Nullable<System.DateTime> tarih { get; set; }
     }
 }

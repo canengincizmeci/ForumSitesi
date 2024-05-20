@@ -12,15 +12,13 @@ namespace adminTabani_01_05_24
     using System;
     using System.Collections.Generic;
     
-    public partial class Yazilar
+    public partial class HaberYorumlar
     {
-        public int yazi_id { get; set; }
-        public string Baslik { get; set; }
-        public string İcerik { get; set; }
-        public Nullable<int> yazar_id { get; set; }
+        public int HaberYorumID { get; set; }
+        public string icerik { get; set; }
+        public Nullable<int> yorumcuID { get; set; }
+        public Nullable<int> haberID { get; set; }
         public Nullable<bool> onay { get; set; }
         public Nullable<System.DateTime> tarih { get; set; }
-    
-        public virtual Kullanicilar Kullanicilar { get; set; }
     }
 }

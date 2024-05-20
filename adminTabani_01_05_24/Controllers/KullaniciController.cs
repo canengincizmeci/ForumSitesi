@@ -28,6 +28,7 @@ namespace adminTabani_01_05_24.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Ekle(string ad, string mail)
         {
             blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
@@ -131,6 +132,7 @@ namespace adminTabani_01_05_24.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult IlkSifreBelirleme(string sifre1, string sifre2)
         {
             int id = (int)Session["kullanici_id"];
@@ -146,8 +148,9 @@ namespace adminTabani_01_05_24.Controllers
         {
             return View();
         }
-        [HttpPost]
         //public ActionResult Login(string adi, string sifre)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(FormCollection form)
         {
             string adi = form["adi"].ToString();
@@ -200,6 +203,7 @@ namespace adminTabani_01_05_24.Controllers
         }
         // public ActionResult girisKodDogrulama(int k_id, int kod1, int kod2)
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult girisKodDogrulama(FormCollection form)
         {
             //int deger = Convert.ToInt32(form["k_id"]);
@@ -315,6 +319,7 @@ namespace adminTabani_01_05_24.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult SifremiUnuttum(string mail)
         {
             blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();
@@ -360,6 +365,7 @@ namespace adminTabani_01_05_24.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult MailKodDogrulama(int id, int kod1, int kod2)
         {
             blogAdminli_01_05_24Entities model = new blogAdminli_01_05_24Entities();

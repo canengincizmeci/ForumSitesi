@@ -15,6 +15,7 @@
 
 
     <div class="container mt-5">
+        @Html.AntiForgeryToken()
         <form action="/Kullanici/SifremiUnuttum" method="post">
             <div class="mb-3">
                 <label>Email Adresi</label>

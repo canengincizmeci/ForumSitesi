@@ -17,16 +17,15 @@ namespace adminTabani_01_05_24
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Kullanicilar()
         {
-            this.Yazilar = new HashSet<Yazilar>();
-            this.Yorumlar = new HashSet<Yorumlar>();
-            this.KullaniciGirisler = new HashSet<KullaniciGirisler>();
-            this.Haberler = new HashSet<Haberler>();
-            this.Tartismalar = new HashSet<Tartismalar>();
-            this.Resimler = new HashSet<Resimler>();
-            this.Siirler = new HashSet<Siirler>();
             this.AdminMesajlar = new HashSet<AdminMesajlar>();
+            this.Haberler = new HashSet<Haberler>();
+            this.KullaniciGirisler = new HashSet<KullaniciGirisler>();
             this.KullaniciMesajlar = new HashSet<KullaniciMesajlar>();
             this.KullaniciMesajlar1 = new HashSet<KullaniciMesajlar>();
+            this.Resimler = new HashSet<Resimler>();
+            this.Siirler = new HashSet<Siirler>();
+            this.Tartismalar = new HashSet<Tartismalar>();
+            this.Yazilar = new HashSet<Yazilar>();
         }
     
         public int kullanici_id { get; set; }
@@ -35,24 +34,22 @@ namespace adminTabani_01_05_24
         public string kullanici_sifre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Yazilar> Yazilar { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Yorumlar> Yorumlar { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KullaniciGirisler> KullaniciGirisler { get; set; }
+        public virtual ICollection<AdminMesajlar> AdminMesajlar { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Haberler> Haberler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tartismalar> Tartismalar { get; set; }
+        public virtual ICollection<KullaniciGirisler> KullaniciGirisler { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KullaniciMesajlar> KullaniciMesajlar { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KullaniciMesajlar> KullaniciMesajlar1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Resimler> Resimler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Siirler> Siirler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AdminMesajlar> AdminMesajlar { get; set; }
+        public virtual ICollection<Tartismalar> Tartismalar { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KullaniciMesajlar> KullaniciMesajlar { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KullaniciMesajlar> KullaniciMesajlar1 { get; set; }
+        public virtual ICollection<Yazilar> Yazilar { get; set; }
     }
 }
