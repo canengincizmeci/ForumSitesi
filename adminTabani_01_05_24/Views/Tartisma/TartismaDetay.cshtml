@@ -31,10 +31,9 @@
     @foreach (var yorum in Model.tartisma_yorumlari)
     {
         <div class="container">
-            <p><strong><i>@yorum.yorumcu_ad :</i></strong> @yorum._yorum</p>
-            <p class="text-center">@yorum._tarih</p>
+            <p><strong><i>@yorum.yorumcu_ad</i></strong>: @yorum._yorum</p>
+            <p>@yorum._tarih</p>
         </div>
         <hr />
     }
-
 </div>

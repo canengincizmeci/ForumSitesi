@@ -26,7 +26,7 @@ namespace adminTabani_01_05_24.Controllers
             return View(veriler);
         }
         [HttpGet]
-        public ActionResult yaziDetay(int yaziID)
+        public ActionResult yaziDetay(int? yaziID)
         {
             dbContext model = new dbContext();
             YaziDetayPage yaziDetay = new YaziDetayPage();
@@ -51,7 +51,23 @@ namespace adminTabani_01_05_24.Controllers
                 yorumcuAd = p.Kullanicilar.Ad
             }).ToList();
             return View(yaziDetay);
-
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult YorumYap(int _yaziID, string _yorum)
+        {
+            int id = (int)Session["kullanici_id"];
+            dbContext model = new dbContext();
+            model.YaziYorumlar.Add(new YaziYorumlar
+            {
+                yorumcuID = id,
+                tarih = DateTime.Now,
+                icerik = _yorum,
+                yaziID = _yaziID,
+                onay = false
+            });
+            model.SaveChanges();
+            return RedirectToAction("yaziDetay", new { id = _yaziID });
         }
     }
 }

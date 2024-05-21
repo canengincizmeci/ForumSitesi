@@ -311,6 +311,7 @@
     <Content Include="_Model.edmx.diagram">
       <DependentUpon>_Model.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Yazilar\yaziDetay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

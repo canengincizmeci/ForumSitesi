@@ -1,0 +1,39 @@
+﻿@model adminTabani_01_05_24.Models.YaziDetayPage
+@{
+    ViewBag.Title = "yaziDetay";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<div class="text-center">
+    <h2>@Model.yazi.Baslik</h2>
+    <p>@Model.yazi.İcerik</p>
+    <p>@Model.yazi.yazar_ad</p>
+    <p>@Model.yazi.tarih</p>
+</div>
+
+<div class="container">
+    <form action="/Yazilar/YorumYap" method="post">
+        @Html.AntiForgeryToken()
+        <div class="mb-3">
+            <label class="form-label" for="yorum">Yorum Yap:</label>
+            <textarea class="form-control" rows="5" id="yorum" name="_yorum"></textarea>
+        </div>
+        <input type="hidden"  name="_yaziID" value="@Model.yazi.yazi_id" />
+        <button class="btn btn-primary" type="submit">Yorum Yap</button>
+    </form>
+</div>
+<br />
+<div style="margin-bottom:5px"></div>
+<div class="text-center">
+    <h3>Yorumlar</h3>
+</div>
+<hr />
+<div class="container">
+    @foreach (var yazi in Model.yaziyorumlari)
+    {
+        <div class="container">
+            <p><strong><i>@yazi.yorumcuAd</i></strong>: @yazi._icerik</p>
+            <p>@yazi._tarih</p>
+        </div>
+        <hr />
+    }
+</div>
