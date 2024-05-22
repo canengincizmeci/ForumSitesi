@@ -42,5 +42,9 @@ namespace adminTabani_01_05_24
         public virtual DbSet<Yazilar> Yazilar { get; set; }
         public virtual DbSet<YaziYorumlar> YaziYorumlar { get; set; }
         public virtual DbSet<YaziSikayetler> YaziSikayetler { get; set; }
+        public virtual DbSet<HaberSikayetler> HaberSikayetler { get; set; }
+        public virtual DbSet<ResimSikayetler> ResimSikayetler { get; set; }
+        public virtual DbSet<SiirSikayetler> SiirSikayetler { get; set; }
+        public virtual DbSet<TartismaSikayetler> TartismaSikayetler { get; set; }
     }
 }

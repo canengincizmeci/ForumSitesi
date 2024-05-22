@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Channels;
 using System.Web;
 using System.Web.Mvc;
 
@@ -26,7 +27,7 @@ namespace adminTabani_01_05_24.Controllers
             return View(veriler);
         }
         [HttpGet]
-        public ActionResult yaziDetay(int? yaziID)
+        public ActionResult yaziDetay(int yaziID)
         {
             dbContext model = new dbContext();
             YaziDetayPage yaziDetay = new YaziDetayPage();
@@ -72,17 +73,53 @@ namespace adminTabani_01_05_24.Controllers
         [HttpGet]
         public ActionResult Bildir(int _yaziID)
         {
+            if (_yaziID != null)
+            {
+                ViewBag.YaziID = _yaziID;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("LostedUser");
+            }
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Bildir(int _yaziID, string sebep)
+        {
+            int kullaniciID = (int)Session["kullanici_id"];
             dbContext model = new dbContext();
-            ViewBag.YaziID=_yaziID;
+            model.YaziSikayetler.Add(new YaziSikayetler
+            {
+                sebep = sebep,
+                tarih = DateTime.Now,
+                yazi_id = _yaziID,
+                sikayetci_id = kullaniciID
+            });
+            model.SaveChanges();
+            return RedirectToAction("yazi_sikayetTamam", new { yaziID = _yaziID });
+        }
+        /// <summary>
+        /// Bu metot Yazi hakkındaki şikayetin başarıyla tamamlandığını gösterir
+        /// </summary>
+        /// <param name="yaziID"></param>
+        /// <returns></returns>
+        public ActionResult yazi_sikayetTamam(int yaziID)
+        {
+            int kullanici_id = (int)Session["kullanici_id"];
+            dbContext model = new dbContext();
+            var _baslik = model.Yazilar.FirstOrDefault(p => p.yazi_id == yaziID).Baslik;
+            string kisiAd = model.Kullanicilar.Find(kullanici_id).Ad;
+            ViewBag.kisi_ad = kisiAd;
+            ViewBag.kisi_ad = kisiAd;
+            ViewBag.Baslik = _baslik;
+            ViewBag.YaziID = yaziID;
             return View();
         }
-        //[HttpPost]
-        //public ActionResult Bildir(int _yaziID,string sebep)
-        //{
-
-
-
-
-        //}
+        public ActionResult LostedUser()
+        {
+            Session.Remove("kullanici_id");
+            return View();
+        }
     }
 }

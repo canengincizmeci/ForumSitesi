@@ -152,6 +152,9 @@
     <Compile Include="Haberler.cs">
       <DependentUpon>_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="HaberSikayetler.cs">
+      <DependentUpon>_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="HaberYorumlar.cs">
       <DependentUpon>_Model.tt</DependentUpon>
     </Compile>
@@ -167,24 +170,32 @@
     <Compile Include="Models\AdminGiris.cs" />
     <Compile Include="Models\AdminMesaj.cs" />
     <Compile Include="Models\Haber.cs" />
+    <Compile Include="Models\HaberSikayetleri.cs" />
     <Compile Include="Models\HaberYorumlari.cs" />
     <Compile Include="Models\Kullanici.cs" />
     <Compile Include="Models\KullaniciGiris.cs" />
     <Compile Include="Models\KullaniciHomeViewModel.cs" />
     <Compile Include="Models\KullaniciMesaj.cs" />
     <Compile Include="Models\Resim.cs" />
+    <Compile Include="Models\ResimSikayetleri.cs" />
     <Compile Include="Models\ResimYorumlari.cs" />
     <Compile Include="Models\Siir.cs" />
+    <Compile Include="Models\SiirSikayetleri.cs" />
     <Compile Include="Models\SiirYorumlari.cs" />
     <Compile Include="Models\Tartisma.cs" />
     <Compile Include="Models\TartismaDetayPage.cs" />
+    <Compile Include="Models\TartismaSikayetleri.cs" />
     <Compile Include="Models\TartismaYorumlari.cs" />
     <Compile Include="Models\Yazi.cs" />
     <Compile Include="Models\YaziDetayPage.cs" />
+    <Compile Include="Models\YaziSikayetleri.cs" />
     <Compile Include="Models\YaziYorumlari.cs" />
     <Compile Include="Models\_Admin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resimler.cs">
+      <DependentUpon>_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResimSikayetler.cs">
       <DependentUpon>_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ResimYorumlar.cs">
@@ -193,10 +204,16 @@
     <Compile Include="Siirler.cs">
       <DependentUpon>_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="SiirSikayetler.cs">
+      <DependentUpon>_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="SiirYorumlar.cs">
       <DependentUpon>_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Tartismalar.cs">
+      <DependentUpon>_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TartismaSikayetler.cs">
       <DependentUpon>_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="TartismaYorumlar.cs">
@@ -316,6 +333,9 @@
     </Content>
     <Content Include="Views\Yazilar\yaziDetay.cshtml" />
     <Content Include="Views\Kullanici\CikisYap.cshtml" />
+    <Content Include="Views\Yazilar\Bildir.cshtml" />
+    <Content Include="Views\Yazilar\yazi_sikayetTamam.cshtml" />
+    <Content Include="Views\Yazilar\LostedUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

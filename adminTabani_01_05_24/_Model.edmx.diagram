@@ -43,6 +43,18 @@
         <EntityTypeShape EntityType="blogAdminli_01_05_24Model.YaziSikayetler" Width="1.5" PointX="8.25" PointY="20.875" />
         <AssociationConnector Association="blogAdminli_01_05_24Model.FK__YaziSikay__sikay__625A9A57" />
         <AssociationConnector Association="blogAdminli_01_05_24Model.FK__YaziSikay__yazi___634EBE90" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.HaberSikayetler" Width="1.5" PointX="8.25" PointY="10.25" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.ResimSikayetler" Width="1.5" PointX="11.25" PointY="14" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.SiirSikayetler" Width="1.5" PointX="8.25" PointY="13.5" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.TartismaSikayetler" Width="1.5" PointX="11.25" PointY="17.25" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK__HaberSika__haber__6CD828CA" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK__HaberSika__sikay__6BE40491" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK__ResimSika__sikay__6FB49575" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK__SiirSikay__sikay__73852659" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_TartismaSikayetler_Kullanicilar" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK__ResimSika__resim__70A8B9AE" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK__SiirSikay__siir___74794A92" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_TartismaSikayetler_Tartismalar" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

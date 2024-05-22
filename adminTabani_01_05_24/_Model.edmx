@@ -43,6 +43,16 @@
           <Property Name="tarih" Type="date" />
           <Property Name="onay" Type="bit" />
         </EntityType>
+        <EntityType Name="HaberSikayetler">
+          <Key>
+            <PropertyRef Name="sikayet_id" />
+          </Key>
+          <Property Name="sikayet_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sebep" Type="nvarchar" MaxLength="200" />
+          <Property Name="tarih" Type="datetime" />
+          <Property Name="sikayetci_id" Type="int" />
+          <Property Name="haber_id" Type="int" />
+        </EntityType>
         <EntityType Name="HaberYorumlar">
           <Key>
             <PropertyRef Name="HaberYorumID" />
@@ -97,6 +107,16 @@
           <Property Name="tarih" Type="date" />
           <Property Name="onay" Type="bit" />
         </EntityType>
+        <EntityType Name="ResimSikayetler">
+          <Key>
+            <PropertyRef Name="sikayet_id" />
+          </Key>
+          <Property Name="sikayet_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sebep" Type="nvarchar" MaxLength="200" />
+          <Property Name="tarih" Type="datetime" />
+          <Property Name="sikayetci_id" Type="int" />
+          <Property Name="resim_id" Type="int" />
+        </EntityType>
         <EntityType Name="ResimYorumlar">
           <Key>
             <PropertyRef Name="ResimYorumID" />
@@ -118,6 +138,16 @@
           <Property Name="yazar" Type="int" />
           <Property Name="tarih" Type="date" />
           <Property Name="onay" Type="bit" />
+        </EntityType>
+        <EntityType Name="SiirSikayetler">
+          <Key>
+            <PropertyRef Name="sikayet_id" />
+          </Key>
+          <Property Name="sikayet_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sebep" Type="nvarchar" MaxLength="200" />
+          <Property Name="tarih" Type="datetime" />
+          <Property Name="sikayetci_id" Type="int" />
+          <Property Name="siir_id" Type="int" />
         </EntityType>
         <EntityType Name="SiirYorumlar">
           <Key>
@@ -141,6 +171,16 @@
           <Property Name="onay" Type="bit" />
           <Property Name="aktiflik" Type="bit" />
           <Property Name="kullanici_id" Type="int" />
+        </EntityType>
+        <EntityType Name="TartismaSikayetler">
+          <Key>
+            <PropertyRef Name="sikayet_id" />
+          </Key>
+          <Property Name="sikayet_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sebep" Type="nvarchar" MaxLength="200" />
+          <Property Name="tarih" Type="datetime" />
+          <Property Name="sikayetci_id" Type="int" />
+          <Property Name="tartisma_id" Type="int" />
         </EntityType>
         <EntityType Name="TartismaYorumlar">
           <Key>
@@ -197,6 +237,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__HaberSika__haber__6CD828CA">
+          <End Role="Haberler" Type="Self.Haberler" Multiplicity="0..1" />
+          <End Role="HaberSikayetler" Type="Self.HaberSikayetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Haberler">
+              <PropertyRef Name="HaberID" />
+            </Principal>
+            <Dependent Role="HaberSikayetler">
+              <PropertyRef Name="haber_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HaberSika__sikay__6BE40491">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="HaberSikayetler" Type="Self.HaberSikayetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="HaberSikayetler">
+              <PropertyRef Name="sikayetci_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Kullanici__alici__1BC821DD">
           <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
           <End Role="KullaniciMesajlar" Type="Self.KullaniciMesajlar" Multiplicity="*" />
@@ -230,6 +294,54 @@
             </Principal>
             <Dependent Role="KullaniciGirisler">
               <PropertyRef Name="kullanici_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ResimSika__resim__70A8B9AE">
+          <End Role="Resimler" Type="Self.Resimler" Multiplicity="0..1" />
+          <End Role="ResimSikayetler" Type="Self.ResimSikayetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resimler">
+              <PropertyRef Name="resimID" />
+            </Principal>
+            <Dependent Role="ResimSikayetler">
+              <PropertyRef Name="resim_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ResimSika__sikay__6FB49575">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="ResimSikayetler" Type="Self.ResimSikayetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="ResimSikayetler">
+              <PropertyRef Name="sikayetci_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SiirSikay__siir___74794A92">
+          <End Role="Siirler" Type="Self.Siirler" Multiplicity="0..1" />
+          <End Role="SiirSikayetler" Type="Self.SiirSikayetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Siirler">
+              <PropertyRef Name="siirID" />
+            </Principal>
+            <Dependent Role="SiirSikayetler">
+              <PropertyRef Name="siir_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SiirSikay__sikay__73852659">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="SiirSikayetler" Type="Self.SiirSikayetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="SiirSikayetler">
+              <PropertyRef Name="sikayetci_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -377,6 +489,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TartismaSikayetler_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="TartismaSikayetler" Type="Self.TartismaSikayetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="TartismaSikayetler">
+              <PropertyRef Name="sikayetci_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TartismaSikayetler_Tartismalar">
+          <End Role="Tartismalar" Type="Self.Tartismalar" Multiplicity="0..1" />
+          <End Role="TartismaSikayetler" Type="Self.TartismaSikayetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tartismalar">
+              <PropertyRef Name="TartismaID" />
+            </Principal>
+            <Dependent Role="TartismaSikayetler">
+              <PropertyRef Name="tartisma_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TartismaYorumlar_Kullanicilar">
           <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
           <End Role="TartismaYorumlar" Type="Self.TartismaYorumlar" Multiplicity="*" />
@@ -442,15 +578,19 @@
           <EntitySet Name="AdminGirisler" EntityType="Self.AdminGirisler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdminMesajlar" EntityType="Self.AdminMesajlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Haberler" EntityType="Self.Haberler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HaberSikayetler" EntityType="Self.HaberSikayetler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HaberYorumlar" EntityType="Self.HaberYorumlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KullaniciGirisler" EntityType="Self.KullaniciGirisler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KullaniciMesajlar" EntityType="Self.KullaniciMesajlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Resimler" EntityType="Self.Resimler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResimSikayetler" EntityType="Self.ResimSikayetler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ResimYorumlar" EntityType="Self.ResimYorumlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Siirler" EntityType="Self.Siirler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SiirSikayetler" EntityType="Self.SiirSikayetler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SiirYorumlar" EntityType="Self.SiirYorumlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tartismalar" EntityType="Self.Tartismalar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TartismaSikayetler" EntityType="Self.TartismaSikayetler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TartismaYorumlar" EntityType="Self.TartismaYorumlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Yazilar" EntityType="Self.Yazilar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="YaziSikayetler" EntityType="Self.YaziSikayetler" Schema="dbo" store:Type="Tables" />
@@ -458,6 +598,14 @@
           <AssociationSet Name="FK__AdminMesa__gonde__17036CC0" Association="Self.FK__AdminMesa__gonde__17036CC0">
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
             <End Role="AdminMesajlar" EntitySet="AdminMesajlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HaberSika__haber__6CD828CA" Association="Self.FK__HaberSika__haber__6CD828CA">
+            <End Role="Haberler" EntitySet="Haberler" />
+            <End Role="HaberSikayetler" EntitySet="HaberSikayetler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HaberSika__sikay__6BE40491" Association="Self.FK__HaberSika__sikay__6BE40491">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="HaberSikayetler" EntitySet="HaberSikayetler" />
           </AssociationSet>
           <AssociationSet Name="FK__Kullanici__alici__1BC821DD" Association="Self.FK__Kullanici__alici__1BC821DD">
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
@@ -470,6 +618,22 @@
           <AssociationSet Name="FK__Kullanici__kulla__5070F446" Association="Self.FK__Kullanici__kulla__5070F446">
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
             <End Role="KullaniciGirisler" EntitySet="KullaniciGirisler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ResimSika__resim__70A8B9AE" Association="Self.FK__ResimSika__resim__70A8B9AE">
+            <End Role="Resimler" EntitySet="Resimler" />
+            <End Role="ResimSikayetler" EntitySet="ResimSikayetler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ResimSika__sikay__6FB49575" Association="Self.FK__ResimSika__sikay__6FB49575">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="ResimSikayetler" EntitySet="ResimSikayetler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SiirSikay__siir___74794A92" Association="Self.FK__SiirSikay__siir___74794A92">
+            <End Role="Siirler" EntitySet="Siirler" />
+            <End Role="SiirSikayetler" EntitySet="SiirSikayetler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SiirSikay__sikay__73852659" Association="Self.FK__SiirSikay__sikay__73852659">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="SiirSikayetler" EntitySet="SiirSikayetler" />
           </AssociationSet>
           <AssociationSet Name="FK__YaziSikay__sikay__625A9A57" Association="Self.FK__YaziSikay__sikay__625A9A57">
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
@@ -518,6 +682,14 @@
           <AssociationSet Name="FK_Tartismalar_Kullanicilar" Association="Self.FK_Tartismalar_Kullanicilar">
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
             <End Role="Tartismalar" EntitySet="Tartismalar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TartismaSikayetler_Kullanicilar" Association="Self.FK_TartismaSikayetler_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="TartismaSikayetler" EntitySet="TartismaSikayetler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TartismaSikayetler_Tartismalar" Association="Self.FK_TartismaSikayetler_Tartismalar">
+            <End Role="Tartismalar" EntitySet="Tartismalar" />
+            <End Role="TartismaSikayetler" EntitySet="TartismaSikayetler" />
           </AssociationSet>
           <AssociationSet Name="FK_TartismaYorumlar_Kullanicilar" Association="Self.FK_TartismaYorumlar_Kullanicilar">
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
@@ -584,6 +756,7 @@
           <Property Name="onay" Type="Boolean" />
           <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_Haberler_Kullanicilar" FromRole="Haberler" ToRole="Kullanicilar" />
           <NavigationProperty Name="HaberYorumlar" Relationship="Self.FK_HaberYorumlar_Haberler" FromRole="Haberler" ToRole="HaberYorumlar" />
+          <NavigationProperty Name="HaberSikayetler" Relationship="blogAdminli_01_05_24Model.FK__HaberSika__haber__6CD828CA" FromRole="Haberler" ToRole="HaberSikayetler" />
         </EntityType>
         <EntityType Name="HaberYorumlar">
           <Key>
@@ -634,6 +807,10 @@
           <NavigationProperty Name="Yazilar" Relationship="Self.FK_Yazilar_Kullanicilar" FromRole="Kullanicilar" ToRole="Yazilar" />
           <NavigationProperty Name="YaziYorumlar" Relationship="Self.FK_YaziYorumlar_Kullanicilar" FromRole="Kullanicilar" ToRole="YaziYorumlar" />
           <NavigationProperty Name="YaziSikayetler" Relationship="blogAdminli_01_05_24Model.FK__YaziSikay__sikay__625A9A57" FromRole="Kullanicilar" ToRole="YaziSikayetler" />
+          <NavigationProperty Name="HaberSikayetler" Relationship="blogAdminli_01_05_24Model.FK__HaberSika__sikay__6BE40491" FromRole="Kullanicilar" ToRole="HaberSikayetler" />
+          <NavigationProperty Name="ResimSikayetler" Relationship="blogAdminli_01_05_24Model.FK__ResimSika__sikay__6FB49575" FromRole="Kullanicilar" ToRole="ResimSikayetler" />
+          <NavigationProperty Name="SiirSikayetler" Relationship="blogAdminli_01_05_24Model.FK__SiirSikay__sikay__73852659" FromRole="Kullanicilar" ToRole="SiirSikayetler" />
+          <NavigationProperty Name="TartismaSikayetler" Relationship="blogAdminli_01_05_24Model.FK_TartismaSikayetler_Kullanicilar" FromRole="Kullanicilar" ToRole="TartismaSikayetler" />
         </EntityType>
         <EntityType Name="KullaniciMesajlar">
           <Key>
@@ -660,6 +837,7 @@
           <Property Name="onay" Type="Boolean" />
           <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_Resimler_Kullanicilar" FromRole="Resimler" ToRole="Kullanicilar" />
           <NavigationProperty Name="ResimYorumlar" Relationship="Self.FK_ResimYorumlar_Resimler" FromRole="Resimler" ToRole="ResimYorumlar" />
+          <NavigationProperty Name="ResimSikayetler" Relationship="blogAdminli_01_05_24Model.FK__ResimSika__resim__70A8B9AE" FromRole="Resimler" ToRole="ResimSikayetler" />
         </EntityType>
         <EntityType Name="ResimYorumlar">
           <Key>
@@ -686,6 +864,7 @@
           <Property Name="onay" Type="Boolean" />
           <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_Siirler_Kullanicilar" FromRole="Siirler" ToRole="Kullanicilar" />
           <NavigationProperty Name="SiirYorumlar" Relationship="Self.FK_SiirYorumlar_Siirler" FromRole="Siirler" ToRole="SiirYorumlar" />
+          <NavigationProperty Name="SiirSikayetler" Relationship="blogAdminli_01_05_24Model.FK__SiirSikay__siir___74794A92" FromRole="Siirler" ToRole="SiirSikayetler" />
         </EntityType>
         <EntityType Name="SiirYorumlar">
           <Key>
@@ -713,6 +892,7 @@
           <Property Name="kullanici_id" Type="Int32" />
           <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_Tartismalar_Kullanicilar" FromRole="Tartismalar" ToRole="Kullanicilar" />
           <NavigationProperty Name="TartismaYorumlar" Relationship="Self.FK_TartismaYorumlar_Tartismalar" FromRole="Tartismalar" ToRole="TartismaYorumlar" />
+          <NavigationProperty Name="TartismaSikayetler" Relationship="blogAdminli_01_05_24Model.FK_TartismaSikayetler_Tartismalar" FromRole="Tartismalar" ToRole="TartismaSikayetler" />
         </EntityType>
         <EntityType Name="TartismaYorumlar">
           <Key>
@@ -1084,6 +1264,42 @@
             <End Role="Yazilar" EntitySet="Yazilar" />
             <End Role="YaziSikayetler" EntitySet="YaziSikayetler" />
           </AssociationSet>
+          <EntitySet Name="HaberSikayetler" EntityType="blogAdminli_01_05_24Model.HaberSikayetler" />
+          <EntitySet Name="ResimSikayetler" EntityType="blogAdminli_01_05_24Model.ResimSikayetler" />
+          <EntitySet Name="SiirSikayetler" EntityType="blogAdminli_01_05_24Model.SiirSikayetler" />
+          <EntitySet Name="TartismaSikayetler" EntityType="blogAdminli_01_05_24Model.TartismaSikayetler" />
+          <AssociationSet Name="FK__HaberSika__haber__6CD828CA" Association="blogAdminli_01_05_24Model.FK__HaberSika__haber__6CD828CA">
+            <End Role="Haberler" EntitySet="Haberler" />
+            <End Role="HaberSikayetler" EntitySet="HaberSikayetler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HaberSika__sikay__6BE40491" Association="blogAdminli_01_05_24Model.FK__HaberSika__sikay__6BE40491">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="HaberSikayetler" EntitySet="HaberSikayetler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ResimSika__sikay__6FB49575" Association="blogAdminli_01_05_24Model.FK__ResimSika__sikay__6FB49575">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="ResimSikayetler" EntitySet="ResimSikayetler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SiirSikay__sikay__73852659" Association="blogAdminli_01_05_24Model.FK__SiirSikay__sikay__73852659">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="SiirSikayetler" EntitySet="SiirSikayetler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TartismaSikayetler_Kullanicilar" Association="blogAdminli_01_05_24Model.FK_TartismaSikayetler_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="TartismaSikayetler" EntitySet="TartismaSikayetler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ResimSika__resim__70A8B9AE" Association="blogAdminli_01_05_24Model.FK__ResimSika__resim__70A8B9AE">
+            <End Role="Resimler" EntitySet="Resimler" />
+            <End Role="ResimSikayetler" EntitySet="ResimSikayetler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SiirSikay__siir___74794A92" Association="blogAdminli_01_05_24Model.FK__SiirSikay__siir___74794A92">
+            <End Role="Siirler" EntitySet="Siirler" />
+            <End Role="SiirSikayetler" EntitySet="SiirSikayetler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TartismaSikayetler_Tartismalar" Association="blogAdminli_01_05_24Model.FK_TartismaSikayetler_Tartismalar">
+            <End Role="Tartismalar" EntitySet="Tartismalar" />
+            <End Role="TartismaSikayetler" EntitySet="TartismaSikayetler" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="YaziSikayetler">
           <Key>
@@ -1118,6 +1334,150 @@
             </Principal>
             <Dependent Role="YaziSikayetler">
               <PropertyRef Name="yazi_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="HaberSikayetler">
+          <Key>
+            <PropertyRef Name="sikayet_id" />
+          </Key>
+          <Property Name="sikayet_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sebep" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+          <Property Name="sikayetci_id" Type="Int32" />
+          <Property Name="haber_id" Type="Int32" />
+          <NavigationProperty Name="Haberler" Relationship="blogAdminli_01_05_24Model.FK__HaberSika__haber__6CD828CA" FromRole="HaberSikayetler" ToRole="Haberler" />
+          <NavigationProperty Name="Kullanicilar" Relationship="blogAdminli_01_05_24Model.FK__HaberSika__sikay__6BE40491" FromRole="HaberSikayetler" ToRole="Kullanicilar" />
+        </EntityType>
+        <EntityType Name="ResimSikayetler">
+          <Key>
+            <PropertyRef Name="sikayet_id" />
+          </Key>
+          <Property Name="sikayet_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sebep" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+          <Property Name="sikayetci_id" Type="Int32" />
+          <Property Name="resim_id" Type="Int32" />
+          <NavigationProperty Name="Kullanicilar" Relationship="blogAdminli_01_05_24Model.FK__ResimSika__sikay__6FB49575" FromRole="ResimSikayetler" ToRole="Kullanicilar" />
+          <NavigationProperty Name="Resimler" Relationship="blogAdminli_01_05_24Model.FK__ResimSika__resim__70A8B9AE" FromRole="ResimSikayetler" ToRole="Resimler" />
+        </EntityType>
+        <EntityType Name="SiirSikayetler">
+          <Key>
+            <PropertyRef Name="sikayet_id" />
+          </Key>
+          <Property Name="sikayet_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sebep" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+          <Property Name="sikayetci_id" Type="Int32" />
+          <Property Name="siir_id" Type="Int32" />
+          <NavigationProperty Name="Kullanicilar" Relationship="blogAdminli_01_05_24Model.FK__SiirSikay__sikay__73852659" FromRole="SiirSikayetler" ToRole="Kullanicilar" />
+          <NavigationProperty Name="Siirler" Relationship="blogAdminli_01_05_24Model.FK__SiirSikay__siir___74794A92" FromRole="SiirSikayetler" ToRole="Siirler" />
+        </EntityType>
+        <EntityType Name="TartismaSikayetler">
+          <Key>
+            <PropertyRef Name="sikayet_id" />
+          </Key>
+          <Property Name="sikayet_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sebep" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+          <Property Name="sikayetci_id" Type="Int32" />
+          <Property Name="tartisma_id" Type="Int32" />
+          <NavigationProperty Name="Kullanicilar" Relationship="blogAdminli_01_05_24Model.FK_TartismaSikayetler_Kullanicilar" FromRole="TartismaSikayetler" ToRole="Kullanicilar" />
+          <NavigationProperty Name="Tartismalar" Relationship="blogAdminli_01_05_24Model.FK_TartismaSikayetler_Tartismalar" FromRole="TartismaSikayetler" ToRole="Tartismalar" />
+        </EntityType>
+        <Association Name="FK__HaberSika__haber__6CD828CA">
+          <End Type="blogAdminli_01_05_24Model.Haberler" Role="Haberler" Multiplicity="0..1" />
+          <End Type="blogAdminli_01_05_24Model.HaberSikayetler" Role="HaberSikayetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Haberler">
+              <PropertyRef Name="HaberID" />
+            </Principal>
+            <Dependent Role="HaberSikayetler">
+              <PropertyRef Name="haber_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HaberSika__sikay__6BE40491">
+          <End Type="blogAdminli_01_05_24Model.Kullanicilar" Role="Kullanicilar" Multiplicity="0..1" />
+          <End Type="blogAdminli_01_05_24Model.HaberSikayetler" Role="HaberSikayetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="HaberSikayetler">
+              <PropertyRef Name="sikayetci_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ResimSika__sikay__6FB49575">
+          <End Type="blogAdminli_01_05_24Model.Kullanicilar" Role="Kullanicilar" Multiplicity="0..1" />
+          <End Type="blogAdminli_01_05_24Model.ResimSikayetler" Role="ResimSikayetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="ResimSikayetler">
+              <PropertyRef Name="sikayetci_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SiirSikay__sikay__73852659">
+          <End Type="blogAdminli_01_05_24Model.Kullanicilar" Role="Kullanicilar" Multiplicity="0..1" />
+          <End Type="blogAdminli_01_05_24Model.SiirSikayetler" Role="SiirSikayetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="SiirSikayetler">
+              <PropertyRef Name="sikayetci_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TartismaSikayetler_Kullanicilar">
+          <End Type="blogAdminli_01_05_24Model.Kullanicilar" Role="Kullanicilar" Multiplicity="0..1" />
+          <End Type="blogAdminli_01_05_24Model.TartismaSikayetler" Role="TartismaSikayetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="TartismaSikayetler">
+              <PropertyRef Name="sikayetci_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ResimSika__resim__70A8B9AE">
+          <End Type="blogAdminli_01_05_24Model.Resimler" Role="Resimler" Multiplicity="0..1" />
+          <End Type="blogAdminli_01_05_24Model.ResimSikayetler" Role="ResimSikayetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resimler">
+              <PropertyRef Name="resimID" />
+            </Principal>
+            <Dependent Role="ResimSikayetler">
+              <PropertyRef Name="resim_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SiirSikay__siir___74794A92">
+          <End Type="blogAdminli_01_05_24Model.Siirler" Role="Siirler" Multiplicity="0..1" />
+          <End Type="blogAdminli_01_05_24Model.SiirSikayetler" Role="SiirSikayetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Siirler">
+              <PropertyRef Name="siirID" />
+            </Principal>
+            <Dependent Role="SiirSikayetler">
+              <PropertyRef Name="siir_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TartismaSikayetler_Tartismalar">
+          <End Type="blogAdminli_01_05_24Model.Tartismalar" Role="Tartismalar" Multiplicity="0..1" />
+          <End Type="blogAdminli_01_05_24Model.TartismaSikayetler" Role="TartismaSikayetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tartismalar">
+              <PropertyRef Name="TartismaID" />
+            </Principal>
+            <Dependent Role="TartismaSikayetler">
+              <PropertyRef Name="tartisma_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1317,6 +1677,50 @@
             <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.YaziSikayetler">
               <MappingFragment StoreEntitySet="YaziSikayetler">
                 <ScalarProperty Name="yazi_id" ColumnName="yazi_id" />
+                <ScalarProperty Name="sikayetci_id" ColumnName="sikayetci_id" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="sebep" ColumnName="sebep" />
+                <ScalarProperty Name="sikayet_id" ColumnName="sikayet_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HaberSikayetler">
+            <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.HaberSikayetler">
+              <MappingFragment StoreEntitySet="HaberSikayetler">
+                <ScalarProperty Name="haber_id" ColumnName="haber_id" />
+                <ScalarProperty Name="sikayetci_id" ColumnName="sikayetci_id" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="sebep" ColumnName="sebep" />
+                <ScalarProperty Name="sikayet_id" ColumnName="sikayet_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResimSikayetler">
+            <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.ResimSikayetler">
+              <MappingFragment StoreEntitySet="ResimSikayetler">
+                <ScalarProperty Name="resim_id" ColumnName="resim_id" />
+                <ScalarProperty Name="sikayetci_id" ColumnName="sikayetci_id" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="sebep" ColumnName="sebep" />
+                <ScalarProperty Name="sikayet_id" ColumnName="sikayet_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiirSikayetler">
+            <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.SiirSikayetler">
+              <MappingFragment StoreEntitySet="SiirSikayetler">
+                <ScalarProperty Name="siir_id" ColumnName="siir_id" />
+                <ScalarProperty Name="sikayetci_id" ColumnName="sikayetci_id" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="sebep" ColumnName="sebep" />
+                <ScalarProperty Name="sikayet_id" ColumnName="sikayet_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TartismaSikayetler">
+            <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.TartismaSikayetler">
+              <MappingFragment StoreEntitySet="TartismaSikayetler">
+                <ScalarProperty Name="tartisma_id" ColumnName="tartisma_id" />
                 <ScalarProperty Name="sikayetci_id" ColumnName="sikayetci_id" />
                 <ScalarProperty Name="tarih" ColumnName="tarih" />
                 <ScalarProperty Name="sebep" ColumnName="sebep" />

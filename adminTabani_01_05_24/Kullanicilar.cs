@@ -32,6 +32,10 @@ namespace adminTabani_01_05_24
             this.Yazilar = new HashSet<Yazilar>();
             this.YaziYorumlar = new HashSet<YaziYorumlar>();
             this.YaziSikayetler = new HashSet<YaziSikayetler>();
+            this.HaberSikayetler = new HashSet<HaberSikayetler>();
+            this.ResimSikayetler = new HashSet<ResimSikayetler>();
+            this.SiirSikayetler = new HashSet<SiirSikayetler>();
+            this.TartismaSikayetler = new HashSet<TartismaSikayetler>();
         }
     
         public int kullanici_id { get; set; }
@@ -69,5 +73,13 @@ namespace adminTabani_01_05_24
         public virtual ICollection<YaziYorumlar> YaziYorumlar { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<YaziSikayetler> YaziSikayetler { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HaberSikayetler> HaberSikayetler { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ResimSikayetler> ResimSikayetler { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SiirSikayetler> SiirSikayetler { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TartismaSikayetler> TartismaSikayetler { get; set; }
     }
 }

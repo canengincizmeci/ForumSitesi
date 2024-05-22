@@ -18,6 +18,7 @@ namespace adminTabani_01_05_24
         public Resimler()
         {
             this.ResimYorumlar = new HashSet<ResimYorumlar>();
+            this.ResimSikayetler = new HashSet<ResimSikayetler>();
         }
     
         public int resimID { get; set; }
@@ -31,5 +32,7 @@ namespace adminTabani_01_05_24
         public virtual Kullanicilar Kullanicilar { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ResimYorumlar> ResimYorumlar { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ResimSikayetler> ResimSikayetler { get; set; }
     }
 }

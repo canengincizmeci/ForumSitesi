@@ -5,10 +5,14 @@
 }
 <div class="text-center">
     <h2>@Model.yazi.Baslik</h2>
+
     <p>@Model.yazi.İcerik</p>
+
+
     <p>@Model.yazi.yazar_ad</p>
     <p>@Model.yazi.tarih</p>
-    <a href="/Yazilar/Bildir/@Model.yazi.yazi_id" class="btn btn-danger">Bildir</a>
+    @*<a href="/Yazilar/Bildir/@Model.yazi.yazi_id" class="btn btn-danger">Bildir</a>*@
+    <a class="btn btn-danger" href="@Url.Action("Bildir", "Yazilar", new {_yaziID=Model.yazi.yazi_id})">Bildir</a>
 </div>
 
 <div class="container">

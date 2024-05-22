@@ -66,7 +66,6 @@ namespace adminTabani_01_05_24.Controllers
 
             return View(veriler);
         }
-
-
+       
     }
 }

@@ -18,6 +18,7 @@ namespace adminTabani_01_05_24
         public Haberler()
         {
             this.HaberYorumlar = new HashSet<HaberYorumlar>();
+            this.HaberSikayetler = new HashSet<HaberSikayetler>();
         }
     
         public int HaberID { get; set; }
@@ -30,5 +31,7 @@ namespace adminTabani_01_05_24
         public virtual Kullanicilar Kullanicilar { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HaberYorumlar> HaberYorumlar { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HaberSikayetler> HaberSikayetler { get; set; }
     }
 }
