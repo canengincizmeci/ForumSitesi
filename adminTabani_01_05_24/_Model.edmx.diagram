@@ -40,6 +40,9 @@
         <AssociationConnector Association="blogAdminli_01_05_24Model.FK_SiirYorumlar_Siirler" ManuallyRouted="false" />
         <AssociationConnector Association="blogAdminli_01_05_24Model.FK_TartismaYorumlar_Tartismalar" ManuallyRouted="false" />
         <AssociationConnector Association="blogAdminli_01_05_24Model.FK_YaziYorumlar_Yazilar" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.YaziSikayetler" Width="1.5" PointX="8.25" PointY="20.875" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK__YaziSikay__sikay__625A9A57" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK__YaziSikay__yazi___634EBE90" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

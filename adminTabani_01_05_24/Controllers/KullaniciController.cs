@@ -383,6 +383,10 @@ namespace adminTabani_01_05_24.Controllers
                 return View("HataliKod");
             }
         }
-        
+        public ActionResult CikisYap()
+        {
+            Session.Remove("kullanici_id");
+            return View();
+        }
     }
 }

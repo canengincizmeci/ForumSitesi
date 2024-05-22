@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="blogAdminli_01_05_24Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="blogAdminli_01_05_24Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="id" />
@@ -164,6 +164,16 @@
           <Property Name="onay" Type="bit" />
           <Property Name="tarih" Type="date" />
         </EntityType>
+        <EntityType Name="YaziSikayetler">
+          <Key>
+            <PropertyRef Name="sikayet_id" />
+          </Key>
+          <Property Name="sikayet_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sebep" Type="nvarchar" MaxLength="100" />
+          <Property Name="tarih" Type="datetime" />
+          <Property Name="sikayetci_id" Type="int" />
+          <Property Name="yazi_id" Type="int" />
+        </EntityType>
         <EntityType Name="YaziYorumlar">
           <Key>
             <PropertyRef Name="YaziYorumID" />
@@ -220,6 +230,30 @@
             </Principal>
             <Dependent Role="KullaniciGirisler">
               <PropertyRef Name="kullanici_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__YaziSikay__sikay__625A9A57">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="YaziSikayetler" Type="Self.YaziSikayetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="YaziSikayetler">
+              <PropertyRef Name="sikayetci_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__YaziSikay__yazi___634EBE90">
+          <End Role="Yazilar" Type="Self.Yazilar" Multiplicity="0..1" />
+          <End Role="YaziSikayetler" Type="Self.YaziSikayetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yazilar">
+              <PropertyRef Name="yazi_id" />
+            </Principal>
+            <Dependent Role="YaziSikayetler">
+              <PropertyRef Name="yazi_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -419,6 +453,7 @@
           <EntitySet Name="Tartismalar" EntityType="Self.Tartismalar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TartismaYorumlar" EntityType="Self.TartismaYorumlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Yazilar" EntityType="Self.Yazilar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="YaziSikayetler" EntityType="Self.YaziSikayetler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="YaziYorumlar" EntityType="Self.YaziYorumlar" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__AdminMesa__gonde__17036CC0" Association="Self.FK__AdminMesa__gonde__17036CC0">
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
@@ -435,6 +470,14 @@
           <AssociationSet Name="FK__Kullanici__kulla__5070F446" Association="Self.FK__Kullanici__kulla__5070F446">
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
             <End Role="KullaniciGirisler" EntitySet="KullaniciGirisler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__YaziSikay__sikay__625A9A57" Association="Self.FK__YaziSikay__sikay__625A9A57">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="YaziSikayetler" EntitySet="YaziSikayetler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__YaziSikay__yazi___634EBE90" Association="Self.FK__YaziSikay__yazi___634EBE90">
+            <End Role="Yazilar" EntitySet="Yazilar" />
+            <End Role="YaziSikayetler" EntitySet="YaziSikayetler" />
           </AssociationSet>
           <AssociationSet Name="FK_Haberler_Kullanicilar" Association="Self.FK_Haberler_Kullanicilar">
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
@@ -497,8 +540,7 @@
             <End Role="YaziYorumlar" EntitySet="YaziYorumlar" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="blogAdminli_01_05_24Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -591,6 +633,7 @@
           <NavigationProperty Name="TartismaYorumlar" Relationship="Self.FK_TartismaYorumlar_Kullanicilar" FromRole="Kullanicilar" ToRole="TartismaYorumlar" />
           <NavigationProperty Name="Yazilar" Relationship="Self.FK_Yazilar_Kullanicilar" FromRole="Kullanicilar" ToRole="Yazilar" />
           <NavigationProperty Name="YaziYorumlar" Relationship="Self.FK_YaziYorumlar_Kullanicilar" FromRole="Kullanicilar" ToRole="YaziYorumlar" />
+          <NavigationProperty Name="YaziSikayetler" Relationship="blogAdminli_01_05_24Model.FK__YaziSikay__sikay__625A9A57" FromRole="Kullanicilar" ToRole="YaziSikayetler" />
         </EntityType>
         <EntityType Name="KullaniciMesajlar">
           <Key>
@@ -696,6 +739,7 @@
           <Property Name="tarih" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_Yazilar_Kullanicilar" FromRole="Yazilar" ToRole="Kullanicilar" />
           <NavigationProperty Name="YaziYorumlar" Relationship="Self.FK_YaziYorumlar_Yazilar" FromRole="Yazilar" ToRole="YaziYorumlar" />
+          <NavigationProperty Name="YaziSikayetler" Relationship="blogAdminli_01_05_24Model.FK__YaziSikay__yazi___634EBE90" FromRole="Yazilar" ToRole="YaziSikayetler" />
         </EntityType>
         <EntityType Name="YaziYorumlar">
           <Key>
@@ -1031,7 +1075,52 @@
             <End Role="Yazilar" EntitySet="Yazilar" />
             <End Role="YaziYorumlar" EntitySet="YaziYorumlar" />
           </AssociationSet>
+          <EntitySet Name="YaziSikayetler" EntityType="blogAdminli_01_05_24Model.YaziSikayetler" />
+          <AssociationSet Name="FK__YaziSikay__sikay__625A9A57" Association="blogAdminli_01_05_24Model.FK__YaziSikay__sikay__625A9A57">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="YaziSikayetler" EntitySet="YaziSikayetler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__YaziSikay__yazi___634EBE90" Association="blogAdminli_01_05_24Model.FK__YaziSikay__yazi___634EBE90">
+            <End Role="Yazilar" EntitySet="Yazilar" />
+            <End Role="YaziSikayetler" EntitySet="YaziSikayetler" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="YaziSikayetler">
+          <Key>
+            <PropertyRef Name="sikayet_id" />
+          </Key>
+          <Property Name="sikayet_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sebep" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+          <Property Name="sikayetci_id" Type="Int32" />
+          <Property Name="yazi_id" Type="Int32" />
+          <NavigationProperty Name="Kullanicilar" Relationship="blogAdminli_01_05_24Model.FK__YaziSikay__sikay__625A9A57" FromRole="YaziSikayetler" ToRole="Kullanicilar" />
+          <NavigationProperty Name="Yazilar" Relationship="blogAdminli_01_05_24Model.FK__YaziSikay__yazi___634EBE90" FromRole="YaziSikayetler" ToRole="Yazilar" />
+        </EntityType>
+        <Association Name="FK__YaziSikay__sikay__625A9A57">
+          <End Type="blogAdminli_01_05_24Model.Kullanicilar" Role="Kullanicilar" Multiplicity="0..1" />
+          <End Type="blogAdminli_01_05_24Model.YaziSikayetler" Role="YaziSikayetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="YaziSikayetler">
+              <PropertyRef Name="sikayetci_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__YaziSikay__yazi___634EBE90">
+          <End Type="blogAdminli_01_05_24Model.Yazilar" Role="Yazilar" Multiplicity="0..1" />
+          <End Type="blogAdminli_01_05_24Model.YaziSikayetler" Role="YaziSikayetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yazilar">
+              <PropertyRef Name="yazi_id" />
+            </Principal>
+            <Dependent Role="YaziSikayetler">
+              <PropertyRef Name="yazi_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1221,6 +1310,17 @@
                 <ScalarProperty Name="yaziID" ColumnName="yaziID" />
                 <ScalarProperty Name="onay" ColumnName="onay" />
                 <ScalarProperty Name="tarih" ColumnName="tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YaziSikayetler">
+            <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.YaziSikayetler">
+              <MappingFragment StoreEntitySet="YaziSikayetler">
+                <ScalarProperty Name="yazi_id" ColumnName="yazi_id" />
+                <ScalarProperty Name="sikayetci_id" ColumnName="sikayetci_id" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="sebep" ColumnName="sebep" />
+                <ScalarProperty Name="sikayet_id" ColumnName="sikayet_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -18,6 +18,7 @@ namespace adminTabani_01_05_24
         public Yazilar()
         {
             this.YaziYorumlar = new HashSet<YaziYorumlar>();
+            this.YaziSikayetler = new HashSet<YaziSikayetler>();
         }
     
         public int yazi_id { get; set; }
@@ -30,5 +31,7 @@ namespace adminTabani_01_05_24
         public virtual Kullanicilar Kullanicilar { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<YaziYorumlar> YaziYorumlar { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<YaziSikayetler> YaziSikayetler { get; set; }
     }
 }

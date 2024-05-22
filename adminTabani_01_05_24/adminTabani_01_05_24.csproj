@@ -205,6 +205,9 @@
     <Compile Include="Yazilar.cs">
       <DependentUpon>_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="YaziSikayetler.cs">
+      <DependentUpon>_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="YaziYorumlar.cs">
       <DependentUpon>_Model.tt</DependentUpon>
     </Compile>
@@ -312,6 +315,7 @@
       <DependentUpon>_Model.edmx</DependentUpon>
     </Content>
     <Content Include="Views\Yazilar\yaziDetay.cshtml" />
+    <Content Include="Views\Kullanici\CikisYap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
