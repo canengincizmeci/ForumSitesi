@@ -30,10 +30,13 @@
                             <td>@item.icerik.Substring(0, 20)</td>
                             <td>@item.KullaniciAd</td>
                             <td>@item.tarih</td>
-                            <td><a class="btn btn-success" href="/Tartisma/Index">Tümünü Görüntüle</a></td>
+                            @*                      <td><a class="btn btn-success" href="/Tartisma/Index">Tümünü Görüntüle</a></td>*@
                         </tr>
                     }
                 }
+                <tr>
+                    <td colspan="4"><a href="/Tartisma/Index" class="btn btn-success">Tümünü Görüntüle</a></td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -60,11 +63,13 @@
                             <td>@yazi.İcerik.Substring(0, 20)</td>
                             <td>@yazi.yazar_ad</td>
                             <td>@yazi.tarih</td>
-                            <td><a class="btn btn-success" href="/Yazilar/Index">Tümünü Görüntüle</a></td>
 
                         </tr>
                     }
                 }
+                <tr>
+                    <td colspan="4"><a class="btn btn-success" href="/Yazilar/Index">Tümünü Görüntüle</a></td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -92,6 +97,9 @@
                         </tr>
                     }
                 }
+                <tr>
+                    <td colspan="4"><a class="btn btn-success" href="/Haberler/Index">Tümünü Görüntüle</a></td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -119,6 +127,9 @@
                         </tr>
                     }
                 }
+                <tr>
+                    <td colspan="4"><a href="/Siir/Index" class="btn btn-success">Tümünü Görüntüle</a></td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -139,12 +150,15 @@
                 {
                     <tr>
                         <td>@resim.baslik</td>
-                        <td><img src="@resim.dosyaYolu" /></td>
+                        <td><img src="@Url.Content(resim.dosyaYolu)" /></td>
                         <td>@resim.aciklama.Substring(0, 20)</td>
                         <td>@resim.PaylasanAd</td>
                         <td>@resim.tarih</td>
                     </tr>
                 }
+                <tr>
+                    <td colspan="4"><a href="/Resim/Index" class="btn btn-success">Tümünü Görüntüle</a></td>
+                </tr>
             </tbody>
         </table>
     </div>

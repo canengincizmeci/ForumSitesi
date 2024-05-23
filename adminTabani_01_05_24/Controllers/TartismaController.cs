@@ -28,7 +28,7 @@ namespace adminTabani_01_05_24.Controllers
             return View(veriler);
         }
         [HttpGet]
-        public ActionResult TartismaDetay(int? tartisma_id)
+        public ActionResult TartismaDetay(int tartisma_id)
         {
             dbContext model = new dbContext();
             TartismaDetayPage tartismaDetay = new TartismaDetayPage();
