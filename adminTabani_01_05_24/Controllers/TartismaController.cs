@@ -72,5 +72,40 @@ namespace adminTabani_01_05_24.Controllers
             model.SaveChanges();
             return RedirectToAction("TartismaDetay", new { tartisma_id = _tartisma_id });
         }
+        [HttpGet]
+        public ActionResult Bildir(int _tartismaID)
+        {
+            ViewBag.TartismaID = _tartismaID;
+
+
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Bildir(int tartismaID, string _sebep)
+        {
+            int id = (int)Session["kullanici_id"];
+            dbContext model = new dbContext();
+            model.TartismaSikayetler.Add(new TartismaSikayetler
+            {
+                sebep = _sebep,
+                tarih = DateTime.Now,
+                tartisma_id = tartismaID,
+                sikayetci_id = id
+            });
+            model.SaveChanges();
+            return RedirectToAction("TartismaSikayetTamam", new { _tartismaID = tartismaID });
+        }
+        public ActionResult TartismaSikayetTamam(int _tartismaID)
+        {
+            int id = (int)Session["kullanici_id"];
+            dbContext model = new dbContext();
+            string baslik = model.Tartismalar.Find(_tartismaID).Baslik;
+            string kisi_ad = model.Kullanicilar.Find(id).Ad;
+            ViewBag.Baslik = baslik;
+            ViewBag.KullaniciAd = kisi_ad;
+            ViewBag.TartismaID = _tartismaID;
+            return View();
+        }
     }
 }

@@ -73,15 +73,12 @@ namespace adminTabani_01_05_24.Controllers
         [HttpGet]
         public ActionResult Bildir(int _yaziID)
         {
-            if (_yaziID != null)
-            {
-                ViewBag.YaziID = _yaziID;
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("LostedUser");
-            }
+
+            ViewBag.YaziID = _yaziID;
+            return View();
+
+
+
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -108,9 +105,9 @@ namespace adminTabani_01_05_24.Controllers
         {
             int kullanici_id = (int)Session["kullanici_id"];
             dbContext model = new dbContext();
-            var _baslik = model.Yazilar.FirstOrDefault(p => p.yazi_id == yaziID).Baslik;
+            string _baslik = model.Yazilar.FirstOrDefault(p => p.yazi_id == yaziID).Baslik;
             string kisiAd = model.Kullanicilar.Find(kullanici_id).Ad;
-            ViewBag.kisi_ad = kisiAd;
+
             ViewBag.kisi_ad = kisiAd;
             ViewBag.Baslik = _baslik;
             ViewBag.YaziID = yaziID;

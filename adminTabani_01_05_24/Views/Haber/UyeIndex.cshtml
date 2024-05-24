@@ -1,7 +1,7 @@
 ﻿@model List<adminTabani_01_05_24.Models.Haber>
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_ZiyaretciLayout.cshtml";
+    ViewBag.Title = "UyeIndex";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
 <div class="text-center" style="border:1px solid gray;background-color:rgb(128, 128, 128,0.2);padding:20px 0px 20px 0px">
@@ -9,22 +9,19 @@
     {
         <div>
             <h3>@haber.Baslik</h3>
-            @if (haber.icerik.Length > 50)
+            @if (haber.icerik.Length > 100)
             {
-                <p>@haber.icerik.Substring(0, 100)</p>
-
+                <p>@haber.icerik.Substring(0, 100)...</p>
             }
             else
             {
                 <p>@haber.icerik</p>
             }
-            <p><i>Başlatan: <strong>@haber.PaylasanAd</strong></i></p>
+            <p><i>Yazar: <strong>@haber.PaylasanAd</strong></i></p>
             <p>@haber.tarih.ToString().Substring(0, 16)</p>
         </div>
         <div>
-            <a href="@Url.Action("HaberDetay","Haber",new {id=haber.HaberID})" class="btn btn-dark">Oku</a>
+            <a class="btn btn-dark" href="@Url.Action("UyeHaberDetay","Haber",new { id = haber.HaberID })">Oku</a>
         </div>
     }
 </div>
-
-

@@ -1,0 +1,40 @@
+﻿@model adminTabani_01_05_24.Models.UyeHaberDetayPage
+@{
+    ViewBag.Title = "UyeHaberDetay";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="text-center">
+    <h2>@Model.haber.Baslik</h2>
+    <p>@Model.haber.icerik</p>
+    <p>@Model.haber.PaylasanAd</p>
+    <p>@Model.haber.tarih</p>
+    <a class="btn btn-danger" href="@Url.Action("Bildir","Haber",new { haberId = @Model.haber.HaberID})">Bildir</a>
+</div>
+<div class="container">
+    <form action="/Haber/YorumYap" method="post">
+        @Html.AntiForgeryToken()
+        <div class="mb-3">
+            <label class="form-label" for="yorum"></label>
+            <textarea class="form-control" name="_yorum" id="yorum" rows="5"></textarea>
+        </div>
+        <input type="hidden" name="haberID" value="@Model.haber.HaberID" />
+        <button type="submit" class="btn btn-primary">Gönder</button>
+    </form>
+</div>
+<div style="margin-bottom:5px;"></div>
+<div class="text-center">
+    <h3>Yorumlars</h3>
+</div>
+<hr />
+<div class="container">
+
+    @foreach (var yorum in Model.haber_yorumlari)
+    {
+        <div class="container">
+            <p><i><strong>@yorum.yorumcu_ad</strong> : @yorum._icerik</i></p>
+            <p>@yorum._tarih</p>
+        </div>
+        <hr />
+    }
+</div>

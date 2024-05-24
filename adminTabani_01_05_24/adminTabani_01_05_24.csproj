@@ -186,6 +186,7 @@
     <Compile Include="Models\TartismaDetayPage.cs" />
     <Compile Include="Models\TartismaSikayetleri.cs" />
     <Compile Include="Models\TartismaYorumlari.cs" />
+    <Compile Include="Models\UyeHaberDetayPage.cs" />
     <Compile Include="Models\Yazi.cs" />
     <Compile Include="Models\YaziDetayPage.cs" />
     <Compile Include="Models\YaziSikayetleri.cs" />
@@ -336,6 +337,10 @@
     <Content Include="Views\Yazilar\Bildir.cshtml" />
     <Content Include="Views\Yazilar\yazi_sikayetTamam.cshtml" />
     <Content Include="Views\Yazilar\LostedUser.cshtml" />
+    <Content Include="Views\Tartisma\Bildir.cshtml" />
+    <Content Include="Views\Tartisma\TartismaSikayetTamam.cshtml" />
+    <Content Include="Views\Haber\UyeHaberDetay.cshtml" />
+    <Content Include="Views\Haber\UyeIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
