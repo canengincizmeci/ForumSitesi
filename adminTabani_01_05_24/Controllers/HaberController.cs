@@ -1,6 +1,7 @@
 ﻿using adminTabani_01_05_24.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -77,11 +78,54 @@ namespace adminTabani_01_05_24.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        public ActionResult YorumYap(int _haberID, string _yorum)
+        {
+            int id = (int)Session["kullanici_id"];
+            dbContext model = new dbContext();
+            model.HaberYorumlar.Add(new HaberYorumlar
+            {
+                haberID = _haberID,
+                icerik = _yorum,
+                onay = true,
+                tarih = DateTime.Now,
+                yorumcuID = id
+            });
+            model.SaveChanges();
+            return RedirectToAction("UyeHaberDetay", new { id = _haberID });
+        }
+        [HttpGet]
         public ActionResult Bildir(int haberId)
         {
-
-
-
+            ViewBag.HaberID = haberId;
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Bildir(int haberId, string _sebep)
+        {
+            int id = (int)Session["kullanici_id"];
+            dbContext model = new dbContext();
+            model.HaberYorumlar.Add(new HaberYorumlar
+            {
+                haberID = haberId,
+                icerik = _sebep,
+                onay = true,
+                tarih = DateTime.Now,
+                yorumcuID = id
+            });
+            model.SaveChanges();
+            return RedirectToAction("HaberSikayetTamam", new { _haberID = haberId });
+        }
+        public ActionResult HaberSikayetTamam(int _haberID)
+        {
+            int id = (int)Session["kullanici_id"];
+            dbContext model = new dbContext();
+            string baslik = model.Haberler.Find(_haberID).Baslik;
+            string kisi_ad = model.Kullanicilar.Find(id).Ad;
+            ViewBag.Baslik = baslik;
+            ViewBag.KullaniciAd = kisi_ad;
+            ViewBag.HaberID = _haberID;
+            return View();
         }
     }
 }
