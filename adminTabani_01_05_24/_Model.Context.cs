@@ -46,5 +46,7 @@ namespace adminTabani_01_05_24
         public virtual DbSet<ResimSikayetler> ResimSikayetler { get; set; }
         public virtual DbSet<SiirSikayetler> SiirSikayetler { get; set; }
         public virtual DbSet<TartismaSikayetler> TartismaSikayetler { get; set; }
+
+        public System.Data.Entity.DbSet<adminTabani_01_05_24.Models.Resim> Resims { get; set; }
     }
 }

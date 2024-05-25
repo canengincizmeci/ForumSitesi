@@ -66,6 +66,17 @@ namespace adminTabani_01_05_24.Controllers
 
             return View(veriler);
         }
-       
+        public ActionResult Page403()
+        {
+            Response.StatusCode = 403;
+            Response.TrySkipIisCustomErrors = true;
+            return View();
+        }
+        public ActionResult Page404()
+        {
+            Response.StatusCode = 404;
+            Response.TrySkipIisCustomErrors = true;
+            return View();
+        }
     }
 }
