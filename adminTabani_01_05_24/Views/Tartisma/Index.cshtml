@@ -9,7 +9,7 @@
     {
         <div>
             <h3>@tartisma.Baslik</h3>
-            @if (tartisma.icerik.Length > 50)
+            @if (tartisma.icerik.Length > 100)
             {
                 <p>@tartisma.icerik.Substring(0, 100)...</p>
             }
@@ -24,6 +24,7 @@
             @*<a class="btn btn-dark" href="/Tartisma/TartismaDetay/@tartisma.TartismaID">Oku</a>*@
             <a class="btn btn-dark" href="@Url.Action("TartismaDetay","Tartisma",new {tartisma_id=tartisma.TartismaID})">Oku</a>
         </div>
+        <hr />
     }
 </div>
 

@@ -1,0 +1,32 @@
+﻿@model List<adminTabani_01_05_24.Models.Siir>
+@{
+    ViewBag.Title = "ZiyaretciIndex";
+    Layout = "~/Views/Shared/_ZiyaretciLayout.cshtml";
+}
+
+
+<div class="text-center" style="border:1px solid gray;background-color:rgb(128, 128, 128,0.2);padding:20px 0px 20px 0px">
+    @foreach (var siir in Model)
+    {
+        <div>
+            <h3>@siir.siirBaslik</h3>
+            @if (siir.icerik.Length > 50)
+            {
+                <p>@siir.icerik.Substring(0, 100)</p>
+
+            }
+            else
+            {
+                <p>@siir.icerik</p>
+            }
+            <p><i>Başlatan: <strong>@siir.YazarAd</strong></i></p>
+            <p>@siir.tarih.ToString().Substring(0, 16)</p>
+        </div>
+        <div>
+            <a href="@Url.Action("ZiyaretciSiirDetay","Siir",new {id=siir.siirID})" class="btn btn-dark">Oku</a>
+        </div>
+        <hr />
+    }
+</div>
+
+

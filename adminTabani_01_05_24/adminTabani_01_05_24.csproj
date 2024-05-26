@@ -143,6 +143,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KullaniciController.cs" />
     <Compile Include="Controllers\MesajController.cs" />
+    <Compile Include="Controllers\SiirController.cs" />
     <Compile Include="Controllers\TartismaController.cs" />
     <Compile Include="Controllers\YazilarController.cs" />
     <Compile Include="Controllers\ZiyaretciController.cs" />
@@ -345,6 +346,7 @@
     <Content Include="Views\Haber\HaberSikayetTamam.cshtml" />
     <Content Include="Views\Haber\Bildir.cshtml" />
     <Content Include="Views\Home\Page404.cshtml" />
+    <Content Include="Views\Siir\ZiyaretciIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
