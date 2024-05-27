@@ -192,6 +192,7 @@
     <Compile Include="Models\YaziDetayPage.cs" />
     <Compile Include="Models\YaziSikayetleri.cs" />
     <Compile Include="Models\YaziYorumlari.cs" />
+    <Compile Include="Models\ZiyaretciSiirDetayPage.cs" />
     <Compile Include="Models\_Admin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resimler.cs">
@@ -347,6 +348,7 @@
     <Content Include="Views\Haber\Bildir.cshtml" />
     <Content Include="Views\Home\Page404.cshtml" />
     <Content Include="Views\Siir\ZiyaretciIndex.cshtml" />
+    <Content Include="Views\Siir\ZiyaretciSiirDetay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
