@@ -23,7 +23,7 @@
             <p>@siir.tarih.ToString().Substring(0, 16)</p>
         </div>
         <div>
-            <a href="@Url.Action("ZiyaretciSiirDetay","Siir",new {id=siir.siirID})" class="btn btn-dark">Oku</a>
+            <a href="@Url.Action("ZiyaretciSiirDetay","Siir",new {siir_id=siir.siirID})" class="btn btn-dark">Oku</a>
         </div>
         <hr />
     }

@@ -1,8 +1,32 @@
-﻿
+﻿@model adminTabani_01_05_24.Models.ZiyaretciSiirDetayPage
 @{
     ViewBag.Title = "ZiyaretciSiirDetay";
     Layout = "~/Views/Shared/_ZiyaretciLayout.cshtml";
 }
 
 
+<div class="text-center" style="margin:0px 100px 0px 100px">
+    <h3>@Model.siir.siirBaslik</h3>
+    <p>@Model.siir.icerik</p>
+    <h4>@Model.siir.YazarAd - @Model.siir.tarih</h4>
+</div>
+<div class="text-center">
+    <label>Yorum yapmak için Üye olun <a class="btn btn-success" href="/Kullancı/Ekle">Üye Ol</a></label>
+</div>
 
+
+<div class="text-center">
+    <h3>Yorumlar</h3>
+</div>
+<hr />
+<div class="container">
+
+    @foreach (var yorum in Model.siir_yorumlari)
+    {
+        <div class="container">
+            <p><i><strong>@yorum.YorumcuAd</strong> : @yorum._icerik</i></p>
+            <p>@yorum._tarih</p>
+        </div>
+        <hr />
+    }
+</div>
