@@ -94,9 +94,9 @@ namespace adminTabani_01_05_24.Controllers
             return View(detayPage);
         }
         [HttpGet]
-        public ActionResult Bildir(int siir_id)
+        public ActionResult Bildir(int _siirID)
         {
-            ViewBag.SiirID = siir_id;
+            ViewBag.SiirID = _siirID;
             return View();
         }
         [HttpPost]
@@ -126,6 +126,23 @@ namespace adminTabani_01_05_24.Controllers
             ViewBag.Yazar = yazarAd;
             ViewBag.SiirID = siir_id;
             return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult YorumYap(int _siirID, string _yorum)
+        {
+            int id = (int)Session["kullanici_id"];
+            dbContext model = new dbContext();
+            model.SiirYorumlar.Add(new SiirYorumlar
+            {
+                icerik = _yorum,
+                onay = true,
+                siirID = _siirID,
+                tarih = DateTime.Now,
+                yorumcuID=id,              
+            });
+            model.SaveChanges();
+            return RedirectToAction("UyeSiirDetay", new { siir_id = _siirID });
         }
     }
 }

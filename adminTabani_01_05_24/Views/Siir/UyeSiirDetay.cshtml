@@ -9,7 +9,7 @@
     <p>@Model.siir.icerik</p>
     <p>@Model.siir.YazarAd</p>
     <p>@Model.siir.tarih</p>
-    <a class="btn btn-danger" href="@Url.Action("Bildir", "Tartisma", new {_siirID=Model.siir.siirID})">Bildir</a>
+    <a class="btn btn-danger" href="@Url.Action("Bildir", "Siir", new {_siirID=Model.siir.siirID})">Bildir</a>
 </div>
 
 <div class="container">
@@ -19,7 +19,7 @@
             <label class="form-label" for="yorum">Yorum Yap</label>
             <textarea class="form-control" id="yorum" name="_yorum" rows="5"></textarea>
         </div>
-        <input type="hidden" name="_tartisma_id" value="@Model.siir.siirID" />
+        <input type="hidden" name="_siirID" value="@Model.siir.siirID" />
         <button type="submit" class="btn btn-primary">Gönder</button>
     </form>
 </div>

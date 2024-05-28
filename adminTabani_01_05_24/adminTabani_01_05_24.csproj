@@ -352,6 +352,7 @@
     <Content Include="Views\Siir\UyeSiirIndex.cshtml" />
     <Content Include="Views\Siir\UyeSiirDetay.cshtml" />
     <Content Include="Views\Siir\SiirSikayetTamam.cshtml" />
+    <Content Include="Views\Siir\Bildir.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
