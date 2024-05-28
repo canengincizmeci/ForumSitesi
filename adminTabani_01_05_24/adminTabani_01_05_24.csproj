@@ -349,6 +349,8 @@
     <Content Include="Views\Home\Page404.cshtml" />
     <Content Include="Views\Siir\ZiyaretciIndex.cshtml" />
     <Content Include="Views\Siir\ZiyaretciSiirDetay.cshtml" />
+    <Content Include="Views\Siir\UyeSiirIndex.cshtml" />
+    <Content Include="Views\Siir\UyeSiirDetay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

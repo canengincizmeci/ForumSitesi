@@ -1,0 +1,41 @@
+﻿@model adminTabani_01_05_24.Models.ZiyaretciSiirDetayPage
+@{
+    ViewBag.Title = "UyeSiirDetay";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="text-center">
+    <h2>@Model.siir.siirBaslik</h2>
+    <p>@Model.siir.icerik</p>
+    <p>@Model.siir.YazarAd</p>
+    <p>@Model.siir.tarih</p>
+    <a class="btn btn-danger" href="@Url.Action("Bildir", "Tartisma", new {_siirID=Model.siir.siirID})">Bildir</a>
+</div>
+
+<div class="container">
+    <form action="/Siir/YorumYap" method="post">
+        @Html.AntiForgeryToken()
+        <div class="mb-3">
+            <label class="form-label" for="yorum">Yorum Yap</label>
+            <textarea class="form-control" id="yorum" name="_yorum" rows="5"></textarea>
+        </div>
+        <input type="hidden" name="_tartisma_id" value="@Model.siir.siirID" />
+        <button type="submit" class="btn btn-primary">Gönder</button>
+    </form>
+</div>
+<br />
+<div style="margin-bottom:5px;"> </div>
+<div class="text-center">
+    <h3>Yorumlar</h3>
+</div>
+<hr />
+<div class="container">
+    @foreach (var yorum in Model.siir_yorumlari)
+    {
+        <div class="container">
+            <p><strong><i>@yorum.YorumcuAd</i></strong>: @yorum._icerik</p>
+            <p>@yorum._tarih</p>
+        </div>
+        <hr />
+    }
+</div>
