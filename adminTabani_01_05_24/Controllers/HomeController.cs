@@ -12,7 +12,7 @@ namespace adminTabani_01_05_24.Controllers
     {
         public ActionResult Index()
         {
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             KullaniciHomeViewModel veriler = new KullaniciHomeViewModel();
             veriler.haberler = model.Haberler.OrderByDescending(p => p.tarih).Take(5).Select(p => new Haber
             {
@@ -28,7 +28,7 @@ namespace adminTabani_01_05_24.Controllers
                 yazi_id = p.yazi_id,
                 yazar_id = p.yazar_id,
                 Baslik = p.Baslik,
-                İcerik = p.İcerik.Substring(0, 20),
+                icerik = p.icerik.Substring(0, 20),
                 tarih = p.tarih,
                 onay = p.onay,
                 yazar_ad = p.Kullanicilar.Ad

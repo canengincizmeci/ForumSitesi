@@ -12,13 +12,13 @@
     {
         <div>
             <h3>@yazi.Baslik</h3>
-            @if (yazi.İcerik.Length > 50)
+            @if (yazi.icerik.Length > 50)
             {
-                <p>@yazi.İcerik.Substring(0, 100)...</p>
+                <p>@yazi.icerik.Substring(0, 100)...</p>
             }
             else
             {
-                <p>@yazi.İcerik</p>
+                <p>@yazi.icerik</p>
             }
             <p><i>Yazar: <strong>@yazi.yazar_ad</strong></i></p>
             <p>@yazi.tarih.ToString().Substring(0, 16)</p>

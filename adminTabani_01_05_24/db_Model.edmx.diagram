@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f714c17e24664d94a6d46d463c00853c" Name="Diagram1">
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.Admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.AdminGirisler" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.AdminMesajlar" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.Haberler" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.HaberSikayetler" Width="1.5" PointX="5.25" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.HaberYorumlar" Width="1.5" PointX="8.25" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.KullaniciGirisler" Width="1.5" PointX="3" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.Kullanicilar" Width="1.5" PointX="0.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.KullaniciMesajlar" Width="1.5" PointX="3" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.Resimler" Width="1.5" PointX="3" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.ResimSikayetler" Width="1.5" PointX="8.25" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.ResimYorumlar" Width="1.5" PointX="5.25" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.Siirler" Width="1.5" PointX="3" PointY="29.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.SiirSikayetler" Width="1.5" PointX="8.25" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.SiirYorumlar" Width="1.5" PointX="5.25" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.Tartismalar" Width="1.5" PointX="3" PointY="36.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.TartismaSikayetler" Width="1.5" PointX="5.25" PointY="29.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.TartismaYorumlar" Width="1.5" PointX="8.25" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.Yazilar" Width="1.5" PointX="3" PointY="40.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.YaziSikayetler" Width="1.5" PointX="8.25" PointY="32.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.YaziYorumlar" Width="1.5" PointX="5.25" PointY="33.625" IsExpanded="true" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK__AdminMesa__gonde__17036CC0" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK__HaberSika__haber__6CD828CA" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_Haberler_Kullanicilar" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_HaberYorumlar_Haberler" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK__HaberSika__sikay__6BE40491" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_HaberYorumlar_Kullanicilar" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK__Kullanici__kulla__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK__Kullanici__alici__1BC821DD" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK__Kullanici__gonde__1AD3FDA4" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK__ResimSika__sikay__6FB49575" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK__SiirSikay__sikay__73852659" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK__YaziSikay__sikay__625A9A57" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_Resimler_Kullanicilar" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_ResimYorumlar_Kullanicilar" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_Siirler_Kullanicilar" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_SiirYorumlar_Kullanicilar" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_Tartismalar_Kullanicilar" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_TartismaSikayetler_Kullanicilar" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_TartismaYorumlar_Kullanicilar" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_Yazilar_Kullanicilar" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_YaziYorumlar_Kullanicilar" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK__ResimSika__resim__70A8B9AE" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_ResimYorumlar_Resimler" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK__SiirSikay__siir___74794A92" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_SiirYorumlar_Siirler" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_TartismaSikayetler_Tartismalar" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_TartismaYorumlar_Tartismalar" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK__YaziSikay__yazi___634EBE90" ManuallyRouted="false" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK_YaziYorumlar_Yazilar" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

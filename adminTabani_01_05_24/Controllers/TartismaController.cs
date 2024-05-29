@@ -12,7 +12,7 @@ namespace adminTabani_01_05_24.Controllers
         // GET: Tartisma
         public ActionResult Index()
         {
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
 
             var veriler = model.Tartismalar.Where(p => p.onay == true).Select(p => new Tartisma
             {
@@ -30,7 +30,7 @@ namespace adminTabani_01_05_24.Controllers
         [HttpGet]
         public ActionResult TartismaDetay(int tartisma_id)
         {
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             TartismaDetayPage tartismaDetay = new TartismaDetayPage();
             tartismaDetay.tartisma = model.Tartismalar.Where(p => p.TartismaID == tartisma_id).Select(p => new Tartisma
             {
@@ -60,7 +60,7 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult YorumYap(string _yorum, int _tartisma_id)
         {
             int id = (int)Session["kullanici_id"];
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             model.TartismaYorumlar.Add(new TartismaYorumlar
             {
                 onay = false,
@@ -85,7 +85,7 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult Bildir(int tartismaID, string _sebep)
         {
             int id = (int)Session["kullanici_id"];
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             model.TartismaSikayetler.Add(new TartismaSikayetler
             {
                 sebep = _sebep,
@@ -99,7 +99,7 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult TartismaSikayetTamam(int _tartismaID)
         {
             int id = (int)Session["kullanici_id"];
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             string baslik = model.Tartismalar.Find(_tartismaID).Baslik;
             string kisi_ad = model.Kullanicilar.Find(id).Ad;
             ViewBag.Baslik = baslik;

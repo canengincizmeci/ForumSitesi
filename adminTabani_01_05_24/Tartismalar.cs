@@ -17,8 +17,8 @@ namespace adminTabani_01_05_24
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Tartismalar()
         {
-            this.TartismaYorumlar = new HashSet<TartismaYorumlar>();
             this.TartismaSikayetler = new HashSet<TartismaSikayetler>();
+            this.TartismaYorumlar = new HashSet<TartismaYorumlar>();
         }
     
         public int TartismaID { get; set; }
@@ -31,8 +31,8 @@ namespace adminTabani_01_05_24
     
         public virtual Kullanicilar Kullanicilar { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TartismaYorumlar> TartismaYorumlar { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TartismaSikayetler> TartismaSikayetler { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TartismaYorumlar> TartismaYorumlar { get; set; }
     }
 }

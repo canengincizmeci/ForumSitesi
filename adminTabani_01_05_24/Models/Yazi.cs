@@ -14,7 +14,7 @@ namespace adminTabani_01_05_24.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int yazi_id { get; set; }
         public string Baslik { get; set; }
-        public string İcerik { get; set; }
+        public string icerik { get; set; }
         public int? yazar_id { get; set; }
         public bool? onay { get; set; }
         public DateTime? tarih { get; set; }

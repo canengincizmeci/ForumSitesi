@@ -12,7 +12,7 @@ namespace adminTabani_01_05_24.Controllers
         // GET: Siir
         public ActionResult ZiyaretciIndex()
         {
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             var siirler = model.Siirler.OrderByDescending(p => p.siirID).Where(p => p.onay == true).Select(p => new Siir
             {
                 siirID = p.siirID,
@@ -27,7 +27,7 @@ namespace adminTabani_01_05_24.Controllers
         }
         public ActionResult ZiyaretciSiirDetay(int siir_id)
         {
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             ZiyaretciSiirDetayPage detayPage = new ZiyaretciSiirDetayPage();
             detayPage.siir = model.Siirler.Where(p => p.siirID == siir_id).Select(p => new Siir
             {
@@ -53,7 +53,7 @@ namespace adminTabani_01_05_24.Controllers
         }
         public ActionResult UyeSiirIndex()
         {
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             var veriler = model.Siirler.Where(p => p.onay == true).OrderByDescending(p => p.siirID).Select(p => new Siir
             {
                 siirID = p.siirID,
@@ -69,7 +69,7 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult UyeSiirDetay(int siir_id)
         {
             int id = (int)Session["kullanici_id"];
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             ZiyaretciSiirDetayPage detayPage = new ZiyaretciSiirDetayPage();
             detayPage.siir = model.Siirler.Where(p => p.siirID == siir_id).Select(p => new Siir
             {
@@ -104,7 +104,7 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult Bildir(int _siirID, string _sebep)
         {
             int id = (int)Session["kullanici_id"];
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             model.SiirSikayetler.Add(new SiirSikayetler
             {
                 sebep = _sebep,
@@ -119,7 +119,7 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult SiirSikayetTamam(int siir_id)
         {
             int id = (int)Session["kullanici_id"];
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             var baslik = model.Siirler.Find(siir_id).siirBaslik;
             var yazarAd = model.Kullanicilar.Find(id).Ad;
             ViewBag.Baslik = baslik;
@@ -132,7 +132,7 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult YorumYap(int _siirID, string _yorum)
         {
             int id = (int)Session["kullanici_id"];
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             model.SiirYorumlar.Add(new SiirYorumlar
             {
                 icerik = _yorum,

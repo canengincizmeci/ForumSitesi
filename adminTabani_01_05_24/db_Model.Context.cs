@@ -13,10 +13,10 @@ namespace adminTabani_01_05_24
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class dbContext : DbContext
+    public partial class db_Context : db_Context
     {
-        public dbContext()
-            : base("name=dbContext")
+        public db_Context()
+            : base("name=db_Context")
         {
         }
     
@@ -29,24 +29,22 @@ namespace adminTabani_01_05_24
         public virtual DbSet<AdminGirisler> AdminGirisler { get; set; }
         public virtual DbSet<AdminMesajlar> AdminMesajlar { get; set; }
         public virtual DbSet<Haberler> Haberler { get; set; }
+        public virtual DbSet<HaberSikayetler> HaberSikayetler { get; set; }
         public virtual DbSet<HaberYorumlar> HaberYorumlar { get; set; }
         public virtual DbSet<KullaniciGirisler> KullaniciGirisler { get; set; }
         public virtual DbSet<Kullanicilar> Kullanicilar { get; set; }
         public virtual DbSet<KullaniciMesajlar> KullaniciMesajlar { get; set; }
         public virtual DbSet<Resimler> Resimler { get; set; }
+        public virtual DbSet<ResimSikayetler> ResimSikayetler { get; set; }
         public virtual DbSet<ResimYorumlar> ResimYorumlar { get; set; }
         public virtual DbSet<Siirler> Siirler { get; set; }
+        public virtual DbSet<SiirSikayetler> SiirSikayetler { get; set; }
         public virtual DbSet<SiirYorumlar> SiirYorumlar { get; set; }
         public virtual DbSet<Tartismalar> Tartismalar { get; set; }
+        public virtual DbSet<TartismaSikayetler> TartismaSikayetler { get; set; }
         public virtual DbSet<TartismaYorumlar> TartismaYorumlar { get; set; }
         public virtual DbSet<Yazilar> Yazilar { get; set; }
-        public virtual DbSet<YaziYorumlar> YaziYorumlar { get; set; }
         public virtual DbSet<YaziSikayetler> YaziSikayetler { get; set; }
-        public virtual DbSet<HaberSikayetler> HaberSikayetler { get; set; }
-        public virtual DbSet<ResimSikayetler> ResimSikayetler { get; set; }
-        public virtual DbSet<SiirSikayetler> SiirSikayetler { get; set; }
-        public virtual DbSet<TartismaSikayetler> TartismaSikayetler { get; set; }
-
-        public System.Data.Entity.DbSet<adminTabani_01_05_24.Models.Resim> Resims { get; set; }
+        public virtual DbSet<YaziYorumlar> YaziYorumlar { get; set; }
     }
 }

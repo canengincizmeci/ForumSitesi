@@ -12,7 +12,7 @@ namespace adminTabani_01_05_24.Controllers
         // GET: Ziyaretci
         public ActionResult Index()
         {
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             KullaniciHomeViewModel giden_model = new KullaniciHomeViewModel();
           
 

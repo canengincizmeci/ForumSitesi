@@ -13,7 +13,7 @@ namespace adminTabani_01_05_24.Controllers
         // GET: Haber
         public ActionResult Index()
         {
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             var veriler = model.Haberler.Select(p => new Haber
             {
                 HaberID = p.HaberID,
@@ -27,7 +27,7 @@ namespace adminTabani_01_05_24.Controllers
         }
         public ActionResult HaberDetay(int id)
         {
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             var haber = model.Haberler.FirstOrDefault(p => p.HaberID == id);
             ViewBag.Baslik = haber.Baslik;
             ViewBag.Icerik = haber.icerik;
@@ -37,7 +37,7 @@ namespace adminTabani_01_05_24.Controllers
         }
         public ActionResult UyeIndex()
         {
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             var veriler = model.Haberler.OrderByDescending(p => p.HaberID).Select(p => new Haber
             {
                 HaberID = p.HaberID,
@@ -52,7 +52,7 @@ namespace adminTabani_01_05_24.Controllers
         }
         public ActionResult UyeHaberDetay(int id)
         {
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             UyeHaberDetayPage detayPage = new UyeHaberDetayPage();
             detayPage.haber = model.Haberler.Where(p => p.HaberID == id).Select(p => new Haber
             {
@@ -81,7 +81,7 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult YorumYap(int _haberID, string _yorum)
         {
             int id = (int)Session["kullanici_id"];
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             model.HaberYorumlar.Add(new HaberYorumlar
             {
                 haberID = _haberID,
@@ -104,7 +104,7 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult Bildir(int haberId, string _sebep)
         {
             int id = (int)Session["kullanici_id"];
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             model.HaberYorumlar.Add(new HaberYorumlar
             {
                 haberID = haberId,
@@ -119,7 +119,7 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult HaberSikayetTamam(int _haberID)
         {
             int id = (int)Session["kullanici_id"];
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             string baslik = model.Haberler.Find(_haberID).Baslik;
             string kisi_ad = model.Kullanicilar.Find(id).Ad;
             ViewBag.Baslik = baslik;

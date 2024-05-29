@@ -24,7 +24,7 @@ namespace adminTabani_01_05_24.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AdminMesaj(string icerik)
         {
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             int id = (int)Session["kullanici_id"];
             var kisi = model.Kullanicilar.FirstOrDefault(p => p.kullanici_id == id);
             model.AdminMesajlar.Add(new AdminMesajlar

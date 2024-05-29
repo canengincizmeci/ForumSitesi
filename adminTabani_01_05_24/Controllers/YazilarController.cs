@@ -13,12 +13,12 @@ namespace adminTabani_01_05_24.Controllers
         // GET: Yazilar
         public ActionResult Index()
         {
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             var veriler = model.Yazilar.Where(p => p.onay == true).OrderByDescending(p => p.yazi_id).Select(p => new Yazi
             {
                 yazar_id = p.yazi_id,
                 Baslik = p.Baslik,
-                İcerik = p.İcerik,
+                icerik = p.icerik,
                 tarih = p.tarih,
                 onay = p.onay,
                 yazi_id = p.yazi_id,
@@ -29,7 +29,7 @@ namespace adminTabani_01_05_24.Controllers
         [HttpGet]
         public ActionResult yaziDetay(int yaziID)
         {
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             YaziDetayPage yaziDetay = new YaziDetayPage();
             yaziDetay.yazi = model.Yazilar.Where(p => p.yazi_id == yaziID).Select(p => new Yazi
             {
@@ -39,7 +39,7 @@ namespace adminTabani_01_05_24.Controllers
                 tarih = p.tarih,
                 yazar_ad = p.Kullanicilar.Ad,
                 yazar_id = p.yazar_id,
-                İcerik = p.İcerik
+                icerik = p.icerik
             }).FirstOrDefault();
             yaziDetay.yaziyorumlari = model.YaziYorumlar.Where(p => p.yaziID == yaziID & p.onay == true).Select(p => new YaziYorumlari
             {
@@ -58,7 +58,7 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult YorumYap(int _yaziID, string _yorum)
         {
             int id = (int)Session["kullanici_id"];
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             model.YaziYorumlar.Add(new YaziYorumlar
             {
                 yorumcuID = id,
@@ -85,7 +85,7 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult Bildir(int _yaziID, string sebep)
         {
             int kullaniciID = (int)Session["kullanici_id"];
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             model.YaziSikayetler.Add(new YaziSikayetler
             {
                 sebep = sebep,
@@ -104,7 +104,7 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult yazi_sikayetTamam(int yaziID)
         {
             int kullanici_id = (int)Session["kullanici_id"];
-            dbContext model = new dbContext();
+            db_Context model = new db_Context();
             string _baslik = model.Yazilar.FirstOrDefault(p => p.yazi_id == yaziID).Baslik;
             string kisiAd = model.Kullanicilar.Find(kullanici_id).Ad;
 
@@ -117,6 +117,33 @@ namespace adminTabani_01_05_24.Controllers
         {
             Session.Remove("kullanici_id");
             return View();
+        }
+        public ActionResult ZiyaretciYazıDetay(int _yaziID)
+        {
+            db_Context model = new db_Context();
+            var yazi = model.Yazilar.Find(_yaziID);
+            YaziDetayPage detayPage = new YaziDetayPage();
+            detayPage.yazi = model.Yazilar.Where(p => p.yazi_id == _yaziID).Select(p => new Yazi
+            {
+                Baslik = p.Baslik,
+                yazar_ad = p.Kullanicilar.Ad,
+                onay = true,
+                yazar_id = p.yazar_id,
+                tarih = p.tarih,
+                yazi_id = p.yazi_id,
+                icerik = p.icerik
+            }).FirstOrDefault();
+            detayPage.yaziyorumlari = model.YaziYorumlar.Where(p => p.yaziID == _yaziID).OrderByDescending(p => p.YaziYorumID).Select(p => new YaziYorumlari
+            {
+                _icerik = p.icerik,
+                _onay = p.onay,
+                yorumcuAd = p.Kullanicilar.Ad,
+                _tarih = p.tarih,
+                _yaziID = p.yaziID,
+                _YaziYorumID = p.YaziYorumID,
+                _yorumcuID = p.yorumcuID
+            }).ToList();
+            return View(detayPage);
         }
     }
 }

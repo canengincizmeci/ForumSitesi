@@ -17,8 +17,8 @@ namespace adminTabani_01_05_24
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Siirler()
         {
-            this.SiirYorumlar = new HashSet<SiirYorumlar>();
             this.SiirSikayetler = new HashSet<SiirSikayetler>();
+            this.SiirYorumlar = new HashSet<SiirYorumlar>();
         }
     
         public int siirID { get; set; }
@@ -30,8 +30,8 @@ namespace adminTabani_01_05_24
     
         public virtual Kullanicilar Kullanicilar { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SiirYorumlar> SiirYorumlar { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SiirSikayetler> SiirSikayetler { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SiirYorumlar> SiirYorumlar { get; set; }
     }
 }
