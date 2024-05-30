@@ -18,14 +18,14 @@
             Katkınız için teşekkürler gerekli değerlendirmeler<br />
             yapıldıktan sonra size geri dönüş sağlanacaktır.
         </h4>
-        <p>5 saniye içinde yazı sayfasına yönlendirileceksiniz</p>
+        <p>10 saniye içerisinde yazı sayfasına yönlendirileceksiniz</p>
     </div>
 
     <script>
         setInterval(function () {
             window.location.href="@Url.Action("UyeHaberDetay","Haber",new {id=ViewBag.HaberID})"
 
-        },5000)
+        },10000)
 
     </script>
 

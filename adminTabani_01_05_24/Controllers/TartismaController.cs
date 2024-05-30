@@ -63,7 +63,7 @@ namespace adminTabani_01_05_24.Controllers
             db_Context model = new db_Context();
             model.TartismaYorumlar.Add(new TartismaYorumlar
             {
-                onay = false,
+                onay = true,
                 tarih = DateTime.Now,
                 yorum = _yorum,
                 tartismaID = _tartisma_id,

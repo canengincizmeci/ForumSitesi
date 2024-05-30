@@ -13,7 +13,7 @@ namespace adminTabani_01_05_24
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class db_Context : db_Context
+    public partial class db_Context : DbContext
     {
         public db_Context()
             : base("name=db_Context")

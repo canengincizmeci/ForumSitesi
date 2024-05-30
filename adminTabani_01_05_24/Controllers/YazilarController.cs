@@ -6,6 +6,7 @@ using System.Runtime.Remoting.Channels;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace adminTabani_01_05_24.Controllers
 {
     public class YazilarController : Controller
@@ -41,7 +42,7 @@ namespace adminTabani_01_05_24.Controllers
                 yazar_id = p.yazar_id,
                 icerik = p.icerik
             }).FirstOrDefault();
-            yaziDetay.yaziyorumlari = model.YaziYorumlar.Where(p => p.yaziID == yaziID & p.onay == true).Select(p => new YaziYorumlari
+            yaziDetay.yaziyorumlari = model.YaziYorumlar.Where(p => p.yaziID == yaziID & p.onay == true).OrderByDescending(p => p.YaziYorumID).Select(p => new YaziYorumlari
             {
                 _yaziID = p.yaziID,
                 _icerik = p.icerik,
@@ -65,7 +66,7 @@ namespace adminTabani_01_05_24.Controllers
                 tarih = DateTime.Now,
                 icerik = _yorum,
                 yaziID = _yaziID,
-                onay = false
+                onay = true
             });
             model.SaveChanges();
             return RedirectToAction("yaziDetay", new { yaziID = _yaziID });

@@ -110,8 +110,8 @@ namespace adminTabani_01_05_24.Controllers
                 sebep = _sebep,
                 siir_id = _siirID,
                 sikayetci_id = id,
-                tarih = DateTime.Now,
-
+                tarih = DateTime.Now
+                
             });
             model.SaveChanges();
             return RedirectToAction("SiirSikayetTamam", new { siir_id = _siirID });

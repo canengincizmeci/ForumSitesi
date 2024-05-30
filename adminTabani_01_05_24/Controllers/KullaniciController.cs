@@ -18,7 +18,7 @@ namespace adminTabani_01_05_24.Controllers
 {
     public class KullaniciController : Controller
     {
-        
+
         // GET: Kullanici
         public ActionResult Kayit()
         {
@@ -33,7 +33,7 @@ namespace adminTabani_01_05_24.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Ekle(string ad, string mail)
         {
-            
+
             db_Context model = new db_Context();
             var ad_kontrol = model.Kullanicilar.FirstOrDefault(p => p.Ad == ad);
             var mail_kontrol = model.Kullanicilar.FirstOrDefault(p => p.kullaniciMail == mail);
@@ -383,10 +383,10 @@ namespace adminTabani_01_05_24.Controllers
                 return View("HataliKod");
             }
         }
-        public ActionResult CikisYap()
+        public ActionResult Cikis()
         {
             Session.Remove("kullanici_id");
-            return View();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -21,7 +21,8 @@ namespace adminTabani_01_05_24.Controllers
                 icerik = p.icerik,
                 paylasan = p.paylasan,
                 PaylasanAd = p.Kullanicilar.Ad,
-                tarih = p.tarih
+                tarih = p.tarih,
+                _onay = true
             }).ToList();
             return View(veriler);
         }
