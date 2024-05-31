@@ -60,12 +60,38 @@ namespace adminTabani_01_05_24.Controllers
             }).ToList();
             return View(kisiler);
         }
-        //public ActionResult KullaniciMesaj(int alici_id)
-        //{
-
-
-
-        //}
+        [HttpGet]
+        public ActionResult KullaniciMesaj(int alici_id)
+        {
+            ViewBag.AliciId = alici_id;
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult KullaniciMesaj(string _mesaj, int Alici_id)
+        {
+            int id = (int)Session["kullanici_id"];
+            db_Context model = new db_Context();
+            model.KullaniciMesajlar.Add(new KullaniciMesajlar
+            {
+                alici_id = Alici_id,
+                gonderen_id = id,
+                mesaj = _mesaj,
+                tarih = DateTime.Now
+            });
+            model.SaveChanges();
+            return RedirectToAction("KullaniciMesajTamam", new { alici_id = Alici_id });
+        }
+        public ActionResult KullaniciMesajTamam(int alici_id)
+        {
+            int id = (int)Session["kullanici_id"];
+            db_Context model = new db_Context();
+            string gonderenAd = model.Kullanicilar.Find(id).Ad;
+            string aliciAd = model.Kullanicilar.Find(alici_id).Ad;
+            ViewBag.Gonderici = gonderenAd;
+            ViewBag.Alici = aliciAd;
+            return View();
+        }
     }
 }
 
