@@ -3,13 +3,14 @@
     ViewBag.Title = "KullancilarArasiMesaj";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
+
+
 <div class="text-center">
-    <input type="text" id="arama" class="form-control" placeholder="Kullanıcı adı ara..." onkeyup="KullanciAra()"/>
+    <input type="text" id="arama" class="form-control" placeholder="Kullanıcı adı ara..." onkeyup="KullaniciAra()" />
 </div>
 
 <div class="container">
-
-    <table class="table">
+    <table class="table" id="usersTable">
         <thead>
             <tr>
                 <th>Kullanici Adi</th>
@@ -21,31 +22,30 @@
             {
                 <tr>
                     <td>@kisi.Ad</td>
-                    <td><a class="btn btn-primary" href="@Url.Action("KullaniciMesaj","Mesaj",new {alici_id=kisi.kullanici_id})">Mesaj Gönder</a></td>
+                    <td><a class="btn btn-primary" href="@Url.Action("KullaniciMesaj","Mesaj", new { alici_id = kisi.kullanici_id })">Mesaj Gönder</a></td>
                 </tr>
             }
         </tbody>
     </table>
-    <script>
-        function KullanciAra() {
-            var input, filter, table, tr, td, i, txtValue;
-            input = document.getElementById("searchString");
-            filter = input.value.toLowerCase();
-            table = document.getElementById("usersTable");
-            tr = table.getElementsByTagName("tr");
+</div>
 
-            for (i = 1; i < tr.length; i++) { 
-                tr[i].style.display = "none"; 
-                td = tr[i].getElementsByTagName("td");
-                if (td.length > 0) {
-                    txtValue = td[0].textContent || td[0].innerText;
-                    if (txtValue.toLowerCase().indexOf(filter) > -1) {
-                        tr[i].style.display = ""; 
-                    }
+<script>
+    function KullaniciAra() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("arama");
+        filter = input.value.toLowerCase();
+        table = document.getElementById("usersTable");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 1; i < tr.length; i++) {
+            tr[i].style.display = "none";
+            td = tr[i].getElementsByTagName("td");
+            if (td.length > 0) {
+                txtValue = td[0].textContent || td[0].innerText;
+                if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
                 }
             }
         }
-
-    </script>
-
-</div>
+    }
+</script>
