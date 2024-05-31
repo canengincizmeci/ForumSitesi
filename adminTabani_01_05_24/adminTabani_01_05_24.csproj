@@ -326,7 +326,6 @@
     <Content Include="Views\Kullanici\HataliKod.cshtml" />
     <Content Include="Views\Kullanici\HataliMail.cshtml" />
     <Content Include="Views\Kullanici\girisKodDogrulama.cshtml" />
-    <Content Include="Views\Mesaj\AdminMesaj.cshtml" />
     <Content Include="Views\Tartisma\Index.cshtml" />
     <Content Include="Views\Tartisma\TartismaDetay.cshtml" />
     <Content Include="Views\Yazilar\yaziDetay.cshtml" />
@@ -348,6 +347,9 @@
     <Content Include="Views\Siir\SiirSikayetTamam.cshtml" />
     <Content Include="Views\Siir\Bildir.cshtml" />
     <Content Include="Views\Yazilar\ZiyaretciYazıDetay.cshtml" />
+    <Content Include="Views\Mesaj\UyeAdminMesaj.cshtml" />
+    <Content Include="Views\Mesaj\UyeAdminMesajTamam.cshtml" />
+    <Content Include="Views\Mesaj\KullancilarArasiMesaj.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

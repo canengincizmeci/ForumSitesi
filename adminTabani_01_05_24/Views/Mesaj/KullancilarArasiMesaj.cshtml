@@ -1,0 +1,51 @@
+﻿@model List<adminTabani_01_05_24.Models.Kullanici>
+@{
+    ViewBag.Title = "KullancilarArasiMesaj";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<div class="text-center">
+    <input type="text" id="arama" class="form-control" placeholder="Kullanıcı adı ara..." onkeyup="KullanciAra()"/>
+</div>
+
+<div class="container">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Kullanici Adi</th>
+                <th>Mesaj At</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var kisi in Model)
+            {
+                <tr>
+                    <td>@kisi.Ad</td>
+                    <td><a class="btn btn-primary" href="@Url.Action("KullaniciMesaj","Mesaj",new {alici_id=kisi.kullanici_id})">Mesaj Gönder</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <script>
+        function KullanciAra() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchString");
+            filter = input.value.toLowerCase();
+            table = document.getElementById("usersTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 1; i < tr.length; i++) { 
+                tr[i].style.display = "none"; 
+                td = tr[i].getElementsByTagName("td");
+                if (td.length > 0) {
+                    txtValue = td[0].textContent || td[0].innerText;
+                    if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                        tr[i].style.display = ""; 
+                    }
+                }
+            }
+        }
+
+    </script>
+
+</div>

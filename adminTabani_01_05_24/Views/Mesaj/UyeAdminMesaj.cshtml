@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "UyeAdminMesaj";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+
+    
+
+<div container mt-5>
+    <h2 class="mb-4">Mesajınızı Yazın</h2>
+    <form action="/Mesaj/UyeAdminMesaj" method="post">
+        @Html.AntiForgeryToken()
+        <div class="mb-3">
+            <label for="_icerik">Mesaj:</label>
+            <textarea rows="5" class="form-control" id="_icerik" name="icerik"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Gönder</button>
+    </form>
+</div>
+
+

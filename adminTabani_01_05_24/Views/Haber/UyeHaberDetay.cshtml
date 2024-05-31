@@ -6,7 +6,7 @@
 
 <div class="text-center">
     <h2>@Model.haber.Baslik</h2>
-    <p>@Model.haber.icerik</p>
+    <p style="word-wrap:break-word; white-space:normal">@Model.haber.icerik</p>
     <p>@Model.haber.PaylasanAd</p>
     <p>@Model.haber.tarih</p>
     <a class="btn btn-danger" href="@Url.Action("Bildir","Haber",new { haberId = @Model.haber.HaberID})">Bildir</a>

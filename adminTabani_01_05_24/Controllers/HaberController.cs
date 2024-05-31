@@ -106,13 +106,20 @@ namespace adminTabani_01_05_24.Controllers
         {
             int id = (int)Session["kullanici_id"];
             db_Context model = new db_Context();
-            model.HaberYorumlar.Add(new HaberYorumlar
+            //model.HaberYorumlar.Add(new HaberYorumlar
+            //{
+            //    haberID = haberId,
+            //    icerik = _sebep,
+            //    onay = true,
+            //    tarih = DateTime.Now,
+            //    yorumcuID = id
+            //});
+            model.HaberSikayetler.Add(new HaberSikayetler
             {
-                haberID = haberId,
-                icerik = _sebep,
-                onay = true,
-                tarih = DateTime.Now,
-                yorumcuID = id
+                haber_id = haberId,
+                sebep = _sebep,
+                sikayetci_id = id,
+                tarih = DateTime.Now
             });
             model.SaveChanges();
             return RedirectToAction("HaberSikayetTamam", new { _haberID = haberId });
