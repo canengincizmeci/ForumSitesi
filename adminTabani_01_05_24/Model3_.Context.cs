@@ -46,5 +46,6 @@ namespace adminTabani_01_05_24
         public virtual DbSet<Yazilar> Yazilar { get; set; }
         public virtual DbSet<YaziSikayetler> YaziSikayetler { get; set; }
         public virtual DbSet<YaziYorumlar> YaziYorumlar { get; set; }
+        public virtual DbSet<KullaniciMesajlarSikayet> KullaniciMesajlarSikayet { get; set; }
     }
 }

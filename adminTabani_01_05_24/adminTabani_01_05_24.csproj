@@ -162,6 +162,9 @@
     <Compile Include="KullaniciMesajlar.cs">
       <DependentUpon>Model3_.tt</DependentUpon>
     </Compile>
+    <Compile Include="KullaniciMesajlarSikayet.cs">
+      <DependentUpon>Model3_.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model3_.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
