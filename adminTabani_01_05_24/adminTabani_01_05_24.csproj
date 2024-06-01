@@ -186,6 +186,7 @@
     <Compile Include="Models\KullaniciGiris.cs" />
     <Compile Include="Models\KullaniciHomeViewModel.cs" />
     <Compile Include="Models\KullaniciMesaj.cs" />
+    <Compile Include="Models\KullaniciMesajlarimPage.cs" />
     <Compile Include="Models\Resim.cs" />
     <Compile Include="Models\ResimSikayetleri.cs" />
     <Compile Include="Models\ResimYorumlari.cs" />
@@ -352,6 +353,8 @@
     <Content Include="Views\Mesaj\KullancilarArasiMesaj.cshtml" />
     <Content Include="Views\Mesaj\KullaniciMesaj.cshtml" />
     <Content Include="Views\Mesaj\KullaniciMesajTamam.cshtml" />
+    <Content Include="Views\Mesaj\Mesajlarim.cshtml" />
+    <Content Include="Views\Mesaj\UyeMesajDetay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

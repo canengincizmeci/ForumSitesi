@@ -92,6 +92,57 @@ namespace adminTabani_01_05_24.Controllers
             ViewBag.Alici = aliciAd;
             return View();
         }
+        public ActionResult Mesajlarim()
+        {
+            int id = (int)Session["kullanici_id"];
+            db_Context model = new db_Context();
+            KullaniciMesajlarimPage mesajlarimPage = new KullaniciMesajlarimPage();
+            mesajlarimPage.gelenler = model.KullaniciMesajlar.Where(p => p.alici_id == id).OrderByDescending(p => p.k_mesaj_id).Select(p => new KullaniciMesaj
+            {
+                gonderen_id = p.gonderen_id,
+                alici_id = p.alici_id,
+                mesaj = p.mesaj,
+                tarih = p.tarih,
+                k_mesaj_id = p.k_mesaj_id,
+                aliciAd = p.Kullanicilar1.Ad,
+                GonderenAd = p.Kullanicilar.Ad
+            }).ToList();
+            mesajlarimPage.gidenler = model.KullaniciMesajlar.Where(p => p.gonderen_id == id).OrderByDescending(p => p.k_mesaj_id).Select(p => new KullaniciMesaj
+            {
+                k_mesaj_id = p.k_mesaj_id,
+                gonderen_id = p.gonderen_id,
+                aliciAd = p.Kullanicilar1.Ad,
+                alici_id = p.alici_id,
+                GonderenAd = p.Kullanicilar.Ad,
+                mesaj = p.mesaj,
+                tarih = p.tarih
+            }).ToList();
+            return View(mesajlarimPage);
+        }
+        public ActionResult UyeMesajDetay(int mesaj_id)
+        {
+            db_Context model = new db_Context();
+            var mesaj = model.KullaniciMesajlar.Find(mesaj_id);
+            ViewBag.Mesaj = mesaj.mesaj;
+            ViewBag.Tarih = mesaj.tarih;
+            ViewBag.Gonderen = mesaj.Kullanicilar.Ad;
+            return View();
+        }
+        //[HttpGet]
+        //public ActionResult MesajBildir(int mesajID)
+        //{
+        //    ViewBag.MesajID = mesajID;
+        //    return View();
+        //}
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult MesajBildir(int mesajID, string Sebep)
+        //{
+
+
+
+
+        //}
     }
 }
 

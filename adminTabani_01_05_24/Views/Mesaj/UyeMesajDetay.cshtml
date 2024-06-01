@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "UyeMesajDetay";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="text-center">
+    <h2>@ViewBag.Gonderen</h2>
+    <br />
+    <p>@ViewBag.Mesaj</p>
+    <br />
+    <p>@ViewBag.Tarih - <a href="@Url.Action("MesajBildir", new {mesajID=ViewBag.MesajID})" class="btn btn-danger">Bildir</a></p>
+</div>
