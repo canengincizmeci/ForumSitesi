@@ -128,21 +128,28 @@ namespace adminTabani_01_05_24.Controllers
             ViewBag.Gonderen = mesaj.Kullanicilar.Ad;
             return View();
         }
-        //[HttpGet]
-        //public ActionResult MesajBildir(int mesajID)
-        //{
-        //    ViewBag.MesajID = mesajID;
-        //    return View();
-        //}
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult MesajBildir(int mesajID, string Sebep)
-        //{
-
-
-
-
-        //}
+        [HttpGet]
+        public ActionResult MesajBildir(int mesajID)
+        {
+            ViewBag.MesajID = mesajID;
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult MesajBildir(int mesajID, string Sebep)
+        {
+            int id = (int)Session["kullanici_id"];
+            db_Context model = new db_Context();
+            model.KullaniciMesajlarSikayet.Add(new KullaniciMesajlarSikayet
+            {
+                sebep = Sebep,
+                mesajID = mesajID,
+                sikayetciID = id,
+                tarih = DateTime.Now
+            });
+            model.SaveChanges();
+            return RedirectToAction("UyeMesajSikayetTamam");
+        }
     }
 }
 
