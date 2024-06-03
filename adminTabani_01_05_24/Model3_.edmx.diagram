@@ -13,7 +13,7 @@
         <EntityTypeShape EntityType="blogAdminli_01_05_24Model.HaberYorumlar" Width="1.5" PointX="8.25" PointY="18.375" IsExpanded="true" />
         <EntityTypeShape EntityType="blogAdminli_01_05_24Model.KullaniciGirisler" Width="1.5" PointX="3" PointY="16.625" IsExpanded="true" />
         <EntityTypeShape EntityType="blogAdminli_01_05_24Model.Kullanicilar" Width="1.5" PointX="0.75" PointY="20.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.KullaniciMesajlar" Width="1.5" PointX="3" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.KullaniciMesajlar" Width="1.5" PointX="3.375" PointY="19.875" IsExpanded="true" />
         <EntityTypeShape EntityType="blogAdminli_01_05_24Model.Resimler" Width="1.5" PointX="3" PointY="23" IsExpanded="true" />
         <EntityTypeShape EntityType="blogAdminli_01_05_24Model.ResimSikayetler" Width="1.5" PointX="8.25" PointY="22.375" IsExpanded="true" />
         <EntityTypeShape EntityType="blogAdminli_01_05_24Model.ResimYorumlar" Width="1.5" PointX="5.25" PointY="22.25" IsExpanded="true" />

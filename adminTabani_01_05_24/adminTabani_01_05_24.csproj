@@ -360,6 +360,7 @@
     <Content Include="Views\Mesaj\Mesajlarim.cshtml" />
     <Content Include="Views\Mesaj\UyeMesajDetay.cshtml" />
     <Content Include="Views\Mesaj\MesajBildir.cshtml" />
+    <Content Include="Views\Mesaj\UyeMesajSikayetTamam.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

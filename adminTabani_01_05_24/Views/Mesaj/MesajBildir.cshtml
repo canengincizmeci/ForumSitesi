@@ -4,5 +4,12 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h2>MesajBildir</h2>
-
+<div class="text-center">
+    <form action="/Mesaj/MesajBildir" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="mesajID" value="@ViewBag.MesajID" />
+        <label for="_sebep">Sebep:</label>
+        <textarea rows="5" class="form-control" name="Sebep" id="_sebep"></textarea>
+        <button type="submit" class="btn btn-danger">Gönder</button>
+    </form>
+</div>

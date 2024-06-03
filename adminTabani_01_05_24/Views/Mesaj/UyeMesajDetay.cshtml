@@ -1,4 +1,4 @@
-﻿
+﻿@model List<adminTabani_01_05_24.Models.KullaniciMesaj>
 @{
     ViewBag.Title = "UyeMesajDetay";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
@@ -9,5 +9,38 @@
     <br />
     <p>@ViewBag.Mesaj</p>
     <br />
-    <p>@ViewBag.Tarih - <a href="@Url.Action("MesajBildir", new {mesajID=ViewBag.MesajID})" class="btn btn-danger">Bildir</a></p>
+    <p>@ViewBag.Tarih - <a href="@Url.Action("MesajBildir","Mesaj" ,new {mesajID=ViewBag.MesajID})" class="btn btn-danger">Bildir</a></p>
+</div>
+<hr />
+<div class="text-center">
+    <h3>Geçmiş Mesajlar</h3>
+</div>
+<div class="container">
+    <div style="border:solid;text-align:center;">
+        @foreach (var mesaj in Model)
+        {
+            if (mesaj.k_mesaj_id != ViewBag.MesajID)
+            {
+
+                if (mesaj.gonderen_id == ViewBag.KullaniciID)
+                {
+                    <p>Sen >> </p>
+                }
+                else
+                {
+                    <p>@ViewBag.Gonderen >> </p>
+                }
+                if (mesaj.mesaj.Length > 100)
+                {
+                    <p>@mesaj.mesaj.Substring(0, 100)...</p>
+                }
+                else
+                {
+                    <p>@mesaj.mesaj</p>
+                }
+                <p>@mesaj.tarih   - Detay : <a href="@Url.Action("UyeMesajDetay", "Mesaj", new {mesaj_id=mesaj.k_mesaj_id})" class="btn btn-primary">Detay</a></p>
+                <hr />
+            }
+        }
+    </div>
 </div>

@@ -11,7 +11,7 @@ namespace adminTabani_01_05_24
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class KullaniciMesajlar
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,14 +19,15 @@ namespace adminTabani_01_05_24
         {
             this.KullaniciMesajlarSikayet = new HashSet<KullaniciMesajlarSikayet>();
         }
-    
+
         public int k_mesaj_id { get; set; }
         public string mesaj { get; set; }
         public Nullable<System.DateTime> tarih { get; set; }
         public Nullable<int> gonderen_id { get; set; }
         public Nullable<int> alici_id { get; set; }
-    
+        //alici_id
         public virtual Kullanicilar Kullanicilar { get; set; }
+        //gonderen_id
         public virtual Kullanicilar Kullanicilar1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KullaniciMesajlarSikayet> KullaniciMesajlarSikayet { get; set; }

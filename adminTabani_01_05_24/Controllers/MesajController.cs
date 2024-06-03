@@ -104,16 +104,16 @@ namespace adminTabani_01_05_24.Controllers
                 mesaj = p.mesaj,
                 tarih = p.tarih,
                 k_mesaj_id = p.k_mesaj_id,
-                aliciAd = p.Kullanicilar1.Ad,
-                GonderenAd = p.Kullanicilar.Ad
+                aliciAd = p.Kullanicilar.Ad,
+                GonderenAd = p.Kullanicilar1.Ad
             }).ToList();
             mesajlarimPage.gidenler = model.KullaniciMesajlar.Where(p => p.gonderen_id == id).OrderByDescending(p => p.k_mesaj_id).Select(p => new KullaniciMesaj
             {
                 k_mesaj_id = p.k_mesaj_id,
                 gonderen_id = p.gonderen_id,
-                aliciAd = p.Kullanicilar1.Ad,
+                aliciAd = p.Kullanicilar.Ad,
                 alici_id = p.alici_id,
-                GonderenAd = p.Kullanicilar.Ad,
+                GonderenAd = p.Kullanicilar1.Ad,
                 mesaj = p.mesaj,
                 tarih = p.tarih
             }).ToList();
@@ -125,8 +125,22 @@ namespace adminTabani_01_05_24.Controllers
             var mesaj = model.KullaniciMesajlar.Find(mesaj_id);
             ViewBag.Mesaj = mesaj.mesaj;
             ViewBag.Tarih = mesaj.tarih;
-            ViewBag.Gonderen = mesaj.Kullanicilar.Ad;
-            return View();
+            ViewBag.MesajID = mesaj_id;
+            ViewBag.Gonderen = mesaj.Kullanicilar1.Ad;
+            int gonderenID = mesaj.Kullanicilar1.kullanici_id;
+            int id = (int)Session["kullanici_id"];
+            ViewBag.KullaniciID = id;
+            var mesajlasmalar = model.KullaniciMesajlar.Where(p => (p.Kullanicilar1.kullanici_id == gonderenID && p.Kullanicilar.kullanici_id == id) || (p.Kullanicilar1.kullanici_id == id && p.Kullanicilar.kullanici_id == gonderenID)).OrderByDescending(p => p.k_mesaj_id).Select(p => new KullaniciMesaj
+            {
+                aliciAd = p.Kullanicilar.Ad,
+                alici_id = p.alici_id,
+                GonderenAd = p.Kullanicilar1.Ad,
+                gonderen_id = p.gonderen_id,
+                k_mesaj_id = p.k_mesaj_id,
+                mesaj = p.mesaj,
+                tarih = p.tarih
+            }).ToList();
+            return View(mesajlasmalar);
         }
         [HttpGet]
         public ActionResult MesajBildir(int mesajID)
@@ -148,7 +162,16 @@ namespace adminTabani_01_05_24.Controllers
                 tarih = DateTime.Now
             });
             model.SaveChanges();
-            return RedirectToAction("UyeMesajSikayetTamam");
+            return RedirectToAction("UyeMesajSikayetTamam", new { _mesajID = mesajID });
+        }
+        public ActionResult UyeMesajSikayetTamam(int _mesajID)
+        {
+            int id = (int)Session["kullanici_id"];
+            db_Context model = new db_Context();
+            string Ad = model.Kullanicilar.Find(id).Ad;
+            ViewBag.Adi = Ad;
+            ViewBag.MesajID = _mesajID;
+            return View();
         }
     }
 }
