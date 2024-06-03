@@ -127,6 +127,7 @@ namespace adminTabani_01_05_24.Controllers
             ViewBag.Tarih = mesaj.tarih;
             ViewBag.MesajID = mesaj_id;
             ViewBag.Gonderen = mesaj.Kullanicilar1.Ad;
+            ViewBag.GonderenID = mesaj.gonderen_id;
             int gonderenID = mesaj.Kullanicilar1.kullanici_id;
             int id = (int)Session["kullanici_id"];
             ViewBag.KullaniciID = id;
@@ -172,6 +173,13 @@ namespace adminTabani_01_05_24.Controllers
             ViewBag.Adi = Ad;
             ViewBag.MesajID = _mesajID;
             return View();
+        }
+        public ActionResult KullaniciMesajCevap(int alici_id, int gelenMesajID)
+        {
+
+
+
+
         }
     }
 }

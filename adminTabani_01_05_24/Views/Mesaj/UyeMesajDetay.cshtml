@@ -9,7 +9,7 @@
     <br />
     <p>@ViewBag.Mesaj</p>
     <br />
-    <p>@ViewBag.Tarih - <a href="@Url.Action("MesajBildir","Mesaj" ,new {mesajID=ViewBag.MesajID})" class="btn btn-danger">Bildir</a></p>
+    <p>@ViewBag.Tarih - <a href="@Url.Action("KullaniciMesajCevap","Mesaj",new {alici_id=ViewBag.GonderenID,gelenMesajID=ViewBag.MesajID})">Cevapla</a> - <a href="@Url.Action("MesajBildir","Mesaj" ,new {mesajID=ViewBag.MesajID})" class="btn btn-danger">Bildir</a></p>
 </div>
 <hr />
 <div class="text-center">
