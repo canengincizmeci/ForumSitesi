@@ -363,6 +363,7 @@
     <Content Include="Views\Mesaj\UyeMesajSikayetTamam.cshtml" />
     <Content Include="Views\Mesaj\KullaniciMesajCevap.cshtml" />
     <Content Include="Views\Mesaj\CevapTamam.cshtml" />
+    <Content Include="Views\Mesaj\LostedUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

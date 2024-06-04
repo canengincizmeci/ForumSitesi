@@ -122,14 +122,19 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult UyeMesajDetay(int mesaj_id)
         {
             db_Context model = new db_Context();
-            var mesaj = model.KullaniciMesajlar.Find(mesaj_id);
+            int id = (int)Session["kullanici_id"];
+            string kullaniciAd = model.Kullanicilar.Find(id).Ad.ToString();
+            var mesaj = model.KullaniciMesajlar.Where(p => (p.k_mesaj_id == mesaj_id) & ((p.alici_id == id) || (p.gonderen_id == id))).FirstOrDefault();
+            if (mesaj == null)
+            {
+                RedirectToAction("LostedUser", new { kullanici_ad = kullaniciAd });
+            }
             ViewBag.Mesaj = mesaj.mesaj;
             ViewBag.Tarih = mesaj.tarih;
             ViewBag.MesajID = mesaj_id;
             ViewBag.Gonderen = mesaj.Kullanicilar1.Ad;
             ViewBag.GonderenID = mesaj.gonderen_id;
             int gonderenID = mesaj.Kullanicilar1.kullanici_id;
-            int id = (int)Session["kullanici_id"];
             ViewBag.KullaniciID = id;
             var mesajlasmalar = model.KullaniciMesajlar.Where(p => (p.Kullanicilar1.kullanici_id == gonderenID && p.Kullanicilar.kullanici_id == id) || (p.Kullanicilar1.kullanici_id == id && p.Kullanicilar.kullanici_id == gonderenID)).OrderByDescending(p => p.k_mesaj_id).Select(p => new KullaniciMesaj
             {
@@ -193,7 +198,7 @@ namespace adminTabani_01_05_24.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult KullaniciMesajCevap(string _mesaj, int _alici_id)
+        public ActionResult KullaniciMesajCevap(string _mesaj,int gelenmesajID)
         {
             db_Context model = new db_Context();
             int id = (int)Session["kullanici_id"];
@@ -213,6 +218,11 @@ namespace adminTabani_01_05_24.Controllers
             int id = (int)Session["kullanici_id"];
             ViewBag.KullaniciAd = model.Kullanicilar.Find(id).Ad;
             ViewBag.MesajID = mesajID;
+            return View();
+        }
+        public ActionResult LostedUser(string kullanici_ad)
+        {
+            ViewBag.Ad = kullanici_ad;
             return View();
         }
     }
