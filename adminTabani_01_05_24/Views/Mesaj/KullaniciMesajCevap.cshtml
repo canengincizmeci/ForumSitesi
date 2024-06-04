@@ -1,0 +1,23 @@
+﻿@model adminTabani_01_05_24.Models.KullaniciMesaj
+@{
+    ViewBag.Title = "KullaniciMesajCevap";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="text-center">
+    <h2>Cevap Verilen Mesaj</h2>
+    <p>@Model.GonderenAd</p>
+    <p>@Model.mesaj</p>
+    <p>@Model.tarih</p>
+</div>
+
+<div class="text-center">
+    <h2>Cevap:</h2>
+    <form action="/Mesaj/KullaniciMesajCevap" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="gelenMesajID" value="@ViewBag.GelenMesajID"/>
+        <label for="_cevap">Cevap:</label>
+        <textarea rows="5" class="form-control" id="_cevap" name="cevap"></textarea>
+        <button type="submit" class="btn btn-success">Cevap Gönder</button>
+    </form>
+</div>

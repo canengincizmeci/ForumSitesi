@@ -361,6 +361,8 @@
     <Content Include="Views\Mesaj\UyeMesajDetay.cshtml" />
     <Content Include="Views\Mesaj\MesajBildir.cshtml" />
     <Content Include="Views\Mesaj\UyeMesajSikayetTamam.cshtml" />
+    <Content Include="Views\Mesaj\KullaniciMesajCevap.cshtml" />
+    <Content Include="Views\Mesaj\CevapTamam.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

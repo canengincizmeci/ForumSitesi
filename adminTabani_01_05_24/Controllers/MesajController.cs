@@ -174,12 +174,46 @@ namespace adminTabani_01_05_24.Controllers
             ViewBag.MesajID = _mesajID;
             return View();
         }
+        [HttpGet]
         public ActionResult KullaniciMesajCevap(int alici_id, int gelenMesajID)
         {
-
-
-
-
+            db_Context model = new db_Context();
+            ViewBag.GelenMesajID = gelenMesajID;
+            var mesaj = model.KullaniciMesajlar.Where(p => p.k_mesaj_id == gelenMesajID).Select(p => new KullaniciMesaj
+            {
+                k_mesaj_id = p.k_mesaj_id,
+                aliciAd = p.Kullanicilar.Ad,
+                alici_id = p.Kullanicilar.kullanici_id,
+                tarih = p.tarih,
+                mesaj = p.mesaj,
+                GonderenAd = p.Kullanicilar1.Ad,
+                gonderen_id = p.Kullanicilar1.kullanici_id
+            }).FirstOrDefault();
+            return View(mesaj);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult KullaniciMesajCevap(string _mesaj, int _alici_id)
+        {
+            db_Context model = new db_Context();
+            int id = (int)Session["kullanici_id"];
+            model.KullaniciMesajlar.Add(new KullaniciMesajlar
+            {
+                alici_id = _alici_id,
+                gonderen_id = id,
+                mesaj = _mesaj,
+                tarih = DateTime.Now
+            });
+            model.SaveChanges();
+            return RedirectToAction("CevapTamam");
+        }
+        public ActionResult CevapTamam(int mesajID)
+        {
+            db_Context model = new db_Context();
+            int id = (int)Session["kullanici_id"];
+            ViewBag.KullaniciAd = model.Kullanicilar.Find(id).Ad;
+            ViewBag.MesajID = mesajID;
+            return View();
         }
     }
 }
