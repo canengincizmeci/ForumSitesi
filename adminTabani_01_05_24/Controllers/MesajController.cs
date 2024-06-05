@@ -198,10 +198,11 @@ namespace adminTabani_01_05_24.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult KullaniciMesajCevap(string _mesaj,int gelenmesajID)
+        public ActionResult KullaniciMesajCevap(string _mesaj, int gelenmesajID)
         {
             db_Context model = new db_Context();
             int id = (int)Session["kullanici_id"];
+            int _alici_id = (int)model.KullaniciMesajlar.Where(p => p.k_mesaj_id == gelenmesajID).FirstOrDefault().gonderen_id;
             model.KullaniciMesajlar.Add(new KullaniciMesajlar
             {
                 alici_id = _alici_id,
