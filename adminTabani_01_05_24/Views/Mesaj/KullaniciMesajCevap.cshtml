@@ -15,9 +15,9 @@
     <h2>Cevap:</h2>
     <form action="/Mesaj/KullaniciMesajCevap" method="post">
         @Html.AntiForgeryToken()
-        <input type="hidden" name="gelenMesajID" value="@ViewBag.GelenMesajID"/>
+        <input type="hidden" name="gelenmesajID" value="@ViewBag.GelenMesajID"/>
         <label for="_cevap">Cevap:</label>
-        <textarea rows="5" class="form-control" id="_cevap" name="cevap"></textarea>
+        <textarea rows="5" class="form-control" id="_cevap" name="_mesaj"></textarea>
         <button type="submit" class="btn btn-success">Cevap Gönder</button>
     </form>
 </div>

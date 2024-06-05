@@ -211,7 +211,7 @@ namespace adminTabani_01_05_24.Controllers
                 tarih = DateTime.Now
             });
             model.SaveChanges();
-            return RedirectToAction("CevapTamam");
+            return RedirectToAction("CevapTamam", new { mesajID = gelenmesajID });
         }
         public ActionResult CevapTamam(int mesajID)
         {
