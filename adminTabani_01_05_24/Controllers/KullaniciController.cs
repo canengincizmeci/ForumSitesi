@@ -388,5 +388,12 @@ namespace adminTabani_01_05_24.Controllers
             Session.Remove("kullanici_id");
             return RedirectToAction("Index", "Home");
         }
+        public ActionResult Profil()
+        {
+            //int id = (int)Session["kullanici_id"];
+            //db_Context model = new db_Context();
+            //var kisi = model.Kullanicilar.Find(id);
+            return View();
+        }
     }
 }
