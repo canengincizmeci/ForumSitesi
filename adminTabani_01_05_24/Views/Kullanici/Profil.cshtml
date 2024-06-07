@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Profil";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<style>
+    .secenek {
+        margin-right: 50px;
+    }
+
+    #ilkDiv {
+        margin-left: 400px;
+    }
+
+    .secenekContainer {
+        text-align: center;
+        align-content: center;
+        align-items: center;
+        margin-top: 100px;
+    }
+</style>
+<div class="text-center">
+    <h3>@ViewBag.Ad</h3>
+</div>
+<div class="secenekContainer">
+    <div id="ilkDiv" class="secenek" style="float:left"><a href="@Url.Action("KullaniciYazilar","Kullanici")" class="btn btn-secondary">Yazilar</a></div>
+    <div class="secenek" style="float:left"><a href="@Url.Action("KullaniciSiirler","Kullanici")" class="btn btn-secondary">Siirler</a></div>
+    <div class="secenek" style="float:left"><a href="@Url.Action("KullaniciHaberler","Kullanici")" class="btn btn-secondary">Haberler</a></div>
+    <div class="secenek" style="float:left"><a href="@Url.Action("KullaniciTartismalar","Kullanici")" class="btn btn-secondary">Tartismalar</a></div>
+    <div class="secenek" style="float:left"><a href="@Url.Action("KullaniciResimler","Kullanici")" class="btn btn-secondary">Resimler</a></div>
+</div>
+

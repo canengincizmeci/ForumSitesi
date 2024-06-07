@@ -390,10 +390,93 @@ namespace adminTabani_01_05_24.Controllers
         }
         public ActionResult Profil()
         {
-            //int id = (int)Session["kullanici_id"];
-            //db_Context model = new db_Context();
-            //var kisi = model.Kullanicilar.Find(id);
+            int id = (int)Session["kullanici_id"];
+            db_Context model = new db_Context();
+            var kisi = model.Kullanicilar.Find(id);
+            ViewBag.Ad = kisi.Ad;
             return View();
+        }
+        public ActionResult KullaniciYazilar()
+        {
+            int id = (int)Session["kullanici_id"];
+            db_Context model = new db_Context();
+            var yazilar = model.Yazilar.Where(p => p.yazar_id == id).Select(p => new Yazi
+            {
+                Baslik = p.Baslik,
+                yazar_id = p.yazar_id,
+                icerik = p.icerik,
+                onay = p.onay,
+                tarih = p.tarih,
+                yazar_ad = p.Kullanicilar.Ad,
+                yazi_id = p.yazi_id
+            }).ToList();
+            return View(yazilar);
+        }
+        public ActionResult KullaniciSiirler()
+        {
+            int id = (int)Session["kullanici_id"];
+            db_Context model = new db_Context();
+            var siirler = model.Siirler.Where(p => p.yazar == id).Select(p => new Siir
+            {
+                yazar = p.yazar,
+                icerik = p.icerik,
+                siirBaslik = p.siirBaslik,
+                siirID = p.siirID,
+                tarih = p.tarih,
+                YazarAd = p.Kullanicilar.Ad,
+                _onay = p.onay
+            }).ToList();
+            return View(siirler);
+        }
+        public ActionResult KullaniciHaberler()
+        {
+            int id = (int)Session["kullanici_id"];
+            db_Context model = new db_Context();
+            var haberler = model.Haberler.Where(p => p.paylasan == id).Select(p => new Haber
+            {
+                paylasan = p.paylasan,
+                Baslik = p.Baslik,
+                HaberID = p.HaberID,
+                icerik = p.icerik,
+                PaylasanAd = p.Kullanicilar.Ad,
+                tarih = p.tarih,
+                _onay = p.onay
+            }).ToList();
+            return View(haberler);
+        }
+        public ActionResult KullaniciTartismalar()
+        {
+            int id = (int)Session["kullanici_id"];
+            db_Context model = new db_Context();
+            var tartismalar = model.Tartismalar.Where(p => p.kullanici_id == id).Select(p => new Tartisma
+            {
+                kullanici_id = p.kullanici_id,
+                aktiflik = p.aktiflik,
+                Baslik = p.Baslik,
+                icerik = p.icerik,
+                KullaniciAd = p.Kullanicilar.Ad,
+                onay = p.onay,
+                tarih = p.tarih,
+                TartismaID = p.TartismaID
+            }).ToList();
+            return View(tartismalar);
+        }
+        public ActionResult KullaniciResimler()
+        {
+            int id = (int)Session["kullanici_id"];
+            db_Context model = new db_Context();
+            var resimler = model.Resimler.Where(p => p.paylasan == id).Select(p => new Resim
+            {
+                resimID = p.resimID,
+                PaylasanAd = p.Kullanicilar.Ad,
+                paylasan = p.paylasan,
+                aciklama = p.aciklama,
+                baslik = p.baslik,
+                dosyaYolu = p.dosyaYolu,
+                tarih = p.tarih,
+                _onay = p.onay
+            }).ToList();
+            return View(resimler);
         }
     }
 }
