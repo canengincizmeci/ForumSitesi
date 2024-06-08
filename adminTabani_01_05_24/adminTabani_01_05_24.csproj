@@ -365,6 +365,7 @@
     <Content Include="Views\Mesaj\CevapTamam.cshtml" />
     <Content Include="Views\Mesaj\LostedUser.cshtml" />
     <Content Include="Views\Kullanici\Profil.cshtml" />
+    <Content Include="Views\Kullanici\KullaniciYazilar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

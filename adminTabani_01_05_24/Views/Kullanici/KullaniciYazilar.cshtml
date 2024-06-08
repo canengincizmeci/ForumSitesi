@@ -1,0 +1,18 @@
+﻿@model List<adminTabani_01_05_24.Models.Yazi>
+@{
+    ViewBag.Title = "KullaniciYazilar";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>KullaniciYazilar</h2>
+
+@foreach (var yazi in Model)
+{
+    <div class="text-center" style="border:solid;">
+        <h3>@yazi.Baslik</h3>
+        <p>@yazi.icerik</p>
+        <p>@yazi.yazar_ad - @yazi.tarih</p>
+    </div>
+    <hr />
+}
+
