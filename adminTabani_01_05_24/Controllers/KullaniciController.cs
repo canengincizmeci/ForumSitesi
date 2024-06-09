@@ -478,5 +478,10 @@ namespace adminTabani_01_05_24.Controllers
             }).ToList();
             return View(resimler);
         }
+        public ActionResult IcerikSec()
+        {
+
+            return View();
+        }
     }
 }

@@ -370,6 +370,7 @@
     <Content Include="Views\Kullanici\KullaniciHaberler.cshtml" />
     <Content Include="Views\Kullanici\KullaniciTartismalar.cshtml" />
     <Content Include="Views\Kullanici\KullaniciResimler.cshtml" />
+    <Content Include="Views\Kullanici\IcerikSec.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
