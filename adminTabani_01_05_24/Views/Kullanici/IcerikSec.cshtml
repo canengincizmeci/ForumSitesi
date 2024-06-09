@@ -5,22 +5,70 @@
 }
 
 <style>
-    .containerim{
-        float:left;
-
+    .containerim {
+        float: left;
+        align-items: center;
+        border: none;
+        /*background-color:#b79f90;*/
+        background-color: rgb(255, 255, 255,0.3);
+        padding: 10%;
+        box-sizing: border-box;
+        margin: 20px auto;
     }
 
+    .icDiv {
+        float: left;
+        margin-right: 20px;
+        margin-top: 30px;
+        background-color: rgba(200,200,200,0.5);
+        width: 180px;
+        padding: 20px;
+        height: 200px;
+    }
+
+        .icDiv h3, .icDiv p {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
 </style>
 
 
 
 <div class="containerim">
-    <a href="#">
-        <div>
-
+    <a href="@Url.Action("TartismaBaslat","Tartisma")">
+        <div class="icDiv">
+            <h3>Tartışma Başlat</h3>
+            <p>Herkesin göreceği bir tartışma başlatabilirsin</p>
         </div>
     </a>
-
-
+    <a href="@Url.Action("YaziYaz","Yazilar")">
+        <div class="icDiv">
+            <h3>Yazi Yaz</h3>
+            <p>İstediğin herşey hakkında bir yazı kaleme alabilirsin</p>
+        </div>
+    </a>
+    <a href="@Url.Action("SiirYaz","Siir")">
+        <div class="icDiv">
+            <h3>Şiir Yaz</h3>
+            <p>İlham geldiyse dök yazıya</p>
+        </div>
+    </a>
+    <a href="@Url.Action("HaberPaylas","Haber")">
+        <div class="icDiv">
+            <h3>Haber Paylaş</h3>
+            <p>Bizim de bilmemizi istediğin bir haber varsa paylaşabilirsin</p>
+        </div>
+    </a>
+    <a href="@Url.Action("ResimPaylas","Resim")">
+        <div class="icDiv">
+            <h3>Resim Paylaş</h3>
+            <p>Beğendiğin ve paylaşmak istedğin resimler</p>
+        </div>
+    </a>
 </div>
 
