@@ -1,6 +1,7 @@
 ﻿using adminTabani_01_05_24.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -38,6 +39,7 @@ namespace adminTabani_01_05_24.Controllers
                 yazar = p.yazar,
                 YazarAd = p.Kullanicilar.Ad,
                 _onay = p.onay
+
             }).FirstOrDefault();
             detayPage.siir_yorumlari = model.SiirYorumlar.OrderByDescending(p => p.SiirYorumID).Where(p => p.onay == true).Select(p => new SiirYorumlari
             {
@@ -69,8 +71,19 @@ namespace adminTabani_01_05_24.Controllers
         public ActionResult UyeSiirDetay(int siir_id)
         {
             int id = (int)Session["kullanici_id"];
+            bool deger = true;
             db_Context model = new db_Context();
             ZiyaretciSiirDetayPage detayPage = new ZiyaretciSiirDetayPage();
+            if (model.Siirler.Find(siir_id).yazar == id)
+            {
+                deger = false;
+                ViewBag.Deger = deger;
+            }
+            else
+            {
+                ViewBag.Deger = deger;
+
+            }
             detayPage.siir = model.Siirler.Where(p => p.siirID == siir_id).Select(p => new Siir
             {
                 siirID = p.siirID,
@@ -111,7 +124,7 @@ namespace adminTabani_01_05_24.Controllers
                 siir_id = _siirID,
                 sikayetci_id = id,
                 tarih = DateTime.Now
-                
+
             });
             model.SaveChanges();
             return RedirectToAction("SiirSikayetTamam", new { siir_id = _siirID });
@@ -139,7 +152,7 @@ namespace adminTabani_01_05_24.Controllers
                 onay = true,
                 siirID = _siirID,
                 tarih = DateTime.Now,
-                yorumcuID=id,              
+                yorumcuID = id,
             });
             model.SaveChanges();
             return RedirectToAction("UyeSiirDetay", new { siir_id = _siirID });

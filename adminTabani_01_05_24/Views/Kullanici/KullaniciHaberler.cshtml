@@ -1,0 +1,42 @@
+﻿@model List<adminTabani_01_05_24.Models.Haber>
+@{
+    ViewBag.Title = "KullaniciHaberler";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<style>
+    .container {
+        align-items: center;
+        width: 500px;
+        border: none;
+        background-color: darkseagreen;
+        border-radius: 10%;
+        padding: 20px;
+        box-sizing: border-box;
+        margin: 20px auto;
+    }
+
+        .container h3, .container p {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+</style>
+
+@foreach (var haber in Model)
+{
+    <div class="container">
+
+        <h3>@haber.Baslik</h3>
+
+        @if (haber.icerik.ToString().Length > 100)
+        {
+        <p>@haber.icerik.ToString().Substring(0, 100) ...</p>
+        }
+        else
+        {
+        <p>@haber.icerik</p>
+        }
+        <p>@haber.PaylasanAd - @haber.tarih</p>
+        <a href="@Url.Action("UyeHaberDetay","Haber",new {id=haber.HaberID})" class="btn btn-success">Oku</a>
+    </div>
+}

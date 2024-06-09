@@ -1,0 +1,40 @@
+﻿@model List<adminTabani_01_05_24.Models.Tartisma>
+@{
+    ViewBag.Title = "KullaniciTartismalar";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<style>
+    .containerim {
+        align-items: center;
+        width: 500px;
+        border: none;
+        background-color: darkseagreen;
+        border-radius: 10%;
+        padding: 20px;
+        box-sizing: border-box;
+        margin: 20px auto;
+    }
+
+        .containerim h3, .containerim p {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+</style>
+
+@foreach (var tartisma in Model)
+{
+    <div class="containerim">
+        <h3>@tartisma.Baslik</h3>
+        @if (tartisma.icerik.ToString().Length > 100)
+        {
+            <p>@tartisma.icerik.ToString().Substring(0, 100) ...</p>
+        }
+        else
+        {
+            <p>@tartisma.icerik</p>
+        }
+        <p>@tartisma.KullaniciAd - @tartisma.tarih</p>
+        <a href="@Url.Action("TartismaDetay","Tartisma",new {tartisma_id=tartisma.TartismaID})" class="btn btn-success">Oku</a>
+    </div>
+}

@@ -8,7 +8,10 @@
     <p>@Model.tartisma.icerik</p>
     <p>@Model.tartisma.KullaniciAd</p>
     <p>@Model.tartisma.tarih</p>
-    <a class="btn btn-danger" href="@Url.Action("Bildir", "Tartisma", new {_tartismaID=Model.tartisma.TartismaID})">Bildir</a>
+    @if (ViewBag.Deger == true)
+    {
+        <a class="btn btn-danger" href="@Url.Action("Bildir", "Tartisma", new {_tartismaID=Model.tartisma.TartismaID})">Bildir</a>
+    }
 </div>
 
 <div class="container">

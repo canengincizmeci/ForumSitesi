@@ -32,6 +32,17 @@ namespace adminTabani_01_05_24.Controllers
         {
             db_Context model = new db_Context();
             TartismaDetayPage tartismaDetay = new TartismaDetayPage();
+            int id = (int)Session["kullanici_id"];
+            bool deger = true;
+            if (model.Tartismalar.Find(tartisma_id).TartismaID == tartisma_id)
+            {
+                deger = false;
+                ViewBag.Deger = deger;
+            }
+            else
+            {
+                ViewBag.Deger = deger;  
+            }
             tartismaDetay.tartisma = model.Tartismalar.Where(p => p.TartismaID == tartisma_id).Select(p => new Tartisma
             {
                 TartismaID = p.TartismaID,

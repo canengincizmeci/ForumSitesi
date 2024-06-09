@@ -1,0 +1,38 @@
+﻿@model List<adminTabani_01_05_24.Models.Resim>
+@{
+    ViewBag.Title = "KullaniciResimler";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<style>
+    .containerim {
+        align-items: center;
+        width: 500px;
+        border: none;
+        background-color: darkseagreen;
+        border-radius: 10%;
+        padding: 20px;
+        box-sizing: border-box;
+        margin: 20px auto;
+    }
+
+        .containerim h3, .containerim p {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+</style>
+
+@foreach (var resim in Model)
+{
+    <div class="containerim">
+        <h3>@resim.baslik</h3>
+        @*<img src="@Url.Content("~/Content/images/"+resim.dosyaYolu)" alt="Alternate Text" />*@
+        @*<img src="~/Content/images/resmimKopya.jpg" />
+        <img src="@Url.Content("~/Content/images/resmimKopya.jpg")" />*@
+        <img src="@Url.Content("~/Content/images/"+ resim.dosyaYolu)"/>
+        <p>@resim.aciklama</p>
+        <p>@resim.PaylasanAd - @resim.tarih</p>
+    </div>
+
+}
+

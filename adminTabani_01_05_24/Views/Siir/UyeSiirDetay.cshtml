@@ -9,7 +9,11 @@
     <p>@Model.siir.icerik</p>
     <p>@Model.siir.YazarAd</p>
     <p>@Model.siir.tarih</p>
-    <a class="btn btn-danger" href="@Url.Action("Bildir", "Siir", new {_siirID=Model.siir.siirID})">Bildir</a>
+    @if (ViewBag.Deger == true)
+    {
+        <a class="btn btn-danger" href="@Url.Action("Bildir", "Siir", new {_siirID=Model.siir.siirID})">Bildir</a>
+    }
+
 </div>
 
 <div class="container">
