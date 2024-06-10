@@ -371,6 +371,10 @@
     <Content Include="Views\Kullanici\KullaniciTartismalar.cshtml" />
     <Content Include="Views\Kullanici\KullaniciResimler.cshtml" />
     <Content Include="Views\Kullanici\IcerikSec.cshtml" />
+    <Content Include="Views\Tartisma\TartismaBaslat.cshtml" />
+    <Content Include="Views\Home\IcerikEklendi.cshtml" />
+    <Content Include="Views\Yazilar\YaziYaz.cshtml" />
+    <Content Include="Views\Siir\SiirYaz.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -261,7 +261,7 @@ namespace adminTabani_01_05_24.Controllers
             var kisi = model.Kullanicilar.FirstOrDefault(p => p.kullanici_id == id);
             ViewBag.Ad = kisi.Ad;
             KullaniciHomeViewModel Gidenmodel = new KullaniciHomeViewModel();
-            Gidenmodel.resimler = model.Resimler.OrderByDescending(p => p.resimID).Where(p => p.onay == true).Select(p => new Resim
+            Gidenmodel.resimler = model.Resimler.OrderByDescending(p => p.resimID).Where(p => p.onay == true).Take(5).Select(p => new Resim
             {
                 resimID = p.resimID,
                 aciklama = p.aciklama,
@@ -271,8 +271,8 @@ namespace adminTabani_01_05_24.Controllers
                 PaylasanAd = p.Kullanicilar.Ad,
                 tarih = p.tarih,
                 _onay = p.onay
-            }).Take(5).ToList();
-            Gidenmodel.haberler = model.Haberler.OrderByDescending(p => p.HaberID).Where(p => p.onay == true).Select(p => new Haber
+            }).ToList();
+            Gidenmodel.haberler = model.Haberler.OrderByDescending(p => p.HaberID).Where(p => p.onay == true).Take(5).Select(p => new Haber
             {
                 HaberID = p.HaberID,
                 Baslik = p.Baslik,
@@ -281,8 +281,8 @@ namespace adminTabani_01_05_24.Controllers
                 tarih = p.tarih,
                 _onay = p.onay,
                 PaylasanAd = p.Kullanicilar.Ad
-            }).Take(5).ToList();
-            Gidenmodel.yazilar = model.Yazilar.OrderByDescending(p => p.yazi_id).Where(p => p.onay == true).Select(p => new Yazi
+            }).ToList();
+            Gidenmodel.yazilar = model.Yazilar.OrderByDescending(p => p.yazi_id).Where(p => p.onay == true).Take(5).Select(p => new Yazi
             {
                 yazi_id = p.yazi_id,
                 yazar_id = p.yazar_id,
@@ -292,7 +292,7 @@ namespace adminTabani_01_05_24.Controllers
                 yazar_ad = p.Kullanicilar.Ad,
                 tarih = p.tarih
             }).Take(5).ToList();
-            Gidenmodel.tartismalar = model.Tartismalar.OrderByDescending(p => p.TartismaID).Where(p => p.onay == true).Select(p => new Tartisma
+            Gidenmodel.tartismalar = model.Tartismalar.OrderByDescending(p => p.TartismaID).Where(p => p.onay == true).Take(5).Select(p => new Tartisma
             {
                 TartismaID = p.TartismaID,
                 aktiflik = p.aktiflik,
@@ -302,8 +302,8 @@ namespace adminTabani_01_05_24.Controllers
                 onay = p.onay,
                 tarih = p.tarih,
                 KullaniciAd = p.Kullanicilar.Ad
-            }).Take(5).ToList();
-            Gidenmodel.siirler = model.Siirler.OrderByDescending(p => p.siirID).Where(p => p.onay == true).Select(p => new Siir
+            }).ToList();
+            Gidenmodel.siirler = model.Siirler.OrderByDescending(p => p.siirID).Where(p => p.onay == true).Take(5).Select(p => new Siir
             {
                 siirID = p.siirID,
                 icerik = p.icerik,
@@ -312,7 +312,7 @@ namespace adminTabani_01_05_24.Controllers
                 yazar = p.yazar,
                 YazarAd = p.Kullanicilar.Ad,
                 _onay = p.onay
-            }).Take(5).ToList();
+            }).ToList();
 
             return View(Gidenmodel);
         }

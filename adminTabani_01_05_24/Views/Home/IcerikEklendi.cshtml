@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "IcerikEklendi";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<script>
+    var sayacdeger = 5;
+    function basla() {
+        var sayacim = document.getElementById('sayac');
+        var interval = setInterval(function () {
+            sayacim.innerHTML = sayacdeger;
+            sayacdeger--;
+            if (sayacdeger < 0) {
+                clearInterval(interval);
+                window.location.href='@Url.Action("KullaniciHome", "Kullanici")'
+            }
+        }, 1000);
+    }
+
+    window.onload = function () {
+        basla();
+    };
+</script>
+<div class="text-center">
+    <h3>Sayın @ViewBag.Ad @ViewBag.Tur türünde içeriğiniz başarıyla eklenmiştir</h3>
+    <p>Kalan süre : <span id="sayac">5</span> saniye</p>
+</div>

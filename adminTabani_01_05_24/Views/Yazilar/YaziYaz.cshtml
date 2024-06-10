@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "YaziYaz";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<div class="text-center">
+    <h4>Merhaba @ViewBag.Ad Yazını yazabilirsin</h4>
+</div>
+<div class="container">
+    <form action="@Url.Action("YaziYaz","Yazilar")" method="post">
+        @Html.AntiForgeryToken()
+        <label for="baslik">Başlık:</label>
+        <input type="text" name="_baslik" id="baslik" class="form-control" />
+        <label for="icerik">Yazı:</label>
+        <textarea rows="5" name="_icerik" id="icerik" class="form-control"></textarea>
+        <div class="text-center" style="margin-top:20px;">
+            <button type="submit" class="btn btn-success">Gönder</button>
+        </div>
+    </form>
+</div>

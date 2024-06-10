@@ -157,5 +157,30 @@ namespace adminTabani_01_05_24.Controllers
             model.SaveChanges();
             return RedirectToAction("UyeSiirDetay", new { siir_id = _siirID });
         }
+        [HttpGet]
+        public ActionResult SiirYaz()
+        {
+            int id = (int)Session["kullanici_id"];
+            db_Context model = new db_Context();
+            ViewBag.Ad = model.Kullanicilar.Find(id).Ad;
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SiirYaz(string _icerik, string _baslik)
+        {
+            int id = (int)Session["kullanici_id"];
+            db_Context model = new db_Context();
+            model.Siirler.Add(new Siirler
+            {
+                icerik = _icerik,
+                onay = true,
+                siirBaslik = _baslik,
+                tarih = DateTime.Now,
+                yazar = id
+            });
+            model.SaveChanges();
+            return RedirectToAction("IcerikEklendi", "Home", new { _tur = "Şiir" });
+        }
     }
 }

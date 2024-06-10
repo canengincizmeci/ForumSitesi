@@ -78,5 +78,14 @@ namespace adminTabani_01_05_24.Controllers
             Response.TrySkipIisCustomErrors = true;
             return View();
         }
+        public ActionResult IcerikEklendi(string _tur)
+        {
+            int id = (int)Session["kullanici_id"];
+            db_Context model = new db_Context();
+            ViewBag.Tur = _tur;
+            ViewBag.Ad = model.Kullanicilar.Find(id).Ad;
+            return View();
+        }
+
     }
 }

@@ -41,7 +41,7 @@ namespace adminTabani_01_05_24.Controllers
             }
             else
             {
-                ViewBag.Deger = deger;  
+                ViewBag.Deger = deger;
             }
             tartismaDetay.tartisma = model.Tartismalar.Where(p => p.TartismaID == tartisma_id).Select(p => new Tartisma
             {
@@ -118,5 +118,32 @@ namespace adminTabani_01_05_24.Controllers
             ViewBag.TartismaID = _tartismaID;
             return View();
         }
+        [HttpGet]
+        public ActionResult TartismaBaslat()
+        {
+            int id = (int)Session["kullanici_id"];
+            db_Context model = new db_Context();
+            ViewBag.Ad = model.Kullanicilar.Find(id).Ad;
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult TartismaBaslat(string _baslik, string _icerik)
+        {
+            int id = (int)Session["kullanici_id"];
+            db_Context model = new db_Context();
+            model.Tartismalar.Add(new Tartismalar
+            {
+                kullanici_id = id,
+                aktiflik = true,
+                Baslik = _baslik,
+                onay = true,
+                icerik = _icerik,
+                tarih = DateTime.Now
+            });
+            model.SaveChanges();
+            return RedirectToAction("IcerikEklendi", "Home", new { _tur = "Tartışma" });
+        }
+
     }
 }

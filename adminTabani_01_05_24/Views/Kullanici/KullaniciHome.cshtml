@@ -21,14 +21,21 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.tartismalar.Take(5))
+                @foreach (var item in Model.tartismalar)
                 {
                     if (item.onay == true && item.aktiflik == true)
                     {
 
                         <tr>
                             <td>@item.Baslik</td>
-                            <td>@item.icerik.Substring(0, 20)</td>
+                            @if (item.icerik.ToString().Length > 20)
+                            {
+                                <td>@item.icerik.Substring(0, 20)</td>
+                            }
+                            else
+                            {
+                                <td>@item.icerik</td>
+                            }
                             <td>@item.KullaniciAd</td>
                             <td>@item.tarih</td>
                             @*                      <td><a class="btn btn-success" href="/Tartisma/Index">Tümünü Görüntüle</a></td>*@
@@ -55,13 +62,20 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var yazi in Model.yazilar.Take(5))
+                @foreach (var yazi in Model.yazilar)
                 {
                     if (yazi.onay == true)
                     {
                         <tr>
                             <td>@yazi.Baslik</td>
-                            <td>@yazi.icerik.Substring(0, 20)</td>
+                            @if (yazi.icerik.ToString().Length > 20)
+                            {
+                                <td>@yazi.icerik.Substring(0, 20)</td>
+                            }
+                            else
+                            {
+                                <td>@yazi.icerik</td>
+                            }
                             <td>@yazi.yazar_ad</td>
                             <td>@yazi.tarih</td>
 
@@ -86,13 +100,20 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var haber in Model.haberler.Take(5))
+                @foreach (var haber in Model.haberler)
                 {
                     if (haber._onay == true)
                     {
                         <tr>
                             <td>@haber.Baslik</td>
-                            <td>@haber.icerik.Substring(0, 20)</td>
+                            @if (haber.icerik.Length > 20)
+                            {
+                                <td>@haber.icerik.Substring(0, 20)</td>
+                            }
+                            else
+                            {
+                                <td>@haber.icerik</td>
+                            }
                             <td>@haber.PaylasanAd</td>
                             <td>@haber.tarih</td>
                         </tr>
@@ -116,13 +137,20 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var siir in Model.siirler.Take(5))
+                @foreach (var siir in Model.siirler)
                 {
                     if (siir._onay == true)
                     {
                         <tr>
                             <td>@siir.siirBaslik</td>
-                            <td>@siir.icerik.Substring(0, 20)</td>
+                            @if (siir.icerik.ToString().Length > 20)
+                            {
+                                <td>@siir.icerik.Substring(0, 20)</td>
+                            }
+                            else
+                            {
+                                <td>@siir.icerik</td>
+                            }
                             <td>@siir.yazar</td>
                             <td>@siir.tarih</td>
                         </tr>
@@ -152,7 +180,14 @@
                     <tr>
                         <td>@resim.baslik</td>
                         <td><img src="@Url.Content(resim.dosyaYolu)" /></td>
-                        <td>@resim.aciklama.Substring(0, 20)</td>
+                        @if (resim.aciklama.ToString().Length > 20)
+                        {
+                            <td>@resim.aciklama.Substring(0, 20)</td>
+                        }
+                        else
+                        {
+                            <td>@resim.aciklama</td>
+                        }
                         <td>@resim.PaylasanAd</td>
                         <td>@resim.tarih</td>
                     </tr>
