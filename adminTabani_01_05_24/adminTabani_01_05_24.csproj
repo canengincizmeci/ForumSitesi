@@ -193,6 +193,7 @@
     <Compile Include="Models\KullaniciMesajlarimPage.cs" />
     <Compile Include="Models\KullaniciMesajlarSikayetleri.cs" />
     <Compile Include="Models\Resim.cs" />
+    <Compile Include="Models\ResimDetayPage.cs" />
     <Compile Include="Models\ResimSikayetleri.cs" />
     <Compile Include="Models\ResimYorumlari.cs" />
     <Compile Include="Models\Siir.cs" />
@@ -378,6 +379,8 @@
     <Content Include="Views\Siir\SiirYaz.cshtml" />
     <Content Include="Views\Haber\HaberPaylas.cshtml" />
     <Content Include="Views\Resim\Index.cshtml" />
+    <Content Include="Views\Resim\ZiyaretciResimDetay.cshtml" />
+    <Content Include="Views\Resim\ResimPaylas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

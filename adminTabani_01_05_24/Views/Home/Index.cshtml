@@ -103,7 +103,7 @@
                 {
                     <tr>
                         <td>@resim.baslik</td>
-                        <td><img src="@Url.Content(resim.dosyaYolu)" alt="resim" /></td>
+                        <td><img src="@Url.Content("~/Content/images/"+resim.dosyaYolu)" alt="resim" style="width:100%;height:auto; max-width:100px;cursor:pointer;" /></td>
                         @if (resim.aciklama.Length > 20)
                         {
                             <td>@resim.aciklama.ToString().Substring(0, 20)</td>

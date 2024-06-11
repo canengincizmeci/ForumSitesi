@@ -1,0 +1,30 @@
+﻿@model adminTabani_01_05_24.Models.ResimDetayPage
+@{
+    ViewBag.Title = "ZiyaretciResimDetay";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="text-center" style="margin:0px 100px 0px 100px">
+    <h3>@Model.resim.baslik</h3>
+    <img src="@Url.Content("~/Content/images/"+Model.resim.dosyaYolu)" alt="@Model.resim.baslik" />
+    <p>@Model.resim.aciklama</p>
+    <p>@Model.resim.PaylasanAd - @Model.resim.tarih</p>
+</div>
+<div class="text-center">
+    <label>Yorum yapmak için üye olun <a href="@Url.Action("Ekle","Kullanici")" class="btn btn-success">Üye ol</a></label>
+</div>
+
+<div class="text-center">
+    <h3>Yorumlar</h3>
+</div>
+<hr />
+<div class="container">
+    @foreach (var yorum in Model.resimYorumlari)
+    {
+        <div class="container">
+            <p><i><strong>@yorum.yorumcu_ad</strong> : @yorum._icerik</i></p>
+            <p>@yorum._tarih</p>
+        </div>
+        <hr />
+    }
+</div>

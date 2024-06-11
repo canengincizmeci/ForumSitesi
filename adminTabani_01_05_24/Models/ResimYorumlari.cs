@@ -15,7 +15,8 @@ namespace adminTabani_01_05_24.Models
         public string _icerik { get; set; }
         public int? _yorumcuID { get; set; }
         public int? _resimID { get; set; }
-        public bool _onay { get; set; }
+        public bool? _onay { get; set; }
         public DateTime? _tarih { get; set; }
+        public string yorumcu_ad { get; set; }
     }
 }

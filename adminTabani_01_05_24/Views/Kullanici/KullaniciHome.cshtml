@@ -4,6 +4,9 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
+
+
+
 <div class="text-center">
     <h4><i>Hoşgeldin @ViewBag.Ad Bu gün nasılsın</i></h4>
 </div>
@@ -179,7 +182,7 @@
                 {
                     <tr>
                         <td>@resim.baslik</td>
-                        <td><img src="@Url.Content(resim.dosyaYolu)" /></td>
+                        <td><img src="@Url.Content("~/Content/images/"+resim.dosyaYolu)" style="width: 100%; height: auto; max-width: 100px; cursor: pointer;" /></td>
                         @if (resim.aciklama.ToString().Length > 20)
                         {
                             <td>@resim.aciklama.Substring(0, 20)</td>
