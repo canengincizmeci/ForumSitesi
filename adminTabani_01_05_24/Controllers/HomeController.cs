@@ -18,7 +18,7 @@ namespace adminTabani_01_05_24.Controllers
             {
                 HaberID = p.HaberID,
                 Baslik = p.Baslik,
-                icerik = p.icerik.Substring(0, 20),
+                icerik = p.icerik,
                 tarih = p.tarih,
                 paylasan = p.paylasan,
                 PaylasanAd = p.Kullanicilar.Ad
@@ -28,7 +28,7 @@ namespace adminTabani_01_05_24.Controllers
                 yazi_id = p.yazi_id,
                 yazar_id = p.yazar_id,
                 Baslik = p.Baslik,
-                icerik = p.icerik.Substring(0, 20),
+                icerik = p.icerik,
                 tarih = p.tarih,
                 onay = p.onay,
                 yazar_ad = p.Kullanicilar.Ad
@@ -46,7 +46,7 @@ namespace adminTabani_01_05_24.Controllers
             veriler.siirler = model.Siirler.OrderByDescending(p => p.tarih).Take(5).Select(p => new Siir
             {
                 siirID = p.siirID,
-                icerik = p.icerik.Substring(0, 20),
+                icerik = p.icerik,
                 siirBaslik = p.siirBaslik,
                 tarih = p.tarih,
                 yazar = p.yazar,
@@ -58,12 +58,11 @@ namespace adminTabani_01_05_24.Controllers
                 tarih = p.tarih,
                 aktiflik = p.aktiflik,
                 Baslik = p.Baslik,
-                icerik = p.icerik.Substring(0, 20),
+                icerik = p.icerik,
                 kullanici_id = p.kullanici_id,
                 onay = p.onay,
                 KullaniciAd = p.Kullanicilar.Ad
             }).ToList();
-
             return View(veriler);
         }
         public ActionResult Page403()

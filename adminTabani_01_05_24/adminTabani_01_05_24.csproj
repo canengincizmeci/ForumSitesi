@@ -137,6 +137,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KullaniciController.cs" />
     <Compile Include="Controllers\MesajController.cs" />
+    <Compile Include="Controllers\ResimController.cs" />
     <Compile Include="Controllers\SiirController.cs" />
     <Compile Include="Controllers\TartismaController.cs" />
     <Compile Include="Controllers\YazilarController.cs" />
@@ -375,9 +376,11 @@
     <Content Include="Views\Home\IcerikEklendi.cshtml" />
     <Content Include="Views\Yazilar\YaziYaz.cshtml" />
     <Content Include="Views\Siir\SiirYaz.cshtml" />
+    <Content Include="Views\Haber\HaberPaylas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Resim\" />
     <Folder Include="Views\Ziyaretci\" />
   </ItemGroup>
   <ItemGroup>

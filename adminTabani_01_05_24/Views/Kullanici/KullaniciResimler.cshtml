@@ -20,18 +20,23 @@
             word-wrap: break-word;
             overflow-wrap: break-word;
         }
+
+        .containerim img {
+            width: 100%;
+            height: auto;
+            max-width: 100px;
+            cursor: pointer;
+        }
 </style>
 
 @foreach (var resim in Model)
 {
     <div class="containerim">
         <h3>@resim.baslik</h3>
-        @*<img src="@Url.Content("~/Content/images/"+resim.dosyaYolu)" alt="Alternate Text" />*@
-        @*<img src="~/Content/images/resmimKopya.jpg" />
-        <img src="@Url.Content("~/Content/images/resmimKopya.jpg")" />*@
-        <img src="@Url.Content("~/Content/images/"+ resim.dosyaYolu)"/>
+        <img src="@Url.Content("~/Content/images/"+ resim.dosyaYolu)" />
         <p>@resim.aciklama</p>
         <p>@resim.PaylasanAd - @resim.tarih</p>
+        <a href="@Url.Action("UyeResimDetay","Resim",new {resim_id=resim.resimID})" class="btn btn-success">İncele</a>
     </div>
 
 }

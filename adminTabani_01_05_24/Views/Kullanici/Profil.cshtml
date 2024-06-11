@@ -3,30 +3,82 @@
     ViewBag.Title = "Profil";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
+
+
+
 <style>
-    .secenek {
-        margin-right: 50px;
-    }
-
-    #ilkDiv {
-        margin-left: 400px;
-    }
-
-    .secenekContainer {
-        text-align: center;
-        align-content: center;
+    .containerim {
+        float: left;
         align-items: center;
-        margin-top: 100px;
+        border: none;
+        /*background-color:#b79f90;*/
+        background-color: rgb(255, 255, 255,0.3);
+        padding: 10%;
+        box-sizing: border-box;
+        margin: 20px auto;
+    }
+
+    .icDiv {
+        float: left;
+        margin-right: 20px;
+        margin-top: 30px;
+        background-color: rgba(200,200,200,0.5);
+        width: 180px;
+        padding: 20px;
+        height: 200px;
+        transition: transform 0.3s ease;
+    }
+
+        .icDiv h3, .icDiv p {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .icDiv:hover {
+        transform: scale(1.1);
+        border: 1px solid lightgray;
     }
 </style>
+
 <div class="text-center">
-    <h3>@ViewBag.Ad</h3>
+    <h3> @ViewBag.Ad </h3>
 </div>
-<div class="secenekContainer">
-    <div id="ilkDiv" class="secenek" style="float:left"><a href="@Url.Action("KullaniciYazilar","Kullanici")" class="btn btn-secondary">Yazilar</a></div>
-    <div class="secenek" style="float:left"><a href="@Url.Action("KullaniciSiirler","Kullanici")" class="btn btn-secondary">Siirler</a></div>
-    <div class="secenek" style="float:left"><a href="@Url.Action("KullaniciHaberler","Kullanici")" class="btn btn-secondary">Haberler</a></div>
-    <div class="secenek" style="float:left"><a href="@Url.Action("KullaniciTartismalar","Kullanici")" class="btn btn-secondary">Tartismalar</a></div>
-    <div class="secenek" style="float:left"><a href="@Url.Action("KullaniciResimler","Kullanici")" class="btn btn-secondary">Resimler</a></div>
+
+<div class="containerim">
+    <a href="@Url.Action("KullaniciYazilar","Kullanici")">
+        <div class="icDiv">
+            <h3>Yazıların</h3>
+            <p>Şimdiye kadar yazdığın yazıları görmek istiyorsan tıkla</p>
+        </div>
+    </a>
+    <a href="@Url.Action("KullaniciTartismalar","Kullanici")">
+        <div class="icDiv">
+            <h3>Tartışma</h3>
+            <p>Şimdiye kadar katıldığın tartışmalar için çok teşekkürler</p>
+        </div>
+    </a>
+    <a href="@Url.Action("KullaniciSiirler","Kullanici")">
+        <div class="icDiv">
+            <h3>Şiirlerin</h3>
+            <p>Yazdığın şiirleri okumak istersen tıkla</p>
+        </div>
+    </a>
+    <a href="@Url.Action("KullaniciHaberler","Kullanici")">
+        <div class="icDiv">
+            <h3>Haberlerin</h3>
+            <p>Paylaştığın tüm haberler burada tıkla ve içeriklerini gör</p>
+        </div>
+    </a>
+    <a href="@Url.Action("KullaniciResimler","Kullanici")">
+        <div class="icDiv">
+            <h3>Resimlerin</h3>
+            <p>Paylaştığın tüm resimler burada mevcut</p>
+        </div>
+    </a>
 </div>
 

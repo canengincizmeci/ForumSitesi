@@ -135,5 +135,30 @@ namespace adminTabani_01_05_24.Controllers
             ViewBag.HaberID = _haberID;
             return View();
         }
+        [HttpGet]
+        public ActionResult HaberPaylas()
+        {
+            int id = (int)Session["kullanici_id"];
+            db_Context model = new db_Context();
+            ViewBag.Ad = model.Kullanicilar.Find(id).Ad;
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult HaberPaylas(string _baslik, string _icerik)
+        {
+            int id = (int)Session["kullanici_id"];
+            db_Context model = new db_Context();
+            model.Haberler.Add(new Haberler
+            {
+                Baslik = _baslik,
+                icerik = _icerik,
+                onay = true,
+                paylasan = id,
+                tarih = DateTime.Now
+            });
+            model.SaveChanges();
+            return RedirectToAction("IcerikEklendi", "Home", new { _tur = "Haber" });
+        }
     }
 }
