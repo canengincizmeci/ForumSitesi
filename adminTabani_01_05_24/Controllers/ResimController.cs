@@ -24,7 +24,7 @@ namespace adminTabani_01_05_24.Controllers
                 tarih = p.tarih,
                 _onay = p.onay
             }).ToList();
-            return View();
+            return View(resimler);
         }
     }
 }

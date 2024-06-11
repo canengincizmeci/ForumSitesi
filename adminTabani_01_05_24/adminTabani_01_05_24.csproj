@@ -377,10 +377,10 @@
     <Content Include="Views\Yazilar\YaziYaz.cshtml" />
     <Content Include="Views\Siir\SiirYaz.cshtml" />
     <Content Include="Views\Haber\HaberPaylas.cshtml" />
+    <Content Include="Views\Resim\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Resim\" />
     <Folder Include="Views\Ziyaretci\" />
   </ItemGroup>
   <ItemGroup>

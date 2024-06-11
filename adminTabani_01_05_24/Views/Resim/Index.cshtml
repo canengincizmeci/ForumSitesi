@@ -1,0 +1,24 @@
+﻿@model List<adminTabani_01_05_24.Models.Resim>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+@foreach (var resim in Model)
+{
+    <div class="container">
+        <h3>@resim.baslik</h3>
+        <img src="@Url.Content("~/Content/images/"+resim.dosyaYolu)" alt="@resim.baslik" style="width: 100%; height: auto;" />
+        @if (resim.aciklama.ToString().Length > 20)
+        {
+            <p>@resim.aciklama.ToString().Substring(0, 20) ...</p>
+        }
+        else
+        {
+            <p>@resim.aciklama</p>
+        }
+        <p>@resim.PaylasanAd - @resim.tarih</p>
+        <a href="@Url.Action("ZiyaretciResimDetay","Resimler")" class="btn btn-success">İncele</a>
+    </div>
+}
