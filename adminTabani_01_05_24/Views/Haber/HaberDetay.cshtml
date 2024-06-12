@@ -1,4 +1,4 @@
-﻿
+﻿@model adminTabani_01_05_24.Models.UyeHaberDetayPage
 @{
     ViewBag.Title = "HaberDetay";
     Layout = "~/Views/Shared/_ZiyaretciLayout.cshtml";
@@ -7,10 +7,23 @@
 
 
 <div class="text-center" style="margin:0px 100px 0px 100px">
-    <h3>@ViewBag.Baslik</h3>
-    <p>@ViewBag.Icerik</p>
-    <h4>@ViewBag.Yazar - @ViewBag.Tarih</h4>
+    <h3>@Model.haber.Baslik</h3>
+    <p>@Model.haber.icerik</p>
+    <h4>@Model.haber.PaylasanAd - @Model.haber.tarih</h4>
 </div>
 <div class="text-center">
     <label>Yorum yapmak için Üye olun <a class="btn btn-success" href="/Kullancı/Ekle">Üye Ol</a></label>
+</div>
+<h4>Yorumlar</h4>
+<hr />
+<div class="container">
+
+    @foreach (var yorum in Model.haber_yorumlari)
+    {
+        <div class="container">
+            <p><i><strong>@yorum.yorumcu_ad</strong> : @yorum._icerik</i></p>
+            <p>@yorum._tarih</p>
+        </div>
+        <hr />
+    }
 </div>

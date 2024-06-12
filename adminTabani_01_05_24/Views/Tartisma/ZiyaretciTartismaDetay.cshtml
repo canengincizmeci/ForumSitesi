@@ -1,13 +1,13 @@
-﻿@model adminTabani_01_05_24.Models.YaziDetayPage
+﻿@model adminTabani_01_05_24.Models.TartismaDetayPage
 @{
-    ViewBag.Title = "ZiyaretciYazıDetay";
+    ViewBag.Title = "ZiyaretciTartismaDetay";
     Layout = "~/Views/Shared/_ZiyaretciLayout.cshtml";
 }
 
 <div class="text-center" style="margin:0px 100px 0px 100px">
-    <h3>@Model.yazi.Baslik</h3>
-    <p>@Model.yazi.icerik</p>
-    <h4>@Model.yazi.yazar_ad - @Model.yazi.tarih</h4>
+    <h3>@Model.tartisma.Baslik</h3>
+    <p>@Model.tartisma.icerik</p>
+    <h4>@Model.tartisma.KullaniciAd - @Model.tartisma.tarih</h4>
 </div>
 <div class="text-center">
     <label>Yorum yapmak için Üye olun <a class="btn btn-success" href="/Kullanici/Ekle">Üye Ol</a></label>
@@ -20,13 +20,15 @@
 <hr />
 <div class="container">
 
-    @foreach (var yorum in Model.yaziyorumlari)
+    @foreach (var yorum in Model.tartisma_yorumlari)
     {
         <div class="container">
-            <p><i><strong>@yorum.yorumcuAd</strong> : @yorum._icerik</i></p>
+            <p><i><strong>@yorum.yorumcu_ad</strong> : @yorum._yorum</i></p>
             <p>@yorum._tarih</p>
         </div>
         <hr />
     }
 </div>
+
+
 

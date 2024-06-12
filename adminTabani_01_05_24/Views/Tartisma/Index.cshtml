@@ -1,30 +1,41 @@
 ﻿@model List<adminTabani_01_05_24.Models.Tartisma>
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    Layout = "~/Views/Shared/_ZiyaretciLayout.cshtml";
 }
 
-<div class="text-center" style="border:1px solid gray;background-color:rgb(128, 128, 128,0.2);padding:20px 0px 20px 0px">
-    @foreach (var tartisma in Model)
-    {
-        <div>
-            <h3>@tartisma.Baslik</h3>
-            @if (tartisma.icerik.Length > 100)
-            {
-                <p>@tartisma.icerik.Substring(0, 100)...</p>
-            }
-            else
-            {
-                <p>@tartisma.icerik</p>
-            }
-            <p><i>Başlatan: <strong>@tartisma.KullaniciAd</strong></i></p>
-            <p>@tartisma.tarih.ToString().Substring(0, 16)</p>
-        </div>
-        <div>
-            @*<a class="btn btn-dark" href="/Tartisma/TartismaDetay/@tartisma.TartismaID">Oku</a>*@
-            <a class="btn btn-dark" href="@Url.Action("TartismaDetay","Tartisma",new {tartisma_id=tartisma.TartismaID})">Oku</a>
-        </div>
-        <hr />
+<style>
+    .containerim {
+        align-items: center;
+        width: 500px;
+        border: none;
+        background-color: darkseagreen;
+        border-radius: 10%;
+        padding: 20px;
+        box-sizing: border-box;
+        margin: 20px auto;
     }
-</div>
 
+        .containerim h3, .containerim p {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+</style>
+
+@foreach (var tartisma in Model)
+{
+    <div class="containerim">
+        <h3>@tartisma.Baslik</h3>
+        @if (tartisma.icerik.ToString().Length > 100)
+        {
+            <p>@tartisma.icerik.ToString().Substring(0, 100)</p>
+        }
+        else
+        {
+            <p>@tartisma.icerik</p>
+        }
+        <p><i>Başlatan: <strong>@tartisma.KullaniciAd</strong></i></p>
+        <p>@tartisma.tarih.ToString().Substring(0, 16)</p>
+        <a class="btn btn-primary" href="@Url.Action("ZiyaretciTartismaDetay","Tartisma",new {tartisma_id=tartisma.TartismaID})">Oku</a>
+    </div>
+}

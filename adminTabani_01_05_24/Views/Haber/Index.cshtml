@@ -4,27 +4,43 @@
     Layout = "~/Views/Shared/_ZiyaretciLayout.cshtml";
 }
 
-<div class="text-center" style="border:1px solid gray;background-color:rgb(128, 128, 128,0.2);padding:20px 0px 20px 0px">
-    @foreach (var haber in Model)
-    {
-        <div>
-            <h3>@haber.Baslik</h3>
-            @if (haber.icerik.Length > 50)
-            {
-                <p>@haber.icerik.Substring(0, 100)</p>
-
-            }
-            else
-            {
-                <p>@haber.icerik</p>
-            }
-            <p><i>Başlatan: <strong>@haber.PaylasanAd</strong></i></p>
-            <p>@haber.tarih.ToString().Substring(0, 16)</p>
-        </div>
-        <div>
-            <a href="@Url.Action("HaberDetay","Haber",new {id=haber.HaberID})" class="btn btn-dark">Oku</a>
-        </div>
+<style>
+    .containerim {
+        align-items: center;
+        width: 500px;
+        border: none;
+        background-color: darkseagreen;
+        border-radius: 10%;
+        padding: 20px;
+        box-sizing: border-box;
+        margin: 20px auto;
     }
-</div>
+
+        .containerim h3, .containerim p {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        
+</style>
 
 
+@foreach (var haber in Model)
+{
+    <div class="containerim">
+        <h3>@haber.Baslik</h3>
+
+        @if (haber.icerik.ToString().Length > 50)
+        {
+            <p>@haber.icerik.ToString().Substring(0, 50) ...</p>
+        }
+        else
+        {
+            <p>@haber.icerik</p>
+        }
+        <p><i>Başlatan: <strong>@haber.PaylasanAd</strong></i></p>
+        <p>@haber.tarih.ToString().Substring(0, 16)</p>
+        <a href="@Url.Action("HaberDetay","Haber",new {id=haber.HaberID})" class="btn btn-primary">Oku</a>
+    </div>
+
+}

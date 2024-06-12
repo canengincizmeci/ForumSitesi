@@ -30,7 +30,7 @@ namespace adminTabani_01_05_24.Controllers
         }
         public ActionResult ZiyaretciResimDetay(int resim_id)
         {
-            int id = (int)Session["kullanici_id"];
+            
             db_Context model = new db_Context();
             ResimDetayPage detayPage = new ResimDetayPage();
             detayPage.resim = model.Resimler.Where(p => p.resimID == resim_id).OrderByDescending(p => p.resimID).Select(p => new Resim

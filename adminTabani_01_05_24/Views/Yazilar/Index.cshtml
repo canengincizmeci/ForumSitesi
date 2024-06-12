@@ -1,31 +1,43 @@
 ﻿@model List<adminTabani_01_05_24.Models.Yazi>
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    Layout = "~/Views/Shared/_ZiyaretciLayout.cshtml";
 }
 
-
-
-
-<div class="text-center" style="border:1px solid gray;background-color:rgb(128, 128, 128,0.2);padding:20px 0px 20px 0px">
-    @foreach (var yazi in Model)
-    {
-        <div>
-            <h3>@yazi.Baslik</h3>
-            @if (yazi.icerik.Length > 50)
-            {
-                <p>@yazi.icerik.Substring(0, 100)...</p>
-            }
-            else
-            {
-                <p>@yazi.icerik</p>
-            }
-            <p><i>Yazar: <strong>@yazi.yazar_ad</strong></i></p>
-            <p>@yazi.tarih.ToString().Substring(0, 16)</p>
-        </div>
-        <div>
-            @*<a class="btn btn-dark" href="/yazi/yaziDetay/@yazi.yaziID">Oku</a>*@
-            <a class="btn btn-dark" href="@Url.Action("yaziDetay","Yazilar",new {yaziID=yazi.yazi_id})">Oku</a>
-        </div>
+<style>
+    .containerim {
+        align-items: center;
+        width: 500px;
+        border: none;
+        background-color: darkseagreen;
+        border-radius: 10%;
+        padding: 20px;
+        box-sizing: border-box;
+        margin: 20px auto;
     }
-</div>
+
+        .containerim h3, .containerim p {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+</style>
+
+
+
+@foreach (var yazi in Model)
+{
+    <div class="containerim">
+        <h3>@yazi.Baslik</h3>
+        @if (yazi.icerik.Length > 50)
+        {
+            <p>@yazi.icerik.Substring(0, 100)...</p>
+        }
+        else
+        {
+            <p>@yazi.icerik</p>
+        }
+        <p><i>Yazar: <strong>@yazi.yazar_ad</strong></i></p>
+        <p>@yazi.tarih.ToString().Substring(0, 16)</p>
+        <a class="btn btn-primary" href="@Url.Action("ZiyaretciYazıDetay","Yazilar",new {_yaziID=yazi.yazi_id})">Oku</a>
+    </div>
+}

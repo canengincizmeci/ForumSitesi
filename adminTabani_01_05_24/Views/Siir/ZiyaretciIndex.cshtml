@@ -5,28 +5,44 @@
 }
 
 
-<div class="text-center" style="border:1px solid gray;background-color:rgb(128, 128, 128,0.2);padding:20px 0px 20px 0px">
-    @foreach (var siir in Model)
-    {
-        <div>
-            <h3>@siir.siirBaslik</h3>
-            @if (siir.icerik.Length > 50)
-            {
-                <p>@siir.icerik.Substring(0, 100)</p>
-
-            }
-            else
-            {
-                <p>@siir.icerik</p>
-            }
-            <p><i>Başlatan: <strong>@siir.YazarAd</strong></i></p>
-            <p>@siir.tarih.ToString().Substring(0, 16)</p>
-        </div>
-        <div>
-            <a href="@Url.Action("ZiyaretciSiirDetay","Siir",new {siir_id=siir.siirID})" class="btn btn-dark">Oku</a>
-        </div>
-        <hr />
+<style>
+    .containerim {
+        align-items: center;
+        width: 500px;
+        border: none;
+        background-color: darkseagreen;
+        border-radius: 10%;
+        padding: 20px;
+        box-sizing: border-box;
+        margin: 20px auto;
     }
-</div>
+
+        .containerim h3, .containerim p {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+</style>
+
+
+
+@foreach (var siir in Model)
+{
+    <div class="containerim">
+        <h3>@siir.siirBaslik</h3>
+        @if (siir.icerik.Length > 50)
+        {
+            <p>@siir.icerik.Substring(0, 100)</p>
+
+        }
+        else
+        {
+            <p>@siir.icerik</p>
+        }
+        <p><i>Başlatan: <strong>@siir.YazarAd</strong></i></p>
+        <p>@siir.tarih.ToString().Substring(0, 16)</p>
+        <a href="@Url.Action("ZiyaretciSiirDetay","Siir",new {siir_id=siir.siirID})" class="btn btn-dark">Oku</a>
+    </div>
+}
+
 
 

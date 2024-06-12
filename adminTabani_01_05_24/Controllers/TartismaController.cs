@@ -27,6 +27,33 @@ namespace adminTabani_01_05_24.Controllers
             }).ToList();
             return View(veriler);
         }
+        public ActionResult ZiyaretciTartismaDetay(int tartisma_id)
+        {
+            db_Context model = new db_Context();
+            TartismaDetayPage tartismaDetay = new TartismaDetayPage();
+            tartismaDetay.tartisma = model.Tartismalar.Where(p => p.TartismaID == tartisma_id).Select(p => new Tartisma
+            {
+                TartismaID = p.TartismaID,
+                Baslik = p.Baslik,
+                aktiflik = p.aktiflik,
+                icerik = p.icerik,
+                KullaniciAd = p.Kullanicilar.Ad,
+                kullanici_id = p.kullanici_id,
+                onay = p.onay,
+                tarih = p.tarih
+            }).FirstOrDefault();
+            tartismaDetay.tartisma_yorumlari = model.TartismaYorumlar.Where(p => p.tartismaID == tartisma_id & p.onay == true).OrderByDescending(p => p.tartismaYorumID).Select(p => new TartismaYorumlari
+            {
+                _onay = p.onay,
+                _tarih = p.tarih,
+                _tartismaID = p.tartismaID,
+                _tartismaYorumID = p.tartismaYorumID,
+                _yorum = p.yorum,
+                _yorumcuID = p.yorumcuID,
+                yorumcu_ad = p.Kullanicilar.Ad
+            }).ToList();
+            return View(tartismaDetay);
+        }
         [HttpGet]
         public ActionResult TartismaDetay(int tartisma_id)
         {
@@ -144,6 +171,33 @@ namespace adminTabani_01_05_24.Controllers
             model.SaveChanges();
             return RedirectToAction("IcerikEklendi", "Home", new { _tur = "Tartışma" });
         }
-
+        public ActionResult TartismaUyeDetay(int _tartisma_id)
+        {
+            int id = (int)Session["kullanici_id"];
+            db_Context model = new db_Context();
+            TartismaDetayPage detay = new TartismaDetayPage();
+            detay.tartisma = model.Tartismalar.Where(p => p.TartismaID == _tartisma_id).OrderByDescending(p => p.TartismaID).Select(p => new Tartisma
+            {
+                TartismaID = p.TartismaID,
+                aktiflik = p.aktiflik,
+                Baslik = p.Baslik,
+                icerik = p.icerik,
+                KullaniciAd = p.Kullanicilar.Ad,
+                kullanici_id = p.kullanici_id,
+                onay = p.onay,
+                tarih = p.tarih
+            }).FirstOrDefault();
+            detay.tartisma_yorumlari = model.TartismaYorumlar.Where(p => p.tartismaID == _tartisma_id).OrderByDescending(p => p.tartismaID).Select(p => new TartismaYorumlari
+            {
+                yorumcu_ad = p.Kullanicilar.Ad,
+                _onay = p.onay,
+                _tarih = p.tarih,
+                _tartismaID = p.tartismaID,
+                _tartismaYorumID = p.tartismaYorumID,
+                _yorum = p.yorum,
+                _yorumcuID = p.yorumcuID
+            }).ToList();
+            return View(detay);
+        }
     }
 }
