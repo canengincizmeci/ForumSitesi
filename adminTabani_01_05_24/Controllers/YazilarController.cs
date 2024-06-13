@@ -171,5 +171,48 @@ namespace adminTabani_01_05_24.Controllers
             model.SaveChanges();
             return RedirectToAction("IcerikEklendi", "Home", new { _tur = "Yazi" });
         }
+        public ActionResult UyeYaziIndex()
+        {
+            int id = (int)Session["kullanici_id"];
+            db_Context model = new db_Context();
+            var veriler = model.Yazilar.Where(p => p.onay == true).OrderByDescending(p => p.yazi_id).Select(p => new Yazi
+            {
+                Baslik = p.Baslik,
+                yazi_id = p.yazi_id,
+                onay = p.onay,
+                icerik = p.icerik,
+                tarih = p.tarih,
+                yazar_ad = p.Kullanicilar.Ad,
+                yazar_id = p.yazar_id
+            }).ToList();
+            return View(veriler);
+        }
+        public ActionResult UyeYaziDetay(int _yaziID)
+        {
+            int id = (int)Session["kullanici_id"];
+            db_Context model = new db_Context();
+            YaziDetayPage detayPage = new YaziDetayPage();
+            detayPage.yazi = model.Yazilar.Where(p => (p.yazi_id == _yaziID || p.onay == true)).Select(p => new Yazi
+            {
+                onay = p.onay,
+                yazi_id = p.yazi_id,
+                Baslik = p.Baslik,
+                icerik = p.icerik,
+                tarih = p.tarih,
+                yazar_ad = p.Kullanicilar.Ad,
+                yazar_id = p.yazar_id
+            }).FirstOrDefault();
+            detayPage.yaziyorumlari = model.YaziYorumlar.Where(p => (p.onay == true || p.yaziID == _yaziID)).OrderByDescending(p => p.YaziYorumID).Select(p => new YaziYorumlari
+            {
+                _yaziID = p.yaziID,
+                yorumcuAd = p.Kullanicilar.Ad,
+                _icerik = p.icerik,
+                _onay = p.onay,
+                _tarih = p.tarih,
+                _YaziYorumID = p.YaziYorumID,
+                _yorumcuID = p.yorumcuID
+            }).ToList();
+            return View(detayPage);
+        }
     }
 }

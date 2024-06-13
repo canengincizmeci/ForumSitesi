@@ -1,42 +1,44 @@
-﻿@model adminTabani_01_05_24.Models.TartismaDetayPage
+﻿@model List<adminTabani_01_05_24.Models.Tartisma>
+
 @{
     ViewBag.Title = "TartismaUyeIndex";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<div class="text-center">
-    <h2>@Model.tartisma.Baslik</h2>
-    <p style="word-wrap:break-word; white-space:normal">@Model.tartisma.icerik</p>
-    <p>@Model.tartisma.KullaniciAd</p>
-    <p>@Model.tartisma.tarih</p>
-    <a href="@Url.Action("Bildir",new {_tartismaID=Model.tartisma.TartismaID})">content</a>
-</div>
 
-
-<div class="container">
-    <form action="@Url.Action("YorumYap","Tartisma")" method="post">
-        @Html.AntiForgeryToken()
-        <div class="mb-3">
-            <label class="form-label" for="yorum"></label>
-            <textarea class="form-control" name="_yorum" id="yorum" rows="5"></textarea>
-        </div>
-        <input type="hidden" name="_tartisma_id" value="@Model.tartisma.TartismaID" />
-        <button type="submit" class="btn btn-primary">Gönder</button>
-    </form>
-</div>
-<div style="margin-bottom:5px;"></div>
-<div class="text-center">
-    <h3>Yorumlar</h3>
-</div>
-<hr />
-<div class="container">
-
-    @foreach (var yorum in Model.tartisma_yorumlari)
-    {
-        <div class="container">
-            <p><i><strong>@yorum.yorumcu_ad</strong> : @yorum._yorum</i></p>
-            <p>@yorum._tarih</p>
-        </div>
-        <hr />
+<style>
+    .containerim {
+        align-items: center;
+        width: 500px;
+        border: none;
+        background-color: darkseagreen;
+        border-radius: 10%;
+        padding: 20px;
+        box-sizing: border-box;
+        margin: 20px auto;
     }
-</div>
+
+        .containerim h3, .containerim p {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+</style>
+
+
+@foreach (var tartisma in Model)
+{
+    <div class="containerim">
+        <h3>@tartisma.Baslik</h3>
+        @if (tartisma.icerik.ToString().Length > 100)
+        {
+            <p>@tartisma.icerik.ToString().Substring(0, 100)</p>
+        }
+        else
+        {
+            <p>@tartisma.icerik</p>
+        }
+        <p><i>Başlatan: <strong>@tartisma.KullaniciAd</strong></i></p>
+        <p>@tartisma.tarih.ToString().Substring(0, 16)</p>
+        <a class="btn btn-primary" href="@Url.Action("TartismaUyeDetay","Tartisma",new {_tartisma_id=tartisma.TartismaID})">Oku</a>
+    </div>
+}

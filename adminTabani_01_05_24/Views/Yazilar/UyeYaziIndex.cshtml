@@ -1,0 +1,43 @@
+﻿@model List<adminTabani_01_05_24.Models.Yazi>
+@{
+    ViewBag.Title = "UyeYaziIndex";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<style>
+    .containerim {
+        align-items: center;
+        width: 500px;
+        border: none;
+        background-color: darkseagreen;
+        border-radius: 10%;
+        padding: 20px;
+        box-sizing: border-box;
+        margin: 20px auto;
+    }
+
+        .containerim h3, .containerim p {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+</style>
+
+
+@foreach (var yazi in Model)
+{
+    <div class="containerim">
+        <h3>@yazi.Baslik</h3>
+        @if (yazi.icerik.ToString().Length > 100)
+        {
+            <p>@yazi.icerik.ToString().Substring(0, 100)</p>
+        }
+        else
+        {
+            <p>@yazi.icerik</p>
+        }
+        <p><i>Başlatan: <strong>@yazi.yazar_ad</strong></i></p>
+        <p>@yazi.tarih.ToString().Substring(0, 16)</p>
+        <a class="btn btn-primary" href="@Url.Action("UyeyaziDetay","Yazi",new {_tartisma_id=yazi.yazi_id})">Oku</a>
+    </div>
+}
+

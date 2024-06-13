@@ -108,7 +108,7 @@ namespace adminTabani_01_05_24.Controllers
                 yorumcuID = id
             });
             model.SaveChanges();
-            return RedirectToAction("TartismaDetay", new { tartisma_id = _tartisma_id });
+            return RedirectToAction("TartismaUyeDetay", new { _tartisma_id = _tartisma_id });
         }
         [HttpGet]
         public ActionResult Bildir(int _tartismaID)
@@ -198,6 +198,23 @@ namespace adminTabani_01_05_24.Controllers
                 _yorumcuID = p.yorumcuID
             }).ToList();
             return View(detay);
+        }
+        public ActionResult TartismaUyeIndex()
+        {
+            db_Context model = new db_Context();
+            int id = (int)Session["kullanici_id"];
+            var veriler = model.Tartismalar.Where(p => p.onay == true).OrderByDescending(p => p.TartismaID).Select(p => new Tartisma
+            {
+                TartismaID = p.TartismaID,
+                onay = p.onay,
+                aktiflik = p.aktiflik,
+                Baslik = p.Baslik,
+                icerik = p.icerik,
+                KullaniciAd = p.Kullanicilar.Ad,
+                kullanici_id = p.kullanici_id,
+                tarih = p.tarih
+            }).ToList();
+            return View(veriler);
         }
     }
 }

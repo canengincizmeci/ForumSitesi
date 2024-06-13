@@ -13,18 +13,10 @@
         <a class="btn btn-danger" href="@Url.Action("Bildir", "Tartisma", new {_tartismaID=Model.tartisma.TartismaID})">Bildir</a>
     }
 </div>
-
-<div class="container">
-    <form action="/Tartisma/YorumYap" method="post">
-        @Html.AntiForgeryToken()
-        <div class="mb-3">
-            <label class="form-label" for="yorum">Yorum Yap</label>
-            <textarea class="form-control" id="yorum" name="_yorum" rows="5"></textarea>
-        </div>
-        <input type="hidden" name="_tartisma_id" value="@Model.tartisma.TartismaID" />
-        <button type="submit" class="btn btn-primary">Gönder</button>
-    </form>
+<div class="text-center">
+    <p>Yorum Yapmak için Üye olun  <a href="@Url.Action("Ekle","Kullanici")" class="btn btn-success">Üye Ol</a></p>
 </div>
+
 <br />
 <div style="margin-bottom:5px;"> </div>
 <div class="text-center">
