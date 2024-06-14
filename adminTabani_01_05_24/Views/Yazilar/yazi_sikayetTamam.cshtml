@@ -22,8 +22,7 @@
     </div>
     <script>
         setTimeout(function () {
-            ////window.location.href = "Yazilar/yaziDetay/@ViewBag.YaziID"
-            window.location.href="@Url.Action("yaziDetay","Yazilar",new { yaziID=ViewBag.YaziID})"
+            window.location.href="@Url.Action("UyeYaziDetay","Yazilar",new { _yaziID=ViewBag.YaziID})"
         }, 10000)
 
     </script>

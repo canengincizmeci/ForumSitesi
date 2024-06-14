@@ -37,7 +37,7 @@
         }
         <p><i>Başlatan: <strong>@yazi.yazar_ad</strong></i></p>
         <p>@yazi.tarih.ToString().Substring(0, 16)</p>
-        <a class="btn btn-primary" href="@Url.Action("UyeyaziDetay","Yazi",new {_tartisma_id=yazi.yazi_id})">Oku</a>
+        <a class="btn btn-primary" href="@Url.Action("UyeYaziDetay","Yazilar",new {_yaziID=yazi.yazi_id})">Oku</a>
     </div>
 }
 

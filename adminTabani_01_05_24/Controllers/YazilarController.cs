@@ -69,7 +69,7 @@ namespace adminTabani_01_05_24.Controllers
                 onay = true
             });
             model.SaveChanges();
-            return RedirectToAction("yaziDetay", new { yaziID = _yaziID });
+            return RedirectToAction("UyeYaziDetay", new { _yaziID = _yaziID });
         }
         [HttpGet]
         public ActionResult Bildir(int _yaziID)

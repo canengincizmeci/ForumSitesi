@@ -385,6 +385,7 @@
     <Content Include="Views\Tartisma\TartismaUyeIndex.cshtml" />
     <Content Include="Views\Tartisma\TartismaUyeDetay.cshtml" />
     <Content Include="Views\Yazilar\UyeYaziIndex.cshtml" />
+    <Content Include="Views\Yazilar\UyeYaziDetay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
