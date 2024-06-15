@@ -1,0 +1,50 @@
+﻿@model List<adminTabani_01_05_24.Models.Resim>
+@{
+    ViewBag.Title = "UyeResimIndex";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<style>
+    .containerim {
+        align-items: center;
+        width: 500px;
+        border: none;
+        background-color: darkseagreen;
+        border-radius: 10%;
+        padding: 20px;
+        box-sizing: border-box;
+        margin: 20px auto;
+    }
+
+        .containerim h3, .containerim p {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .containerim img {
+            width: 100%;
+            height: auto;
+            max-width: 100px;
+            cursor: pointer;
+        }
+</style>
+
+@foreach (var resim in Model)
+{
+    <div class="containerim">
+        <h3>@resim.baslik</h3>
+        <img src="@Url.Content("~/Content/images/"+ resim.dosyaYolu)" />
+        @if (resim.aciklama.ToString().Length > 20)
+        {
+            <p>@resim.aciklama.ToString().Substring(0, 20) ...</p>
+        }
+        else
+        {
+            <p>@resim.aciklama</p>
+        }
+        <p>@resim.PaylasanAd - @resim.tarih</p>
+        <a href="@Url.Action("UyeResimDetay", "Resim",new{ _resimID=resim.resimID})" class="btn btn-success">İncele</a>
+    </div>
+
+}
+

@@ -386,6 +386,10 @@
     <Content Include="Views\Tartisma\TartismaUyeDetay.cshtml" />
     <Content Include="Views\Yazilar\UyeYaziIndex.cshtml" />
     <Content Include="Views\Yazilar\UyeYaziDetay.cshtml" />
+    <Content Include="Views\Resim\UyeResimIndex.cshtml" />
+    <Content Include="Views\Resim\UyeResimDetay.cshtml" />
+    <Content Include="Views\Resim\ResimSikayetTamam.cshtml" />
+    <Content Include="Views\Resim\Bildir.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

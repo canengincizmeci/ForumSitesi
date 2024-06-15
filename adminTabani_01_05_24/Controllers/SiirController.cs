@@ -55,6 +55,7 @@ namespace adminTabani_01_05_24.Controllers
         }
         public ActionResult UyeSiirIndex()
         {
+            int id = (int)Session["kullanici_id"];
             db_Context model = new db_Context();
             var veriler = model.Siirler.Where(p => p.onay == true).OrderByDescending(p => p.siirID).Select(p => new Siir
             {
