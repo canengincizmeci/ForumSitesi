@@ -54,45 +54,45 @@ namespace adminTabani_01_05_24.Controllers
             }).ToList();
             return View(tartismaDetay);
         }
-        [HttpGet]
-        public ActionResult TartismaDetay(int tartisma_id)
-        {
-            db_Context model = new db_Context();
-            TartismaDetayPage tartismaDetay = new TartismaDetayPage();
-            int id = (int)Session["kullanici_id"];
-            bool deger = true;
-            if (model.Tartismalar.Find(tartisma_id).TartismaID == tartisma_id)
-            {
-                deger = false;
-                ViewBag.Deger = deger;
-            }
-            else
-            {
-                ViewBag.Deger = deger;
-            }
-            tartismaDetay.tartisma = model.Tartismalar.Where(p => p.TartismaID == tartisma_id).Select(p => new Tartisma
-            {
-                TartismaID = p.TartismaID,
-                Baslik = p.Baslik,
-                aktiflik = p.aktiflik,
-                icerik = p.icerik,
-                KullaniciAd = p.Kullanicilar.Ad,
-                kullanici_id = p.kullanici_id,
-                onay = p.onay,
-                tarih = p.tarih
-            }).FirstOrDefault();
-            tartismaDetay.tartisma_yorumlari = model.TartismaYorumlar.Where(p => p.tartismaID == tartisma_id & p.onay == true).OrderByDescending(p => p.tartismaYorumID).Select(p => new TartismaYorumlari
-            {
-                _onay = p.onay,
-                _tarih = p.tarih,
-                _tartismaID = p.tartismaID,
-                _tartismaYorumID = p.tartismaYorumID,
-                _yorum = p.yorum,
-                _yorumcuID = p.yorumcuID,
-                yorumcu_ad = p.Kullanicilar.Ad
-            }).ToList();
-            return View(tartismaDetay);
-        }
+        //[HttpGet]
+        //public ActionResult TartismaDetay(int tartisma_id)
+        //{
+        //    db_Context model = new db_Context();
+        //    TartismaDetayPage tartismaDetay = new TartismaDetayPage();
+        //    int id = (int)Session["kullanici_id"];
+        //    bool deger = true;
+        //    if (model.Tartismalar.Find(tartisma_id).TartismaID == tartisma_id)
+        //    {
+        //        deger = false;
+        //        ViewBag.Deger = deger;
+        //    }
+        //    else
+        //    {
+        //        ViewBag.Deger = deger;
+        //    }
+        //    tartismaDetay.tartisma = model.Tartismalar.Where(p => p.TartismaID == tartisma_id).Select(p => new Tartisma
+        //    {
+        //        TartismaID = p.TartismaID,
+        //        Baslik = p.Baslik,
+        //        aktiflik = p.aktiflik,
+        //        icerik = p.icerik,
+        //        KullaniciAd = p.Kullanicilar.Ad,
+        //        kullanici_id = p.kullanici_id,
+        //        onay = p.onay,
+        //        tarih = p.tarih
+        //    }).FirstOrDefault();
+        //    tartismaDetay.tartisma_yorumlari = model.TartismaYorumlar.Where(p => p.tartismaID == tartisma_id & p.onay == true).OrderByDescending(p => p.tartismaYorumID).Select(p => new TartismaYorumlari
+        //    {
+        //        _onay = p.onay,
+        //        _tarih = p.tarih,
+        //        _tartismaID = p.tartismaID,
+        //        _tartismaYorumID = p.tartismaYorumID,
+        //        _yorum = p.yorum,
+        //        _yorumcuID = p.yorumcuID,
+        //        yorumcu_ad = p.Kullanicilar.Ad
+        //    }).ToList();
+        //    return View(tartismaDetay);
+        //}
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult YorumYap(string _yorum, int _tartisma_id)

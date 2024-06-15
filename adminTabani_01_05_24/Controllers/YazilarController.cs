@@ -27,33 +27,33 @@ namespace adminTabani_01_05_24.Controllers
             }).ToList();
             return View(veriler);
         }
-        [HttpGet]
-        public ActionResult yaziDetay(int yaziID)
-        {
-            db_Context model = new db_Context();
-            YaziDetayPage yaziDetay = new YaziDetayPage();
-            yaziDetay.yazi = model.Yazilar.Where(p => p.yazi_id == yaziID).Select(p => new Yazi
-            {
-                yazi_id = p.yazi_id,
-                Baslik = p.Baslik,
-                onay = p.onay,
-                tarih = p.tarih,
-                yazar_ad = p.Kullanicilar.Ad,
-                yazar_id = p.yazar_id,
-                icerik = p.icerik
-            }).FirstOrDefault();
-            yaziDetay.yaziyorumlari = model.YaziYorumlar.Where(p => p.yaziID == yaziID & p.onay == true).OrderByDescending(p => p.YaziYorumID).Select(p => new YaziYorumlari
-            {
-                _yaziID = p.yaziID,
-                _icerik = p.icerik,
-                _onay = p.onay,
-                _tarih = p.tarih,
-                _YaziYorumID = p.YaziYorumID,
-                _yorumcuID = p.yorumcuID,
-                yorumcuAd = p.Kullanicilar.Ad
-            }).ToList();
-            return View(yaziDetay);
-        }
+        //[HttpGet]
+        //public ActionResult yaziDetay(int yaziID)
+        //{
+        //    db_Context model = new db_Context();
+        //    YaziDetayPage yaziDetay = new YaziDetayPage();
+        //    yaziDetay.yazi = model.Yazilar.Where(p => p.yazi_id == yaziID).Select(p => new Yazi
+        //    {
+        //        yazi_id = p.yazi_id,
+        //        Baslik = p.Baslik,
+        //        onay = p.onay,
+        //        tarih = p.tarih,
+        //        yazar_ad = p.Kullanicilar.Ad,
+        //        yazar_id = p.yazar_id,
+        //        icerik = p.icerik
+        //    }).FirstOrDefault();
+        //    yaziDetay.yaziyorumlari = model.YaziYorumlar.Where(p => p.yaziID == yaziID & p.onay == true).OrderByDescending(p => p.YaziYorumID).Select(p => new YaziYorumlari
+        //    {
+        //        _yaziID = p.yaziID,
+        //        _icerik = p.icerik,
+        //        _onay = p.onay,
+        //        _tarih = p.tarih,
+        //        _YaziYorumID = p.YaziYorumID,
+        //        _yorumcuID = p.yorumcuID,
+        //        yorumcuAd = p.Kullanicilar.Ad
+        //    }).ToList();
+        //    return View(yaziDetay);
+        //}
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult YorumYap(int _yaziID, string _yorum)
@@ -101,7 +101,7 @@ namespace adminTabani_01_05_24.Controllers
         /// Bu metot Yazi hakkındaki şikayetin başarıyla tamamlandığını gösterir
         /// </summary>
         /// <param name="yaziID"></param>
-        /// <returns></returns>
+        /// <returns>Yazi Sikayet sayfasını döndürür</returns>
         public ActionResult yazi_sikayetTamam(int yaziID)
         {
             int kullanici_id = (int)Session["kullanici_id"];

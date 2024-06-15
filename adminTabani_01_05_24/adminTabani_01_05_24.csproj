@@ -334,8 +334,6 @@
     <Content Include="Views\Kullanici\HataliMail.cshtml" />
     <Content Include="Views\Kullanici\girisKodDogrulama.cshtml" />
     <Content Include="Views\Tartisma\Index.cshtml" />
-    <Content Include="Views\Tartisma\TartismaDetay.cshtml" />
-    <Content Include="Views\Yazilar\yaziDetay.cshtml" />
     <Content Include="Views\Kullanici\CikisYap.cshtml" />
     <Content Include="Views\Yazilar\Bildir.cshtml" />
     <Content Include="Views\Yazilar\yazi_sikayetTamam.cshtml" />
