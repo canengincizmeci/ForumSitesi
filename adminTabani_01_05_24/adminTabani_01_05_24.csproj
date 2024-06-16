@@ -388,6 +388,9 @@
     <Content Include="Views\Resim\UyeResimDetay.cshtml" />
     <Content Include="Views\Resim\ResimSikayetTamam.cshtml" />
     <Content Include="Views\Resim\Bildir.cshtml" />
+    <Content Include="Views\Home\ZiyaretciIletisim.cshtml" />
+    <Content Include="Views\Home\Kurallar.cshtml" />
+    <Content Include="Views\Home\KullaniciKurallar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

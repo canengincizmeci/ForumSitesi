@@ -85,6 +85,28 @@ namespace adminTabani_01_05_24.Controllers
             ViewBag.Ad = model.Kullanicilar.Find(id).Ad;
             return View();
         }
-
+        public ActionResult ZiyaretciIletisim()
+        {
+            return View();
+        }
+        public ActionResult Kurallar()
+        {
+            return View();
+        }
+        public ActionResult KullaniciKurallar()
+        {
+            int id;
+            try
+            {
+                id = (int)Session["kullanici_id"];
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Login", "Kullanici");
+            }
+            db_Context model = new db_Context();
+            ViewBag.Ad = model.Kullanicilar.Find(id).Ad;
+            return View();
+        }
     }
 }
