@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="text-center">
+    <a class="linkler" href="@Url.Action("KullaniciAdiDegistir","Ayarlar")"><div><h4>Kullanıcı Adı Değiştir</h4></div></a>
+    <a class="linkler" href="@Url.Action("SifreDegistir","Ayarlar")"><div><h4>Şifre Değiştir</h4></div></a>
+</div>
+
+<style>
+    a {
+        text-decoration: none;
+        color: gray;
+        transition: 1s;
+    }
+
+        a:hover {
+            color: black;
+        }
+
+    .linkler {
+        margin-top: 100px;
+    }
+</style>

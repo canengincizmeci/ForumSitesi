@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "KullaniciAdiDegistir";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="container">
+    <form action="@Url.Action("KullaniciAdiDegistir","Ayarlar")" method="post">
+        @Html.AntiForgeryToken()
+        <label for="ad">Kullanıcı Adı Gir:</label>
+        <input type="text" name="yeniAd" class="form-control" id="ad" />
+        <input type="hidden" name="kullanici_adi" value="@ViewBag.Ad" />
+        <p>@ViewBag.Mesaj</p>
+        <button type="submit" class="btn btn-primary">Değiştir</button>
+    </form>
+</div>

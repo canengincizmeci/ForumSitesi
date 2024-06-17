@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "SifreDegistirmeTamam";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="text-center">
+    <h3>Sayın @ViewBag.Ad şifren başarıyla değiştirildi</h3>
+    <p>5 saniye içinde anasayfaya yönlendirileceksiniz</p>
+</div>
+<script>
+    setTimeout(function () {
+window.location.href = "@Url.Action("KullaniciHome", "Kullanici")";
+},10000)
+</script>
