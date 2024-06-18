@@ -1,0 +1,33 @@
+﻿@model List<adminTabani_01_05_24.Models.Kullanici>
+@{
+    ViewBag.Title = "KullaniciListele";
+    Layout = "~/Views/Shared/_AdminPage.cshtml";
+}
+<div class="container">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Ad</td>
+                <td>Şifre</td>
+                <td>Mail</td>
+                <td>Mesaj</td>
+                <td>Ceza</td>
+                <td>Profil</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var kullanici in Model)
+            {
+                <tr>
+                    <td>@kullanici.kullanici_id</td>
+                    <td>@kullanici.Ad</td>
+                    <td>@kullanici.KullaniciMaili</td>
+                    <td>@kullanici.kullanici_sifresi</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

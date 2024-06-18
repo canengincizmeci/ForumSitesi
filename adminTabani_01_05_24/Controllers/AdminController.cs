@@ -9,6 +9,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services.Description;
 
 namespace adminTabani_01_05_24.Controllers
 {
@@ -72,17 +73,54 @@ namespace adminTabani_01_05_24.Controllers
         {
             db_Context model = new db_Context();
             var sonVeri = model.AdminGirisler.OrderByDescending(p => p.giris_id).FirstOrDefault();
+            var admin = model.Admin.Find(1);
             var koddegeri = sonVeri.girisKod;
-            if (kod==koddegeri)
+            if (kod == koddegeri)
             {
                 sonVeri.girisBasarisi2 = true;
                 model.SaveChanges();
-                return View("AdminHome");
+                Session["id"] = admin.id;
+                return RedirectToAction("AdminHome");
             }
             else
             {
                 return RedirectToAction("Login");
             }
+        }
+        public ActionResult AdminHome()
+        {
+            int id;
+            try
+            {
+                id = (int)Session["id"];
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+        public ActionResult KullaniciListele()
+        {
+            
+            int id;
+            try
+            {
+                id = (int)Session["id"];
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            db_Context model = new db_Context();
+            var kullaniciListesi = model.Kullanicilar.Select(p => new Kullanici
+            {
+                Ad = p.Ad,
+                KullaniciMaili = p.kullaniciMail,
+                kullanici_id = p.kullanici_id,
+                kullanici_sifresi = p.kullanici_sifre
+            }).ToList();
+            return View(kullaniciListesi);
         }
     }
 }
