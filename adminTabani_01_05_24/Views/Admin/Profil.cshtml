@@ -1,0 +1,60 @@
+﻿@model adminTabani_01_05_24.Models.Kullanici
+@{
+    ViewBag.Title = "Profil";
+    Layout = "~/Views/Shared/_AdminPage.cshtml";
+}
+
+
+<style>
+    .containerim {
+        float: left;
+        align-items: center;
+        border: none;
+        /*background-color:#b79f90;*/
+        background-color: rgb(255, 255, 255,0.3);
+        padding: 10%;
+        box-sizing: border-box;
+        margin: 20px auto;
+    }
+
+    .icDiv {
+        float: left;
+        margin-right: 20px;
+        margin-top: 30px;
+        background-color: rgba(200,200,200,0.5);
+        width: 190px;
+        padding: 20px;
+        height: 200px;
+        transition: transform 0.3s ease;
+    }
+
+        .icDiv h3, .icDiv p {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .icDiv:hover {
+        transform: scale(1.1);
+        border: 1px solid lightgray;
+    }
+</style>
+
+
+<div class="container">
+    <h4>@Model.Ad</h4>
+</div>
+
+
+<div class="containerim">
+    <a href="@Url.Action("KullaniciTartismalar","Admin")">
+        <div class="icDiv">
+            <h3>Tartışmalar</h3>
+            <p>Kullanıcının yapmış olduğu tartışmalar</p>
+        </div>
+    </a>
+</div>

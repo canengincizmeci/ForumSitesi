@@ -58,6 +58,8 @@
         <EntityTypeShape EntityType="blogAdminli_01_05_24Model.KullaniciMesajlarSikayet" Width="1.5" PointX="11.25" PointY="22" />
         <AssociationConnector Association="blogAdminli_01_05_24Model.FK__Kullanici__sikay__1C873BEC" />
         <AssociationConnector Association="blogAdminli_01_05_24Model.FK__Kullanici__mesaj__1B9317B3" />
+        <EntityTypeShape EntityType="blogAdminli_01_05_24Model.AdminGidenMesajlar" Width="1.5" PointX="3" PointY="33.625" />
+        <AssociationConnector Association="blogAdminli_01_05_24Model.FK__AdminGide__alici__2EA5EC27" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

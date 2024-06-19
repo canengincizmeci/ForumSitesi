@@ -10,8 +10,8 @@
             <tr>
                 <td>ID</td>
                 <td>Ad</td>
-                <td>Şifre</td>
                 <td>Mail</td>
+                <td>Şifre</td>
                 <td>Mesaj</td>
                 <td>Ceza</td>
                 <td>Profil</td>
@@ -25,6 +25,9 @@
                     <td>@kullanici.Ad</td>
                     <td>@kullanici.KullaniciMaili</td>
                     <td>@kullanici.kullanici_sifresi</td>
+                    <td><a href="@Url.Action("MesajGonder","Admin",new {id=kullanici.kullanici_id})" class="btn btn-warning">Mesaj Gönder</a></td>
+                    <td><a href="@Url.Action("CezaSayfasi","Admin",new {id=kullanici.kullanici_id})" class="btn btn-danger">Cezalandır</a></td>
+                    <td><a href="@Url.Action("Profil","Admin",new {kullaniciID=kullanici.kullanici_id})" class="btn btn-primary">Profil</a></td>
                 </tr>
             }
         </tbody>

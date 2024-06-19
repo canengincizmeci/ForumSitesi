@@ -102,7 +102,7 @@ namespace adminTabani_01_05_24.Controllers
         }
         public ActionResult KullaniciListele()
         {
-            
+
             int id;
             try
             {
@@ -121,6 +121,65 @@ namespace adminTabani_01_05_24.Controllers
                 kullanici_sifresi = p.kullanici_sifre
             }).ToList();
             return View(kullaniciListesi);
+        }
+        [HttpGet]
+        public ActionResult MesajGonder(int id)
+        {
+            int admin_id;
+            try
+            {
+                admin_id = (int)Session["id"];
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            ViewBag.ID = id;
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult MesajGonder(string mesaj, int id)
+        {
+            int _id;
+            try
+            {
+                _id = (int)Session["id"];
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            db_Context model = new db_Context();
+            model.AdminGidenMesajlar.Add(new AdminGidenMesajlar
+            {
+                alici_id = id,
+                mesaj = mesaj,
+                tarih = DateTime.Now
+            });
+            model.SaveChanges();
+            return RedirectToAction("KullaniciListele", "Admin");
+        }
+        public ActionResult Profil(int kullaniciID)
+        {
+            int id;
+            try
+            {
+                id = (int)Session["id"];
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            db_Context model = new db_Context();
+            var uye = model.Kullanicilar.Where(p => p.kullanici_id == kullaniciID).Select(p => new Kullanici
+            {
+                Ad = p.Ad,
+                kullanici_id = p.kullanici_id,
+                KullaniciMaili = p.kullaniciMail,
+                kullanici_sifresi = p.kullanici_sifre
+            }).FirstOrDefault();
+            return View(uye);
         }
     }
 }

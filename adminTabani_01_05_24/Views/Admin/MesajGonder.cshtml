@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "MesajGonder";
+    Layout = "~/Views/Shared/_AdminPage.cshtml";
+}
+
+<div class="container">
+    <form method="post" action="@Url.Action("MesajGonder","Admin")">
+        @Html.AntiForgeryToken()
+        <label for="_mesaj">Mesaj:</label>
+        <textarea rows="5" class="form-control" name="mesaj" id="_mesaj"></textarea>
+        <input type="hidden" name="id" value="@ViewBag.ID" />
+        <button type="submit" class="btn btn-success">Gönder</button>
+    </form>
+</div>

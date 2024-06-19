@@ -123,6 +123,9 @@
     <Compile Include="Admin.cs">
       <DependentUpon>Model3_.tt</DependentUpon>
     </Compile>
+    <Compile Include="AdminGidenMesajlar.cs">
+      <DependentUpon>Model3_.tt</DependentUpon>
+    </Compile>
     <Compile Include="AdminGirisler.cs">
       <DependentUpon>Model3_.tt</DependentUpon>
     </Compile>
@@ -181,6 +184,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model3_.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminGidenMesaj.cs" />
     <Compile Include="Models\AdminGiris.cs" />
     <Compile Include="Models\AdminMesaj.cs" />
     <Compile Include="Models\Haber.cs" />
@@ -397,6 +401,8 @@
     <Content Include="Views\Ayarlar\SifreDegistirmeTamam.cshtml" />
     <Content Include="Views\Admin\AdminHome.cshtml" />
     <Content Include="Views\Admin\KullaniciListele.cshtml" />
+    <Content Include="Views\Admin\MesajGonder.cshtml" />
+    <Content Include="Views\Admin\Profil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

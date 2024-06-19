@@ -13,6 +13,15 @@
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="AdminGidenMesajlar">
+          <Key>
+            <PropertyRef Name="mesaj_id" />
+          </Key>
+          <Property Name="mesaj_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mesaj" Type="nvarchar(max)" />
+          <Property Name="tarih" Type="datetime" />
+          <Property Name="alici_id" Type="int" />
+        </EntityType>
         <EntityType Name="AdminGirisler">
           <Key>
             <PropertyRef Name="giris_id" />
@@ -235,6 +244,18 @@
           <Property Name="onay" Type="bit" />
           <Property Name="tarih" Type="datetime" />
         </EntityType>
+        <Association Name="FK__AdminGide__alici__2EA5EC27">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="AdminGidenMesajlar" Type="Self.AdminGidenMesajlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="AdminGidenMesajlar">
+              <PropertyRef Name="alici_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__AdminMesa__gonde__17036CC0">
           <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
           <End Role="AdminMesajlar" Type="Self.AdminMesajlar" Multiplicity="*" />
@@ -609,6 +630,7 @@
         </Association>
         <EntityContainer Name="blogAdminli_01_05_24ModelStoreContainer">
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdminGidenMesajlar" EntityType="Self.AdminGidenMesajlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdminGirisler" EntityType="Self.AdminGirisler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdminMesajlar" EntityType="Self.AdminMesajlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Haberler" EntityType="Self.Haberler" Schema="dbo" store:Type="Tables" />
@@ -630,6 +652,10 @@
           <EntitySet Name="Yazilar" EntityType="Self.Yazilar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="YaziSikayetler" EntityType="Self.YaziSikayetler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="YaziYorumlar" EntityType="Self.YaziYorumlar" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AdminGide__alici__2EA5EC27" Association="Self.FK__AdminGide__alici__2EA5EC27">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="AdminGidenMesajlar" EntitySet="AdminGidenMesajlar" />
+          </AssociationSet>
           <AssociationSet Name="FK__AdminMesa__gonde__17036CC0" Association="Self.FK__AdminMesa__gonde__17036CC0">
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
             <End Role="AdminMesajlar" EntitySet="AdminMesajlar" />
@@ -867,6 +893,7 @@
           <NavigationProperty Name="Yazilar" Relationship="Self.FK_Yazilar_Kullanicilar" FromRole="Kullanicilar" ToRole="Yazilar" />
           <NavigationProperty Name="YaziYorumlar" Relationship="Self.FK_YaziYorumlar_Kullanicilar" FromRole="Kullanicilar" ToRole="YaziYorumlar" />
           <NavigationProperty Name="KullaniciMesajlarSikayet" Relationship="blogAdminli_01_05_24Model.FK__Kullanici__sikay__1C873BEC" FromRole="Kullanicilar" ToRole="KullaniciMesajlarSikayet" />
+          <NavigationProperty Name="AdminGidenMesajlar" Relationship="blogAdminli_01_05_24Model.FK__AdminGide__alici__2EA5EC27" FromRole="Kullanicilar" ToRole="AdminGidenMesajlar" />
         </EntityType>
         <EntityType Name="KullaniciMesajlar">
           <Key>
@@ -1534,6 +1561,11 @@
             <End Role="KullaniciMesajlar" EntitySet="KullaniciMesajlar" />
             <End Role="KullaniciMesajlarSikayet" EntitySet="KullaniciMesajlarSikayet" />
           </AssociationSet>
+          <EntitySet Name="AdminGidenMesajlar" EntityType="blogAdminli_01_05_24Model.AdminGidenMesajlar" />
+          <AssociationSet Name="FK__AdminGide__alici__2EA5EC27" Association="blogAdminli_01_05_24Model.FK__AdminGide__alici__2EA5EC27">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="AdminGidenMesajlar" EntitySet="AdminGidenMesajlar" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="KullaniciMesajlarSikayet">
           <Key>
@@ -1568,6 +1600,28 @@
             </Principal>
             <Dependent Role="KullaniciMesajlarSikayet">
               <PropertyRef Name="mesajID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AdminGidenMesajlar">
+          <Key>
+            <PropertyRef Name="mesaj_id" />
+          </Key>
+          <Property Name="mesaj_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mesaj" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+          <Property Name="alici_id" Type="Int32" />
+          <NavigationProperty Name="Kullanicilar" Relationship="blogAdminli_01_05_24Model.FK__AdminGide__alici__2EA5EC27" FromRole="AdminGidenMesajlar" ToRole="Kullanicilar" />
+        </EntityType>
+        <Association Name="FK__AdminGide__alici__2EA5EC27">
+          <End Type="blogAdminli_01_05_24Model.Kullanicilar" Role="Kullanicilar" Multiplicity="0..1" />
+          <End Type="blogAdminli_01_05_24Model.AdminGidenMesajlar" Role="AdminGidenMesajlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="AdminGidenMesajlar">
+              <PropertyRef Name="alici_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1826,6 +1880,16 @@
                 <ScalarProperty Name="tarih" ColumnName="tarih" />
                 <ScalarProperty Name="sebep" ColumnName="sebep" />
                 <ScalarProperty Name="sikayetID" ColumnName="sikayetID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdminGidenMesajlar">
+            <EntityTypeMapping TypeName="blogAdminli_01_05_24Model.AdminGidenMesajlar">
+              <MappingFragment StoreEntitySet="AdminGidenMesajlar">
+                <ScalarProperty Name="alici_id" ColumnName="alici_id" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="mesaj" ColumnName="mesaj" />
+                <ScalarProperty Name="mesaj_id" ColumnName="mesaj_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
