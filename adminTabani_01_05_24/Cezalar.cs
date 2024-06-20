@@ -12,11 +12,13 @@ namespace adminTabani_01_05_24
     using System;
     using System.Collections.Generic;
     
-    public partial class Admin
+    public partial class Cezalar
     {
-        public int id { get; set; }
-        public string Email { get; set; }
-        public string Sifre { get; set; }
-        public string MailSifre { get; set; }
+        public int ceza_id { get; set; }
+        public string ceza { get; set; }
+        public Nullable<int> kullanici_id { get; set; }
+        public Nullable<System.DateTime> tarih { get; set; }
+    
+        public virtual Kullanicilar Kullanicilar { get; set; }
     }
 }

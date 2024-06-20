@@ -44,11 +44,13 @@ namespace adminTabani_01_05_24.Controllers
         }
         public void AdminDogrulamaKodu()
         {
+            
             Random rnd = new Random();
             int random = rnd.Next(1000, 9999 + 1);
             db_Context model = new db_Context();
             var admin = model.Admin.Where(p => p.id == 1).FirstOrDefault();
-            var cred = new NetworkCredential("canncizmeci@gmail.com", "jben gmyx obrj vhtj");
+            string sifre = admin.MailSifre;
+            var cred = new NetworkCredential("canncizmeci@gmail.com", sifre);
             var client = new SmtpClient("smtp.gmail.com", 587);
             var msg = new System.Net.Mail.MailMessage();
             msg.To.Add(admin.Email);
@@ -181,5 +183,11 @@ namespace adminTabani_01_05_24.Controllers
             }).FirstOrDefault();
             return View(uye);
         }
+        //public ActionResult CezaSayfasi(int id)
+        //{
+        //    db_Context model = new db_Context();
+        //    var kisi=
+
+        //}
     }
 }

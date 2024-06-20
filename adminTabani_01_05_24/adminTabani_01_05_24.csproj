@@ -135,6 +135,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Cezalar.cs">
+      <DependentUpon>Model3_.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AyarlarController.cs" />
     <Compile Include="Controllers\HaberController.cs" />
@@ -187,6 +190,7 @@
     <Compile Include="Models\AdminGidenMesaj.cs" />
     <Compile Include="Models\AdminGiris.cs" />
     <Compile Include="Models\AdminMesaj.cs" />
+    <Compile Include="Models\Ceza.cs" />
     <Compile Include="Models\Haber.cs" />
     <Compile Include="Models\HaberSikayetleri.cs" />
     <Compile Include="Models\HaberYorumlari.cs" />

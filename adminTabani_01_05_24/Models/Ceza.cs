@@ -7,13 +7,14 @@ using System.Web;
 
 namespace adminTabani_01_05_24.Models
 {
-    public class _Admin
+    public class Ceza
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int id { get; set; }
-        public string Email { get; set; }
-        public string Sifre { get; set; }
-        public string MailSifre { get; set; } 
+        public int _ceza_id { get; set; }
+        public string _ceza { get; set; }
+        public int? _kullanici_id { get; set; }
+        public DateTime? _tarih { get; set; }
+
     }
 }

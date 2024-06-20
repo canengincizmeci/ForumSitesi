@@ -57,9 +57,11 @@ namespace adminTabani_01_05_24.Controllers
 
         public int MailGonder(string mail)
         {
+            db_Context model = new db_Context();
+            string sifre = model.Admin.Find(1).MailSifre;
             Random rnd = new Random();
             int random = rnd.Next(1000, 9999 + 1);
-            var cred = new NetworkCredential("canncizmeci@gmail.com", "jben gmyx obrj vhtj");
+            var cred = new NetworkCredential("canncizmeci@gmail.com", sifre);
             var client = new SmtpClient("smtp.gmail.com", 587);
             var msg = new System.Net.Mail.MailMessage();
             msg.To.Add(mail);
@@ -95,7 +97,7 @@ namespace adminTabani_01_05_24.Controllers
         //public void SifreMaili(string mail, string kod)
         //{
 
-        //    var cred = new NetworkCredential("canncizmeci@gmail.com", "jben gmyx obrj vhtj");
+        //    var cred = new NetworkCredential("canncizmeci@gmail.com", sifre);
         //    var client = new SmtpClient("smtp.gmail.com", 587);
         //    var msg = new System.Net.Mail.MailMessage();
         //    msg.To.Add(mail);
@@ -238,9 +240,11 @@ namespace adminTabani_01_05_24.Controllers
         }
         public int girisEmailKod(string mail)
         {
+            db_Context model = new db_Context();
+            string sifre = model.Admin.Find(1).MailSifre;
             Random rnd = new Random();
             int random = rnd.Next(1000, 9999 + 1);
-            var cred = new NetworkCredential("canncizmeci@gmail.com", "jben gmyx obrj vhtj");
+            var cred = new NetworkCredential("canncizmeci@gmail.com", sifre);
             var client = new SmtpClient("smtp.gmail.com", 587);
             var msg = new System.Net.Mail.MailMessage();
             msg.To.Add(mail);
@@ -342,9 +346,11 @@ namespace adminTabani_01_05_24.Controllers
         }
         public int SifreUnutmaDogrulamaMaili(string mail)
         {
+            db_Context model = new db_Context();
+            string sifre = model.Admin.Find(1).MailSifre;
             Random rnd = new Random();
             int random = rnd.Next(1000, 9999 + 1);
-            var cred = new NetworkCredential("canncizmeci@gmail.com", "jben gmyx obrj vhtj");
+            var cred = new NetworkCredential("canncizmeci@gmail.com", sifre);
             var client = new SmtpClient("smtp.gmail.com", 587);
             var msg = new System.Net.Mail.MailMessage();
             msg.To.Add(mail);

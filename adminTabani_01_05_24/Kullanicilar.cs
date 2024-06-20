@@ -38,6 +38,7 @@ namespace adminTabani_01_05_24
             this.YaziYorumlar = new HashSet<YaziYorumlar>();
             this.KullaniciMesajlarSikayet = new HashSet<KullaniciMesajlarSikayet>();
             this.AdminGidenMesajlar = new HashSet<AdminGidenMesajlar>();
+            this.Cezalar = new HashSet<Cezalar>();
         }
     
         public int kullanici_id { get; set; }
@@ -87,5 +88,7 @@ namespace adminTabani_01_05_24
         public virtual ICollection<KullaniciMesajlarSikayet> KullaniciMesajlarSikayet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AdminGidenMesajlar> AdminGidenMesajlar { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cezalar> Cezalar { get; set; }
     }
 }
