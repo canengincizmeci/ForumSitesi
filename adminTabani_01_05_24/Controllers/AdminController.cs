@@ -10,6 +10,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Services.Description;
+using Microsoft.Ajax.Utilities;
 
 namespace adminTabani_01_05_24.Controllers
 {
@@ -44,7 +45,7 @@ namespace adminTabani_01_05_24.Controllers
         }
         public void AdminDogrulamaKodu()
         {
-            
+
             Random rnd = new Random();
             int random = rnd.Next(1000, 9999 + 1);
             db_Context model = new db_Context();
@@ -183,11 +184,75 @@ namespace adminTabani_01_05_24.Controllers
             }).FirstOrDefault();
             return View(uye);
         }
-        //public ActionResult CezaSayfasi(int id)
-        //{
-        //    db_Context model = new db_Context();
-        //    var kisi=
-
-        //}
+        public ActionResult CezaSayfasi(int id)
+        {
+            db_Context model = new db_Context();
+            var kisi = model.Kullanicilar.Find(id);
+            KullaniciCezalar cezalar = new KullaniciCezalar();
+            cezalar.haberSikayetleri = model.HaberSikayetler.Where(p => p.Kullanicilar.kullanici_id == id).OrderByDescending(p => p.sikayet_id).Select(p => new HaberSikayetleri
+            {
+                haberBaslik = p.Haberler.Baslik,
+                sikayetciAd = p.Kullanicilar.Ad,
+                sikayetID = p.sikayet_id,
+                _haber_id = p.haber_id,
+                _sebep = p.sebep,
+                _sikayetci_id = p.sikayetci_id,
+                _tarih = p.tarih
+            }).ToList();
+            cezalar.tartismaSikayetler = model.TartismaSikayetler.Where(p => p.Kullanicilar.kullanici_id == id).OrderByDescending(p => p.sikayet_id).Select(p => new TartismaSikayetleri
+            {
+                sikayetID = p.sikayet_id,
+                _sebep = p.sebep,
+                _sikayetci_id = p.sikayetci_id,
+                _tarih = p.tarih,
+                _tartisma_id = p.tartisma_id
+            }).ToList();
+            cezalar.mesajSikayetleri = model.KullaniciMesajlarSikayet.Where(p => p.Kullanicilar.kullanici_id == id).OrderByDescending(p => p.sikayetID).Select(p => new KullaniciMesajlarSikayetleri
+            {
+                _mesajID = p.mesajID,
+                _sebep = p.sebep,
+                _sikayetciID = p.sikayetciID,
+                _sikayetID = p.sikayetID,
+                _tarih = p.tarih
+            }).ToList();
+            cezalar.siirSikayetleri = model.SiirSikayetler.Where(p => p.Kullanicilar.kullanici_id == id).OrderByDescending(p => p.sikayet_id).Select(p => new SiirSikayetleri
+            {
+                SiirBaslik = p.Siirler.siirBaslik,
+                sikayetciAD = p.Kullanicilar.Ad,
+                sikayetID = p.sikayet_id,
+                _sebep = p.sebep,
+                _siir_id = p.Siirler.siirID,
+                _sikayetci_id = p.sikayetci_id,
+                _tarih = p.tarih
+            }).ToList();
+            cezalar.yaziSikayetleri = model.YaziSikayetler.Where(p => p.Kullanicilar.kullanici_id == id).OrderByDescending(p => p.sikayet_id).Select(p => new YaziSikayetleri
+            {
+                SikayetciAd = p.Kullanicilar.Ad,
+                YaziBaslik = p.Yazilar.Baslik,
+                _sebep = p.sebep,
+                _sikayetci_id = p.sikayetci_id,
+                _sikayet_id = p.sikayet_id,
+                _tarih = p.tarih,
+                _yazi_id = p.yazi_id
+            }).ToList();
+            cezalar.resimSikayetleri = model.ResimSikayetler.Where(p => p.Kullanicilar.kullanici_id == id).OrderByDescending(p => p.sikayet_id).Select(p => new ResimSikayetleri
+            {
+                ResimBaslik = p.Resimler.baslik,
+                SikayetciAd = p.Kullanicilar.Ad,
+                sikayetID = p.sikayet_id,
+                _resim_id = p.resim_id,
+                _sebep = p.sebep,
+                _sikayetci_id = p.Kullanicilar.kullanici_id,
+                _tarih = p.tarih
+            }).ToList();
+            cezalar.kullanici = model.Kullanicilar.Where(p => p.kullanici_id == id).Select(p => new Kullanici
+            {
+                kullanici_id = p.kullanici_id,
+                Ad = p.Ad,
+                KullaniciMaili = p.kullaniciMail,
+                kullanici_sifresi = p.kullanici_sifre
+            }).FirstOrDefault();
+            return View(cezalar);
+        }
     }
 }

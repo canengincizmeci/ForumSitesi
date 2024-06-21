@@ -195,6 +195,7 @@
     <Compile Include="Models\HaberSikayetleri.cs" />
     <Compile Include="Models\HaberYorumlari.cs" />
     <Compile Include="Models\Kullanici.cs" />
+    <Compile Include="Models\KullaniciCezalar.cs" />
     <Compile Include="Models\KullaniciGiris.cs" />
     <Compile Include="Models\KullaniciHomeViewModel.cs" />
     <Compile Include="Models\KullaniciMesaj.cs" />

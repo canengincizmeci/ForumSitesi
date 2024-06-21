@@ -19,7 +19,6 @@ namespace adminTabani_01_05_24.Models
         public string SikayetciAd { get; set; }
         public string YaziBaslik { get; set; }
 
-        public virtual Kullanicilar Kullanicilar { get; set; }
-        public virtual Yazilar Yazilar { get; set; }
+
     }
 }
