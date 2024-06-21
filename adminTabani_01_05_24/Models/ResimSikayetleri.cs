@@ -18,5 +18,6 @@ namespace adminTabani_01_05_24.Models
         public int? _resim_id { get; set; }
         public string SikayetciAd { get; set; }
         public string ResimBaslik { get; set; }
+        public string dosyaYolu { get; set; }
     }
 }

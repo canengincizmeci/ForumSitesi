@@ -197,7 +197,8 @@ namespace adminTabani_01_05_24.Controllers
                 _haber_id = p.haber_id,
                 _sebep = p.sebep,
                 _sikayetci_id = p.sikayetci_id,
-                _tarih = p.tarih
+                _tarih = p.tarih,
+                haber = p.Haberler.icerik
             }).ToList();
             cezalar.tartismaSikayetler = model.TartismaSikayetler.Where(p => p.Kullanicilar.kullanici_id == id).OrderByDescending(p => p.sikayet_id).Select(p => new TartismaSikayetleri
             {
@@ -205,7 +206,10 @@ namespace adminTabani_01_05_24.Controllers
                 _sebep = p.sebep,
                 _sikayetci_id = p.sikayetci_id,
                 _tarih = p.tarih,
-                _tartisma_id = p.tartisma_id
+                _tartisma_id = p.tartisma_id,
+                sikayetciAd = p.Kullanicilar.Ad,
+                tartisma = p.Tartismalar.icerik,
+                tartismaBaslik = p.Tartismalar.Baslik
             }).ToList();
             cezalar.mesajSikayetleri = model.KullaniciMesajlarSikayet.Where(p => p.Kullanicilar.kullanici_id == id).OrderByDescending(p => p.sikayetID).Select(p => new KullaniciMesajlarSikayetleri
             {
@@ -213,7 +217,9 @@ namespace adminTabani_01_05_24.Controllers
                 _sebep = p.sebep,
                 _sikayetciID = p.sikayetciID,
                 _sikayetID = p.sikayetID,
-                _tarih = p.tarih
+                _tarih = p.tarih,
+                mesaj = p.KullaniciMesajlar.mesaj,
+                sikayetci = p.Kullanicilar.Ad
             }).ToList();
             cezalar.siirSikayetleri = model.SiirSikayetler.Where(p => p.Kullanicilar.kullanici_id == id).OrderByDescending(p => p.sikayet_id).Select(p => new SiirSikayetleri
             {
@@ -223,7 +229,8 @@ namespace adminTabani_01_05_24.Controllers
                 _sebep = p.sebep,
                 _siir_id = p.Siirler.siirID,
                 _sikayetci_id = p.sikayetci_id,
-                _tarih = p.tarih
+                _tarih = p.tarih,
+                siir = p.Siirler.icerik
             }).ToList();
             cezalar.yaziSikayetleri = model.YaziSikayetler.Where(p => p.Kullanicilar.kullanici_id == id).OrderByDescending(p => p.sikayet_id).Select(p => new YaziSikayetleri
             {
@@ -233,7 +240,8 @@ namespace adminTabani_01_05_24.Controllers
                 _sikayetci_id = p.sikayetci_id,
                 _sikayet_id = p.sikayet_id,
                 _tarih = p.tarih,
-                _yazi_id = p.yazi_id
+                _yazi_id = p.yazi_id,
+                Yazi = p.Yazilar.icerik
             }).ToList();
             cezalar.resimSikayetleri = model.ResimSikayetler.Where(p => p.Kullanicilar.kullanici_id == id).OrderByDescending(p => p.sikayet_id).Select(p => new ResimSikayetleri
             {
@@ -243,7 +251,8 @@ namespace adminTabani_01_05_24.Controllers
                 _resim_id = p.resim_id,
                 _sebep = p.sebep,
                 _sikayetci_id = p.Kullanicilar.kullanici_id,
-                _tarih = p.tarih
+                _tarih = p.tarih,
+                dosyaYolu = p.Resimler.dosyaYolu
             }).ToList();
             cezalar.kullanici = model.Kullanicilar.Where(p => p.kullanici_id == id).Select(p => new Kullanici
             {

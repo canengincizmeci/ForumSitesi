@@ -18,5 +18,6 @@ namespace adminTabani_01_05_24.Models
         public int? _haber_id { get; set; }
         public string sikayetciAd { get; set; }
         public string haberBaslik { get; set; }
+        public string haber { get; set; }
     }
 }

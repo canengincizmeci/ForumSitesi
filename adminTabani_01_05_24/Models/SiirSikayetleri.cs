@@ -18,5 +18,6 @@ namespace adminTabani_01_05_24.Models
         public int? _siir_id { get; set; }
         public string SiirBaslik { get; set; }
         public string sikayetciAD { get; set; }
+        public string siir { get; set; }
     }
 }

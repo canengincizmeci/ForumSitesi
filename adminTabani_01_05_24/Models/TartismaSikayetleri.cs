@@ -16,6 +16,8 @@ namespace adminTabani_01_05_24.Models
         public DateTime? _tarih { get; set; }
         public int? _sikayetci_id { get; set; }
         public int? _tartisma_id { get; set; }
-
+        public string sikayetciAd { get; set; }
+        public string tartisma { get; set; }
+        public string tartismaBaslik { get; set; }
     }
 }

@@ -1,0 +1,273 @@
+﻿@model adminTabani_01_05_24.Models.KullaniciCezalar
+
+@{
+    ViewBag.Title = "CezaSayfasi";
+    Layout = "~/Views/Shared/_AdminPage.cshtml";
+}
+<style>
+
+    .table-wrap td {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 150px;
+    }
+</style>
+
+
+<div class="container">
+    <h3>@Model.kullanici.Ad</h3>
+    <p>Maili: @Model.kullanici.KullaniciMaili</p>
+</div>
+
+
+
+
+<div class="container">
+    <div class="text-center">
+        <h4>Mesaj Şikayetleri</h4>
+    </div>
+    @if (Model.mesajSikayetleri.Count > 0)
+    {
+        <div class="table-responsive">
+            <table class="table table-wrap">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Şikayetçi</th>
+                        <th>Sebep</th>
+                        <th>Mesaj</th>
+                        <th>Tarih</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var mesaj_sikayet in Model.mesajSikayetleri)
+                    {
+                        <tr>
+                            <td>@mesaj_sikayet._sikayetID</td>
+                            <td>@mesaj_sikayet.sikayetci</td>
+                            <td>@mesaj_sikayet._sebep</td>
+                            <td>@mesaj_sikayet.mesaj</td>
+                            <td>@mesaj_sikayet._tarih</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <p>Yazar hakkında mesaj şikayeti yoktur.</p>
+    }
+</div>
+
+<br />
+
+<div class="container">
+    <div class="text-center">
+        <h4>Yazi Şikayetler</h4>
+    </div>
+    @if (Model.yaziSikayetleri.Count > 0)
+    {
+        <div class="table-responsive">
+            <table class="table table-wrap">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Şikayetçi Ad</th>
+                        <th>Sebep</th>
+                        <th>YaziBaslik</th>
+                        <th>İçerik</th>
+                        <th>Tarih</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var yazi_sikayet in Model.yaziSikayetleri)
+                    {
+                        <tr>
+                            <td>@yazi_sikayet._sikayet_id</td>
+                            <td>@yazi_sikayet.SikayetciAd</td>
+                            <td>@yazi_sikayet._sebep</td>
+                            <td>@yazi_sikayet.YaziBaslik</td>
+                            <td>@yazi_sikayet.Yazi</td>
+                            <td>@yazi_sikayet._tarih</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <h5>Yazar hakkında yazı şikayeti yoktur.</h5>
+    }
+</div>
+
+<br />
+
+<div class="container">
+    <div class="text-center">
+        <h4>Tartışma Şikayetleri</h4>
+    </div>
+    @if (Model.tartismaSikayetler.Count > 0)
+    {
+        <div class="table-responsive">
+            <table class="table table-wrap">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Şikayetci Ad</th>
+                        <th>Sebep</th>
+                        <th>Tartışma Başlık</th>
+                        <th>Tartışma</th>
+                        <th>Tarih</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var tartisma_sikayet in Model.tartismaSikayetler)
+                    {
+                        <tr>
+                            <td>@tartisma_sikayet.sikayetID</td>
+                            <td>@tartisma_sikayet.sikayetciAd</td>
+                            <td>@tartisma_sikayet._sebep</td>
+                            <td>@tartisma_sikayet.tartismaBaslik</td>
+                            <td>@tartisma_sikayet.tartisma</td>
+                            <td>@tartisma_sikayet._tarih</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <h5>Yazar hakkında tartışma şikayeti yoktur.</h5>
+    }
+</div>
+
+<br />
+
+<div class="container">
+    <div class="text-center">
+        <h4>Şiir Şikayetleri</h4>
+    </div>
+    @if (Model.siirSikayetleri.Count > 0)
+    {
+        <div class="table-responsive">
+            <table class="table table-wrap">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Şikayetçi Ad</th>
+                        <th>Sebep</th>
+                        <th>Şiir Başlık</th>
+                        <th>Şiir</th>
+                        <th>Tarih</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var siir_sikayet in Model.siirSikayetleri)
+                    {
+                        <tr>
+                            <td>@siir_sikayet.sikayetID</td>
+                            <td>@siir_sikayet.sikayetciAD</td>
+                            <td>@siir_sikayet._sebep</td>
+                            <td>@siir_sikayet.SiirBaslik</td>
+                            <td>@siir_sikayet.siir</td>
+                            <td>@siir_sikayet._tarih</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <h4>Yazar hakkında şiir şikayeti yoktur.</h4>
+    }
+</div>
+
+<br />
+
+<div class="container">
+    <div class="text-center">
+        <h4>Haber Şikayetleri</h4>
+    </div>
+    @if (Model.haberSikayetleri.Count > 0)
+    {
+        <div class="table-responsive">
+            <table class="table table-wrap">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Şikayetçi Ad</th>
+                        <th>Sebep</th>
+                        <th>Haber Başlık</th>
+                        <th>Haber</th>
+                        <th>Tarih</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var haber_sikayet in Model.haberSikayetleri)
+                    {
+                        <tr>
+                            <td>@haber_sikayet.sikayetID</td>
+                            <td>@haber_sikayet.sikayetciAd</td>
+                            <td>@haber_sikayet._sebep</td>
+                            <td>@haber_sikayet.haberBaslik</td>
+                            <td>@haber_sikayet.haber</td>
+                            <td>@haber_sikayet._tarih</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <h4>Kullanıcı hakkında haber şikayeti yoktur.</h4>
+    }
+</div>
+
+<br />
+
+<div class="container">
+    <div class="text-center">
+        <h4>Resim Şikayetleri</h4>
+    </div>
+    @if (Model.resimSikayetleri.Count > 0)
+    {
+        <div class="table-responsive">
+            <table class="table table-wrap">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Şikayetçi Ad</th>
+                        <th>Sebep</th>
+                        <th>Resim Başlık</th>
+                        <th>Resim</th>
+                        <th>Tarih</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var resim_sikayet in Model.resimSikayetleri)
+                    {
+                        <tr>
+                            <td>@resim_sikayet.sikayetID</td>
+                            <td>@resim_sikayet.SikayetciAd</td>
+                            <td>@resim_sikayet._sebep</td>
+                            <td>@resim_sikayet.ResimBaslik</td>
+                            <td><img src="@Url.Content("~/Content/images/"+resim_sikayet.dosyaYolu)" alt="Alternate Text" /></td>
+                            <td>@resim_sikayet._tarih</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <h4>Kullanici Hakkında resim şikayeti yoktur.</h4>
+    }
+</div>

@@ -18,7 +18,7 @@ namespace adminTabani_01_05_24.Models
         public int? _yazi_id { get; set; }
         public string SikayetciAd { get; set; }
         public string YaziBaslik { get; set; }
-
+        public string Yazi { get; set; }
 
     }
 }
